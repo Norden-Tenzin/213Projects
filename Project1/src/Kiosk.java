@@ -1,3 +1,5 @@
+package Project1.src;
+
 public class Kiosk {
 
   public void run() {}
