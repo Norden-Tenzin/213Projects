@@ -1,7 +1,5 @@
 package Project1.src;
 
-import jdk.nashorn.internal.ir.IndexNode;
-
 public class Library {
 
   private Book[] books; // array-based implementation of the bag data structure
