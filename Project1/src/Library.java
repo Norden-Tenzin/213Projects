@@ -5,11 +5,21 @@ public class Library {
   private Book[] books; // array-based implementation of the bag data structure
   private int numBooks; // the number of books currently in the bag
 
-  public Library() {} //default constructor to create an empty bag
+  public Library() {
+    this.books = new Book[4];
+    this.numBooks = 0;
+  } //default constructor to create an empty bag
 
   private int find(Book book) {} // helper method to find a book in the bag
 
-  private void grow() {} // helper method to grow the capacity by 4
+  private void grow() {
+    int len = this.books.length;
+    Book newBag[] = new Book[len + 4];
+    for(int i = 0; i <= len-1; i++){
+      newBag[i] = this.books[i];
+    }
+    this.books = newBag;
+  } // helper method to grow the capacity by 4
 
   public void add(Book book) {}
 
