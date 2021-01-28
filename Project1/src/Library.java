@@ -78,5 +78,3 @@ public class Library {
 
   public void printByNumber() {} //print the list of books by number (ascending)
 }
-
-//TODO - need a better way to add numbers to Books
