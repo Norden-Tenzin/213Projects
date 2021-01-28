@@ -9,8 +9,8 @@ public class Library {
 
   public Library() {
     this.books = new Book[4];
-    this.numBooks = 0;
-  } //default constructor to create an empty bag
+    this.numBooks = 10001;
+  } // default constructor to create an empty bag
 
   private int find(Book book) {
     int indexBook = -1;
@@ -34,6 +34,8 @@ public class Library {
   public void add(Book book) {
     boolean availableSpace = false;
     int indexSpace = 0;
+    book.setNumber(String.valueOf(this.numBooks));
+    this.numBooks++;
     for(int i = 0; i <= this.books.length; i++){
       if(this.books[i] == null){
         availableSpace = true;
@@ -72,9 +74,11 @@ public class Library {
     for(int i = 0; i <= this.books.length-1; i++){
       System.out.println(this.books[0].toString());
     }
-  } //print the list of books in the bag
+  } // print the list of books in the bag
 
   public void printByDate() {} //print the list of books by datePublished (ascending)
 
   public void printByNumber() {} //print the list of books by number (ascending)
 }
+
+//TODO - need a better way to add numbers to Books

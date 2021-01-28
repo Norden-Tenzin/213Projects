@@ -8,7 +8,7 @@ public class Book {
   private Date datePublished;
 
   public Book(String number, String name, Date datePublished) {
-    this.number = number;
+    // this.number = number;
     this.name = name;
     this.checkedOut = false;
     this.datePublished = datePublished;
@@ -18,6 +18,10 @@ public class Book {
     if(this.checkedOut){
       return "is not available";
     } else return "is available";
+  }
+
+  public void setNumber(String number) {
+    this.number = number;
   }
 
   @Override

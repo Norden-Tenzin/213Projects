@@ -1,8 +1,9 @@
 package Project1.src;
 
 public class Kiosk {
-
-  public void run() {}
+  public void run() {
+    // takes care of all the commands
+  }
 }
 
 /*
