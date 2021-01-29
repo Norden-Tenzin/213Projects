@@ -64,9 +64,21 @@ public class Library {
     }
   } // if bag has book remove it. true if removed else false.
 
-  public boolean checkOut(Book book) {}
+  public boolean checkOut(Book book) {
+    boolean foundBook = false;
+    for(int i = 0; i <= this.books.length-1; i++){
+      if(book.equals(this.books[i])){
+        this.books[i].setCheckout(true);
+        foundBook = true;
+        break;
+      }
+    }
+    return foundBook;
+  } // set the checkout to true
 
-  public boolean returns(Book book) {}
+  public boolean returns(Book book) {
+
+  }
 
   public void print() {
     for(int i = 0; i <= this.books.length-1; i++){

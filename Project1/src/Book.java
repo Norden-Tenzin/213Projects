@@ -23,6 +23,10 @@ public class Book {
   public void setNumber(String number) {
     this.number = number;
   }
+  
+  public void setCheckout(boolean checkedOut) {
+    this.checkedOut = checkedOut;
+  }
 
   @Override
   public boolean equals(Object obj) {
