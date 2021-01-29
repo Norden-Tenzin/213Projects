@@ -77,8 +77,16 @@ public class Library {
   } // set the checkout to true
 
   public boolean returns(Book book) {
-
-  }
+    boolean foundBook = false;
+    for(int i = 0; i <= this.books.length-1; i++){
+      if(book.equals(this.books[i])){
+        this.books[i].setCheckout(false);
+        foundBook = true;
+        break;
+      }
+    }
+    return foundBook;
+  } // set the checkout to false 
 
   public void print() {
     for(int i = 0; i <= this.books.length-1; i++){
