@@ -23,7 +23,11 @@ public class Book {
   public void setNumber(String number) {
     this.number = number;
   }
-  
+
+  public String getNumber() {
+    return this.number;
+  }
+
   public void setCheckout(boolean checkedOut) {
     this.checkedOut = checkedOut;
   }

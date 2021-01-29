@@ -96,5 +96,19 @@ public class Library {
 
   public void printByDate() {} //print the list of books by datePublished (ascending)
 
-  public void printByNumber() {} //print the list of books by number (ascending)
+  public void printByNumber() {
+    Book temp;
+    for(int i = 0; i <= this.books.length-1; i++){
+      int bookI = Integer.parseInt(this.books[i].getNumber());
+      for(int j = i+1; j <= this.books.length-1; j++){
+        int bookJ = Integer.parseInt(this.books[j].getNumber());
+        if (bookI > bookJ) 
+        {
+          temp = this.books[i];
+          this.books[i] = this.books[j];
+          this.books[j] = temp;
+        }
+      }
+    }
+  } //print the list of books by number (ascending)
 }
