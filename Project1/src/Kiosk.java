@@ -1,9 +1,24 @@
 package Project1.src;
+import java.util.Scanner;
+
 
 public class Kiosk {
   public void run() {
     // takes care of all the commands
-    Library library = new Library()
+    // Library library = new Library();
+    Scanner sc = new Scanner(System.in);
+    
+    while(true){
+      String input = sc.nextLine();
+      if(input.equalsIgnoreCase("Q"))
+        break;
+
+      System.out.println(input);
+
+    }
+    
+    // Ask for string.
+
   }
 }
 

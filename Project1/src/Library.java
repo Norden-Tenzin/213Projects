@@ -31,12 +31,6 @@ public class Library {
 
   public void add(Book book) {
     
-    // TODO: Check if this is allowed:
-    Date bookDate = new Date(book.datePublished);
-    if(!bookDate.isValid())
-        System.out.out.println("Invalid Date!")
-        
-
     boolean availableSpace = false;
     int indexSpace = 0;
     book.setNumber(String.valueOf(this.numBooks));
