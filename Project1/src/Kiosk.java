@@ -1,13 +1,12 @@
 package Project1.src;
 import java.util.Scanner;
 
-
 public class Kiosk {
   public void run() {
     // takes care of all the commands
-    // Library library = new Library();
     Scanner sc = new Scanner(System.in);
-    
+
+    // Ask for string.  
     while(true){
       String input = sc.nextLine();
       if(input.equalsIgnoreCase("Q"))
@@ -17,7 +16,6 @@ public class Kiosk {
 
     }
     
-    // Ask for string.
 
   }
 }
