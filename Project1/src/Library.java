@@ -1,5 +1,9 @@
-package Project1.src;
+/**
+ * The Library class is a container for Book objects.
+ * @Tenzin Norden, @Vedant Mehta 
+ */
 
+package Project1.src;
 public class Library {
 
   private Book[] books; // array-based implementation of the bag data structure
@@ -88,7 +92,8 @@ public class Library {
     }
     return foundBook;
   } // set the checkout to false 
-
+ 
+  // POTENTIAL PROBLEM: what if there is only one book in the library?
   public void print() {
     for(int i = 0; i <= this.books.length-1; i++){
       System.out.println(this.books[0].toString());

@@ -5,19 +5,24 @@ public class Kiosk {
   public void run() {
     // takes care of all the commands
     Scanner sc = new Scanner(System.in);
-
-    // Ask for string.  
     while(true){
-      String input = sc.nextLine();
-      if(input.equalsIgnoreCase("Q"))
+      String command = sc.nextLine();
+      
+      if(command.equalsIgnoreCase("Q"))
         break;
 
-      System.out.println(input);
+      if(!command.contains(",")){}
+
+ 
+      // Process command
+      // if command includes commas, split and then assign 
+
+      
 
     }
-    
-
   }
+
+
 }
 
 /*
