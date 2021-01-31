@@ -3,6 +3,7 @@ package Project1.src;
 public class Kiosk {
   public void run() {
     // takes care of all the commands
+    Library library = new Library()
   }
 }
 

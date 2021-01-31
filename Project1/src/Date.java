@@ -1,4 +1,4 @@
-// package Project1.src;
+package Project1.src;
 import java.util.Calendar;
 
 public class Date {
@@ -22,7 +22,6 @@ public class Date {
 	}
 
 
-	
 	public boolean isValid() {
 		
 		int CURRENT_YEAR = 2021;
