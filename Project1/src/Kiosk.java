@@ -1,28 +1,23 @@
 package Project1.src;
+
 import java.util.Scanner;
 
 public class Kiosk {
+
   public void run() {
     // takes care of all the commands
     Scanner sc = new Scanner(System.in);
-    while(true){
+    while (true) {
       String command = sc.nextLine();
-      
-      if(command.equalsIgnoreCase("Q"))
-        break;
 
-      if(!command.contains(",")){}
+      if (command.equalsIgnoreCase("Q")) break;
 
- 
+      if (!command.contains(",")) {}
       // Process command
-      // if command includes commas, split and then assign 
-
-      
+      // if command includes commas, split and then assign
 
     }
   }
-
-
 }
 
 /*
@@ -35,6 +30,7 @@ public class Kiosk {
 */
 
 class RunProject1 {
+
   public static void main(String[] args) {
     new Kiosk().run();
   }

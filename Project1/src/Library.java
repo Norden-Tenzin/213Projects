@@ -1,9 +1,10 @@
 /**
  * The Library class is a container for Book objects.
- * @Tenzin Norden, @Vedant Mehta 
+ * @Tenzin Norden, @Vedant Mehta
  */
 
 package Project1.src;
+
 public class Library {
 
   private Book[] books; // array-based implementation of the bag data structure
@@ -16,8 +17,8 @@ public class Library {
 
   private int find(Book book) {
     int indexBook = -1;
-    for(int i = 0; i <= this.books.length-1; i++){
-      if(book.equals(this.books[i])){
+    for (int i = 0; i <= this.books.length - 1; i++) {
+      if (book.equals(this.books[i])) {
         indexBook = i;
       }
     }
@@ -27,28 +28,27 @@ public class Library {
   private void grow() {
     int len = this.books.length;
     Book newBag[] = new Book[len + 4];
-    for(int i = 0; i <= len-1; i++){
+    for (int i = 0; i <= len - 1; i++) {
       newBag[i] = this.books[i];
     }
     this.books = newBag;
   } // helper method to grow the capacity by 4
 
   public void add(Book book) {
-    
     boolean availableSpace = false;
     int indexSpace = 0;
     book.setNumber(String.valueOf(this.numBooks));
     this.numBooks++;
-    for(int i = 0; i <= this.books.length; i++){
-      if(this.books[i] == null){
+    for (int i = 0; i <= this.books.length; i++) {
+      if (this.books[i] == null) {
         availableSpace = true;
         indexSpace = i;
         break;
       }
     }
-    if(availableSpace){
+    if (availableSpace) {
       this.books[indexSpace] = book;
-    }else{
+    } else {
       this.grow();
       add(book);
     }
@@ -56,13 +56,13 @@ public class Library {
 
   public boolean remove(Book book) {
     int indexBook = find(book);
-    if(indexBook != -1){
-      for(int i = 0; i <= this.books.length-1; i++){
-        if(i >= indexBook && i < this.books.length-1){
-          this.books[i] = this.books[i+1];
+    if (indexBook != -1) {
+      for (int i = 0; i <= this.books.length - 1; i++) {
+        if (i >= indexBook && i < this.books.length - 1) {
+          this.books[i] = this.books[i + 1];
         }
       }
-      this.books[this.books.length-1] = null;
+      this.books[this.books.length - 1] = null;
       return true;
     } else {
       return false;
@@ -71,8 +71,8 @@ public class Library {
 
   public boolean checkOut(Book book) {
     boolean foundBook = false;
-    for(int i = 0; i <= this.books.length-1; i++){
-      if(book.equals(this.books[i])){
+    for (int i = 0; i <= this.books.length - 1; i++) {
+      if (book.equals(this.books[i])) {
         this.books[i].setCheckout(true);
         foundBook = true;
         break;
@@ -83,38 +83,40 @@ public class Library {
 
   public boolean returns(Book book) {
     boolean foundBook = false;
-    for(int i = 0; i <= this.books.length-1; i++){
-      if(book.equals(this.books[i])){
+    for (int i = 0; i <= this.books.length - 1; i++) {
+      if (book.equals(this.books[i])) {
         this.books[i].setCheckout(false);
         foundBook = true;
         break;
       }
     }
     return foundBook;
-  } // set the checkout to false 
- 
+  } // set the checkout to false
+
   // POTENTIAL PROBLEM: what if there is only one book in the library?
   public void print() {
-    for(int i = 0; i <= this.books.length-1; i++){
+    for (int i = 0; i <= this.books.length - 1; i++) {
       System.out.println(this.books[0].toString());
     }
   } // print the list of books in the bag
 
-  public void printByDate() {} //print the list of books by datePublished (ascending)
+  public void printByDate() {
+
+  } //print the list of books by datePublished (ascending)
 
   public void printByNumber() {
     Book temp;
-    for(int i = 0; i <= this.books.length-1; i++){
+    for (int i = 0; i <= this.books.length - 1; i++) {
       int bookI = Integer.parseInt(this.books[i].getNumber());
-      for(int j = i+1; j <= this.books.length-1; j++){
+      for (int j = i + 1; j <= this.books.length - 1; j++) {
         int bookJ = Integer.parseInt(this.books[j].getNumber());
-        if (bookI > bookJ) 
-        {
+        if (bookI > bookJ) {
           temp = this.books[i];
           this.books[i] = this.books[j];
           this.books[j] = temp;
         }
       }
     }
+
   } //print the list of books by number (ascending)
 }
