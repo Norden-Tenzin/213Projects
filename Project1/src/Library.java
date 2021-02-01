@@ -96,19 +96,53 @@ public class Library {
   // POTENTIAL PROBLEM: what if there is only one book in the library?
   public void print() {
     for (int i = 0; i <= this.books.length - 1; i++) {
-      System.out.println(this.books[0].toString());
+      if (this.books[i] != null) {
+        System.out.println(this.books[i].toString());
+      }
     }
   } // print the list of books in the bag
 
   public void printByDate() {
-
-  } //print the list of books by datePublished (ascending)
-
-  public void printByNumber() {
     Book temp;
     for (int i = 0; i <= this.books.length - 1; i++) {
-      int bookI = Integer.parseInt(this.books[i].getNumber());
-      for (int j = i + 1; j <= this.books.length - 1; j++) {
+      if (i == this.books.length - 1 || this.books[i] == null) break;
+      for (int j = i + 1; j <= this.books.length - 2; j++) {
+        // book date at i 
+        int bookYearI = this.books[i].getDate().getYear();
+        int bookMonthI = this.books[i].getDate().getMonth();
+        int bookDayI = this.books[i].getDate().getDay();
+        // book date at j
+        int bookYearJ = this.books[j].getDate().getYear();
+        int bookMonthJ = this.books[j].getDate().getMonth();
+        int bookDayJ = this.books[j].getDate().getDay();
+        if (bookYearI > bookYearJ) {
+          temp = this.books[i];
+          this.books[i] = this.books[j];
+          this.books[j] = temp;
+        } else if (bookYearI == bookYearJ) {
+          if (bookMonthI > bookMonthJ) {
+            temp = this.books[i];
+            this.books[i] = this.books[j];
+            this.books[j] = temp;
+          } else if (bookMonthI == bookMonthJ) {
+            if (bookDayI > bookDayJ) {
+              temp = this.books[i];
+              this.books[i] = this.books[j];
+              this.books[j] = temp;
+            }
+          }
+        }
+      }
+    }
+    this.print();
+  } //print the list of books by datePublished (ascending)
+
+  public void printByNumber() { 
+    Book temp;
+    for (int i = 0; i <= this.books.length - 1; i++) {
+      if (i == this.books.length - 1 || this.books[i] == null) break;
+      for (int j = i + 1; j <= this.books.length - 2; j++) {
+        int bookI = Integer.parseInt(this.books[i].getNumber());
         int bookJ = Integer.parseInt(this.books[j].getNumber());
         if (bookI > bookJ) {
           temp = this.books[i];
@@ -117,6 +151,6 @@ public class Library {
         }
       }
     }
-
+    this.print();
   } //print the list of books by number (ascending)
 }

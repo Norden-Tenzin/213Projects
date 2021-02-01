@@ -6,17 +6,27 @@ public class Kiosk {
 
   public void run() {
     // takes care of all the commands
-    Scanner sc = new Scanner(System.in);
-    while (true) {
-      String command = sc.nextLine();
 
-      if (command.equalsIgnoreCase("Q")) break;
+    Library l1 = new Library();
+    l1.add(new Book("helllo", new Date()));
+    l1.add(new Book("helllo", new Date("07/29/1999")));
+    l1.add(new Book("helllo", new Date("11/15/1999")));
+    // if(new Book("helllo", new Date("07/29/1999")).getDate().getYear() == new Book("helllo", new Date("07/29/1999")).getDate().getYear()){
+    //   System.out.println("YEs");
+    // }
+    l1.printByDate();
+    // Scanner sc = new Scanner(System.in);
+    // while (true) {
+    //   String command = sc.nextLine();
 
-      if (!command.contains(",")) {}
-      // Process command
-      // if command includes commas, split and then assign
+    //   if (command.equalsIgnoreCase("Q")) break;
 
-    }
+    //   if (!command.contains(",")) {}
+    //   // Process command
+    //   // if command includes commas, split and then assign
+
+    // }
+    // sc.close();
   }
 }
 
@@ -30,7 +40,6 @@ public class Kiosk {
 */
 
 class RunProject1 {
-
   public static void main(String[] args) {
     new Kiosk().run();
   }

@@ -40,6 +40,30 @@ public class Date {
   }
 
   /**
+   * Gets the book datePublished.
+   * @return the book datePublished
+   */
+  public int getYear() {
+    return this.year;
+  }
+
+  /**
+   * Gets the book datePublished.
+   * @return the book datePublished
+   */
+  public int getMonth() {
+    return this.month;
+  }
+
+  /**
+   * Gets the book datePublished.
+   * @return the book datePublished
+   */
+  public int getDay() {
+    return this.day;
+  }
+
+  /**
    * Checks if the date is properly formatted and if values are possible.
    * Checks to see if the year is a leap year and checks date validity accordingly.
    * @return true if the date is valid, otherwise false.

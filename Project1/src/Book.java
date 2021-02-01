@@ -14,13 +14,20 @@ public class Book {
   private String number; //a 5-digit serial number unique to the book
   private String name;
   private boolean checkedOut;
-  private Date datePublished;
+  private Date datePublished; // NOTE Date changed to String to test
 
   public Book(String name, Date datePublished) {
     this.name = name;
     this.checkedOut = false;
     this.datePublished = datePublished;
-  }
+  } // for library to input the number
+
+  public Book(String number, String name, Date datePublished) { // NOTE Date changed to String to test
+    this.number = number;
+    this.name = name;
+    this.checkedOut = false;
+    this.datePublished = datePublished;
+  } // for user to input number
 
   public Book(String number) {
     this.number = number;
@@ -50,6 +57,14 @@ public class Book {
    */
   public String getNumber() {
     return this.number;
+  }
+
+  /**
+   * Gets the book datePublished.
+   * @return the book datePublished
+   */
+  public Date getDate() {
+    return this.datePublished;
   }
 
   /**
