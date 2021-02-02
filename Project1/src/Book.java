@@ -50,6 +50,14 @@ public class Book {
   public void setNumber(String number) {
     this.number = number;
   }
+  
+  /**
+   * Sets the state of the checkout status of the book.
+   * @param checkoutStatus of the book
+   */
+  public void setCheckout(boolean checkoutStatus) {
+    this.checkedOut = checkoutStatus;
+  }
 
   /**
    * Gets the book number.
@@ -68,12 +76,12 @@ public class Book {
   }
 
   /**
-   * Sets the state of the checkout status of the book.
-   * @param checkoutStatus of the book
+   * Gets the book datePublished.
+   * @return the book datePublished
    */
-  public void setCheckout(boolean checkoutStatus) {
-    this.checkedOut = checkoutStatus;
-  }
+  public boolean getCheckout() {
+    return this.checkedOut;
+  }  
 
   @Override
   public boolean equals(Object obj) {

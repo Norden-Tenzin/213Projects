@@ -15,11 +15,12 @@ public class Library {
     this.numBooks = 10001;
   } // default constructor to create an empty bag
 
-  private int find(Book book) {
+  public int find(Book book) {
     int indexBook = -1;
     for (int i = 0; i <= this.books.length - 1; i++) {
       if (book.equals(this.books[i])) {
         indexBook = i;
+        break;
       }
     }
     return indexBook;
@@ -70,27 +71,23 @@ public class Library {
   } // if bag has book remove it. true if removed else false.
 
   public boolean checkOut(Book book) {
-    boolean foundBook = false;
-    for (int i = 0; i <= this.books.length - 1; i++) {
-      if (book.equals(this.books[i])) {
-        this.books[i].setCheckout(true);
-        foundBook = true;
-        break;
-      }
-    }
-    return foundBook;
+    int indexBook = find(book);
+    if(indexBook != -1){
+      if(this.books[indexBook].getCheckout() == false){
+        this.books[indexBook].setCheckout(true);
+        return true;
+      } else return false;
+    } else return false;
   } // set the checkout to true
 
   public boolean returns(Book book) {
-    boolean foundBook = false;
-    for (int i = 0; i <= this.books.length - 1; i++) {
-      if (book.equals(this.books[i])) {
-        this.books[i].setCheckout(false);
-        foundBook = true;
-        break;
-      }
-    }
-    return foundBook;
+    int indexBook = find(book);
+    if(indexBook != -1){
+      if(this.books[indexBook].getCheckout()){
+        this.books[indexBook].setCheckout(false);
+        return true;
+      } else return false;
+    } else return false;
   } // set the checkout to false
 
   // POTENTIAL PROBLEM: what if there is only one book in the library?

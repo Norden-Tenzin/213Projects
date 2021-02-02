@@ -6,27 +6,51 @@ public class Kiosk {
 
   public void run() {
     // takes care of all the commands
-
     Library l1 = new Library();
-    l1.add(new Book("helllo", new Date()));
-    l1.add(new Book("helllo", new Date("07/29/1999")));
-    l1.add(new Book("helllo", new Date("11/15/1999")));
-    // if(new Book("helllo", new Date("07/29/1999")).getDate().getYear() == new Book("helllo", new Date("07/29/1999")).getDate().getYear()){
-    //   System.out.println("YEs");
-    // }
-    l1.printByDate();
-    // Scanner sc = new Scanner(System.in);
-    // while (true) {
-    //   String command = sc.nextLine();
+    Scanner sc = new Scanner(System.in);
+    while (true) {
+      String commandLine = sc.nextLine();
+      if (commandLine.equalsIgnoreCase("Q")) break;
+      if (!commandLine.contains(",")) {
+        
+      } // Might be a print command.
+      else {
+        String commandParts [] = commandLine.split(",");
 
-    //   if (command.equalsIgnoreCase("Q")) break;
+        // TODO other than ideal cases
+        if(commandParts[0].equals("A")){
+          l1.add(new Book(commandParts[1], new Date(commandParts[2])));
+          System.out.println(commandParts[1] + " added to the Library.");
+        } // Add book 
+        if(commandParts[0].equals("R")){
+          System.out.println(commandParts[1]);
+          if(l1.remove(new Book(commandParts[1]))){
+            System.out.println("Book# " + commandParts[1] + " removed.");
+          } else {
+            System.out.println("Unable to remove.");
+          }
+        } // Remove book
+        if(commandParts[0].equals("O")){
+          if(l1.checkOut(new Book(commandParts[1]))){
+            System.out.println("You've checked out Book# " + commandParts[1] + " Enjoy!");
+          } else {
+            System.out.println("Book# " + commandParts[1] + " is not available.");
+          }
+        } // Checkout book
+        if(commandParts[0].equals("I")){
+          if(l1.returns(new Book(commandParts[1]))){
+            System.out.println("Book# " + commandParts[1] + " return has completed. Thanks!");
+          } else {
+            System.out.println("Unable to return Book# " + commandParts[1] + ".");
+          }
+        } // Return book
+      } // Might be a method command 
+      // Process command
+      // if command includes commas, split and then assign
 
-    //   if (!command.contains(",")) {}
-    //   // Process command
-    //   // if command includes commas, split and then assign
-
-    // }
-    // sc.close();
+    }
+    System.out.println("Exiting");
+    sc.close();
   }
 }
 
