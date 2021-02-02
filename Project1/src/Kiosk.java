@@ -12,7 +12,9 @@ public class Kiosk {
       String commandLine = sc.nextLine();
       if (commandLine.equalsIgnoreCase("Q")) break;
       if (!commandLine.contains(",")) {
-        
+        if(commandLine == "PA") l1.print();
+        if(commandLine == "PD") l1.printByDate();
+        if(commandLine == "PN") l1.printByNumber();
       } // Might be a print command.
       else {
         String commandParts [] = commandLine.split(",");
