@@ -12,44 +12,57 @@ public class Kiosk {
       String commandLine = sc.nextLine();
       if (commandLine.equalsIgnoreCase("Q")) break;
       if (!commandLine.contains(",")) {
-        if(commandLine == "PA") l1.print();
-        if(commandLine == "PD") l1.printByDate();
-        if(commandLine == "PN") l1.printByNumber();
+        if (commandLine.strip().equals("PA")) {
+          l1.print();
+        }
+        if (commandLine.equals("PD")) {
+          l1.printByDate();
+        }
+        if (commandLine.equals("PA")) {
+          l1.printByNumber();
+        }
       } // Might be a print command.
       else {
-        String commandParts [] = commandLine.split(",");
+        String commandParts[] = commandLine.split(",");
 
         // TODO other than ideal cases
-        if(commandParts[0].equals("A")){
+        if (commandParts[0].equals("A")) {
           l1.add(new Book(commandParts[1], new Date(commandParts[2])));
           System.out.println(commandParts[1] + " added to the Library.");
-        } // Add book 
-        if(commandParts[0].equals("R")){
+        } // Add book
+        if (commandParts[0].equals("R")) {
           System.out.println(commandParts[1]);
-          if(l1.remove(new Book(commandParts[1]))){
+          if (l1.remove(new Book(commandParts[1]))) {
             System.out.println("Book# " + commandParts[1] + " removed.");
           } else {
             System.out.println("Unable to remove.");
           }
         } // Remove book
-        if(commandParts[0].equals("O")){
-          if(l1.checkOut(new Book(commandParts[1]))){
-            System.out.println("You've checked out Book# " + commandParts[1] + " Enjoy!");
+        if (commandParts[0].equals("O")) {
+          if (l1.checkOut(new Book(commandParts[1]))) {
+            System.out.println(
+              "You've checked out Book# " + commandParts[1] + " Enjoy!"
+            );
           } else {
-            System.out.println("Book# " + commandParts[1] + " is not available.");
+            System.out.println(
+              "Book# " + commandParts[1] + " is not available."
+            );
           }
         } // Checkout book
-        if(commandParts[0].equals("I")){
-          if(l1.returns(new Book(commandParts[1]))){
-            System.out.println("Book# " + commandParts[1] + " return has completed. Thanks!");
+        if (commandParts[0].equals("I")) {
+          if (l1.returns(new Book(commandParts[1]))) {
+            System.out.println(
+              "Book# " + commandParts[1] + " return has completed. Thanks!"
+            );
           } else {
-            System.out.println("Unable to return Book# " + commandParts[1] + ".");
+            System.out.println(
+              "Unable to return Book# " + commandParts[1] + "."
+            );
           }
         } // Return book
-      } // Might be a method command 
+      } // Might be a method command
       // Process command
       // if command includes commas, split and then assign
-
     }
     System.out.println("Exiting");
     sc.close();
@@ -66,6 +79,7 @@ public class Kiosk {
 */
 
 class RunProject1 {
+
   public static void main(String[] args) {
     new Kiosk().run();
   }

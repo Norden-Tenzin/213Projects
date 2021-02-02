@@ -102,8 +102,8 @@ public class Library {
   public void printByDate() {
     Book temp;
     for (int i = 0; i <= this.books.length - 1; i++) {
-      if (i == this.books.length - 1 || this.books[i] == null) break;
       for (int j = i + 1; j <= this.books.length - 2; j++) {
+        if (i == this.books.length - 1 || this.books[j] == null) break;
         // book date at i 
         int bookYearI = this.books[i].getDate().getYear();
         int bookMonthI = this.books[i].getDate().getMonth();
@@ -137,8 +137,8 @@ public class Library {
   public void printByNumber() { 
     Book temp;
     for (int i = 0; i <= this.books.length - 1; i++) {
-      if (i == this.books.length - 1 || this.books[i] == null) break;
       for (int j = i + 1; j <= this.books.length - 2; j++) {
+        if (i == this.books.length - 1 || this.books[j] == null) break;
         int bookI = Integer.parseInt(this.books[i].getNumber());
         int bookJ = Integer.parseInt(this.books[j].getNumber());
         if (bookI > bookJ) {
