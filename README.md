@@ -1,4 +1,4 @@
-# 213Projects
+# 213 Software Methodology
 
 These projects were for the 213 Software Methodology Spring 2021.
 - Project 1
