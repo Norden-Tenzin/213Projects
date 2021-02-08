@@ -1,0 +1,13 @@
+pa
+a
+pd
+AA
+PP
+RR
+PA
+PD
+PN
+A,Programming in Java,3/20/2010
+A,Software Methodology,4/1/2018
+A,Artificial Intelligence,12/01/2005
+A,Linear Algebra,1/31/2020

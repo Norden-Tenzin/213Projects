@@ -1,86 +1,124 @@
-package Project1.src;
-
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Kiosk {
 
   public void run() {
-    // takes care of all the commands
-    Library l1 = new Library();
+
+    Library library = new Library();
+    final int STARTING_BOOK_NUMBER = 10001;
+    int increment = 0;
+
     Scanner sc = new Scanner(System.in);
-    while (true) {
-      String commandLine = sc.nextLine();
-      if (commandLine.equalsIgnoreCase("Q")) break;
-      if (!commandLine.contains(",")) {
-        if (commandLine.strip().equals("PA")) {
-          l1.print();
-        }
-        if (commandLine.equals("PD")) {
-          l1.printByDate();
-        }
-        if (commandLine.equals("PA")) {
-          l1.printByNumber();
-        }
-      } // Might be a print command.
-      else {
-        String commandParts[] = commandLine.split(",");
 
-        // TODO other than ideal cases
-        if (commandParts[0].equals("A")) {
-          l1.add(new Book(commandParts[1], new Date(commandParts[2])));
-          System.out.println(commandParts[1] + " added to the Library.");
-        } // Add book
-        if (commandParts[0].equals("R")) {
-          System.out.println(commandParts[1]);
-          if (l1.remove(new Book(commandParts[1]))) {
-            System.out.println("Book# " + commandParts[1] + " removed.");
-          } else {
-            System.out.println("Unable to remove.");
-          }
-        } // Remove book
-        if (commandParts[0].equals("O")) {
-          if (l1.checkOut(new Book(commandParts[1]))) {
-            System.out.println(
-              "You've checked out Book# " + commandParts[1] + " Enjoy!"
-            );
-          } else {
-            System.out.println(
-              "Book# " + commandParts[1] + " is not available."
-            );
-          }
-        } // Checkout book
-        if (commandParts[0].equals("I")) {
-          if (l1.returns(new Book(commandParts[1]))) {
-            System.out.println(
-              "Book# " + commandParts[1] + " return has completed. Thanks!"
-            );
-          } else {
-            System.out.println(
-              "Unable to return Book# " + commandParts[1] + "."
-            );
-          }
-        } // Return book
-      } // Might be a method command
-      // Process command
-      // if command includes commas, split and then assign
+    while (sc.hasNext()) {
+
+      StringTokenizer input = new StringTokenizer(sc.nextLine(), ",");
+
+      
+      String command = "";
+      String bookKey = "";
+      String date = "";
+
+      // Check the input three times and set each command accordingly. 
+      if (input.hasMoreTokens()) command = input.nextToken();
+      if (input.hasMoreTokens()) bookKey = input.nextToken();
+      if (input.hasMoreTokens()) date = input.nextToken();
+
+      Boolean onlyOneArgument = bookKey.equals("") && date.equals("");
+
+      if (command.equals("Q")) {
+        break;
+      }
+
+      if (onlyOneArgument) {
+        switch (command) {
+          case "PA":
+            if (library.getNumBooks() == 0) {
+              System.out.println("Library catalog is empty!");
+            } else {
+              System.out.println("**List of books in the library.");
+              library.print();
+              System.out.println("**End of list");
+            }
+            break;
+
+          case "PD":
+            if (library.getNumBooks() == 0) {
+              System.out.println("Bookshelf is empty!");
+            } else {
+              System.out.println("**List of books by date published.");
+              library.printByDate();
+              System.out.println("**End of list");
+            }
+            break;
+          case "PN":
+            if (library.getNumBooks() == 0) {
+              System.out.println("Bookshelf is empty!");
+            } else {
+              System.out.println("**List of books by the book numbers.");
+              library.printByNumber();
+              System.out.println("**End of list");
+            }
+            break;
+          default:
+            System.out.println("Invalid command!");
+
+        }
+      } else {
+
+        switch (command) {
+          case "A":
+            if (new Date(date).isValid()) {
+              int bookNum = STARTING_BOOK_NUMBER + increment;
+              Book book = new Book(Integer.toString(bookNum), bookKey, new Date(date));
+              library.add(book);
+              System.out.println(bookKey + " added to the library.");
+              increment++;
+            } else {
+              System.out.println("Invalid Date!");
+              continue;
+            }
+            break;
+          case "R":
+            Book removeBook = new Book(bookKey);
+
+            Boolean wasRemoved = library.remove(removeBook);
+            if (wasRemoved) {
+              System.out.println("Book# " + bookKey + " removed");
+            } else {
+              System.out.println("Unable to remove, the library does not have this book.");
+            }
+            break;
+          case "O":
+            Book checkOutBook = new Book(bookKey);
+
+            Boolean checkOut = library.checkOut(checkOutBook);
+            if (checkOut) {
+              System.out.println("You've checked out Book#" + bookKey + ". Enjoy!");
+            } else {
+              System.out.println("Book#" + bookKey + " is not available.");
+            }
+            break;
+          case "I":
+            Book returnsBook = new Book(bookKey);
+
+            Boolean returns = library.returns(returnsBook);
+            if (returns) {
+              System.out.println("Book#" + bookKey + " return has completed. Thanks!");
+            } else {
+              System.out.println("Unable to return Book#" + bookKey + ".");
+            }
+            break;
+          default:
+            System.out.println("Invalid command!");
+
+        }
+
+      }
+
     }
-    System.out.println("Exiting");
-    sc.close();
-  }
-}
+    System.out.println("Kiosk session ended.");
 
-/*
-    • This class is the user interface class that handles the input and output. You must define a run() method
-    or you will lose 5 points.
-    • You can define the data members you need and define some private methods to handle the commands.
-    Make sure you follow the ground rules and have a good programming style.
-    (e) RunProject1 class is a driver class to run your Project 1. The main method will call the run() method in the
-    Kiosk class.
-*/
-
-class RunProject1 {
-
-  public static void main(String[] args) {
-    new Kiosk().run();
   }
 }

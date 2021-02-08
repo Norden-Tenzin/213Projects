@@ -1,3 +1,4 @@
+
 /**
  * The Date class allows us to look at a formatted date and determine if the date are valid or not.
  * year: the year of the date.
@@ -5,8 +6,6 @@
  * day: numerical day of the date.
  * @Tenzin Norden, @Vedant Mehta
  */
-
-package Project1.src;
 
 import java.util.Calendar;
 
@@ -17,8 +16,7 @@ public class Date {
   private int day;
 
   /**
-   * Default constructor
-   * Assigns today's date to day, month, year values.
+   * Default constructor Assigns today's date to day, month, year values.
    */
   public Date() {
     Calendar dateCal = Calendar.getInstance();
@@ -28,8 +26,9 @@ public class Date {
   }
 
   /**
-   * Overloads default constructor.
-   * Takes in mm/dd/yyyy formatted string and processes data.
+   * Overloads default constructor. Takes in mm/dd/yyyy formatted string and
+   * processes data.
+   * 
    * @param date in the format mm/dd/yyyy.
    */
   public Date(String date) {
@@ -41,6 +40,7 @@ public class Date {
 
   /**
    * Gets the book datePublished.
+   * 
    * @return the book datePublished
    */
   public int getYear() {
@@ -49,6 +49,7 @@ public class Date {
 
   /**
    * Gets the book datePublished.
+   * 
    * @return the book datePublished
    */
   public int getMonth() {
@@ -57,6 +58,7 @@ public class Date {
 
   /**
    * Gets the book datePublished.
+   * 
    * @return the book datePublished
    */
   public int getDay() {
@@ -64,25 +66,27 @@ public class Date {
   }
 
   /**
-   * Checks if the date is properly formatted and if values are possible.
-   * Checks to see if the year is a leap year and checks date validity accordingly.
+   * Checks if the date is properly formatted and if values are possible. Checks
+   * to see if the year is a leap year and checks date validity accordingly.
+   * 
    * @return true if the date is valid, otherwise false.
    */
   public boolean isValid() {
     int CURRENT_YEAR = 2021;
 
     // Year validation
-    if (
-      this.year < 1900 || this.year > CURRENT_YEAR || this.month > 12
-    ) return false;
+    if (this.year < 1900 || this.year > CURRENT_YEAR || this.month > 12)
+      return false;
 
     // Checks to see if the year is a leap year.
     int FEB = 28;
-    if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) FEB = 29;
+    if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0)))
+      FEB = 29;
 
     // if the current day exceeds the maximum day, return false
     int[] maxDaysPerMonth = { 31, FEB, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    if (this.day >= maxDaysPerMonth[this.month - 1]) return false;
+    if (this.day >= maxDaysPerMonth[this.month - 1])
+      return false;
 
     return true;
   }
