@@ -1,3 +1,11 @@
+
+/**
+ * Kiosk class will be used to run library. 
+ * All functions and commands are through the run() method. This will be useful later for multithreading. 
+ * 
+ *  @Tenzin Norden, @Vedant Mehta
+ */
+
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
