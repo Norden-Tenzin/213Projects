@@ -1,4 +1,3 @@
-
 /**
  * The Date class allows us to look at a formatted date and determine if the date are valid or not.
  * year: the year of the date.
