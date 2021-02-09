@@ -1,11 +1,10 @@
 /**
- * The Library class is a container for Book objects. It holds all the books in the library
- * and handles adding, removing, checkingout and returning.
- * books: its a list of Book objects, its a collection of all the books currently in the
- * library system.
- * numBooks: its the number of books currently in the books array.
- * STARTING_LIBRARY_SIZE: its the initial size of the books array it is also the size at
- * which the array grows.
+ * The Library class is a container for Book objects. It holds all the books in
+ * the library and handles adding, removing, checkingout and returning. books:
+ * its a list of Book objects, its a collection of all the books currently in
+ * the library system. numBooks: its the number of books currently in the books
+ * array. STARTING_LIBRARY_SIZE: its the initial size of the books array it is
+ * also the size at which the array grows.
  *
  * @Tenzin Norden, @Vedant Mehta
  */
@@ -29,18 +28,18 @@ public class Library {
    * Looks through the books array to find the book with the same number.
    *
    * @param book book Object
-   * @return index of the book if book is found in the books array.
-   *         otherwise -1.
+   * @return index of the book if book is found in the books array. otherwise -1.
    */
   private int find(Book book) {
     for (int i = 0; i < numBooks; i++) {
-      if (books[i].getNumber().equals(book.getNumber())) return i;
+      if (books[i].getNumber().equals(book.getNumber()))
+        return i;
     }
     return -1;
   }
 
   /**
-   * When called increases the size of the books array by STARTING_LIBRARY_SIZ
+   * When called increases the size of the books array by STARTING_LIBRARY_SIZE
    */
   private void grow() {
     // Double the length of the array
@@ -57,11 +56,13 @@ public class Library {
 
   /**
    * Adds book object into the books array
+   * 
    * @param book book Object
    */
   public void add(Book book) {
     // if the library is full, we double the size.
-    if (books[books.length - 1] != null) grow();
+    if (books[books.length - 1] != null)
+      grow();
 
     // Go through the array, add a book at the first empty spot.
     for (int i = 0; i < books.length; i++) {
@@ -85,7 +86,8 @@ public class Library {
     int indexBook = find(book);
 
     // If the book does not exist.
-    if (indexBook == -1) return false;
+    if (indexBook == -1)
+      return false;
 
     // shift all values in the library by one to the left.
     for (int i = indexBook + 1; i < books.length; i++) {
@@ -99,7 +101,7 @@ public class Library {
   }
 
   /**
-   * Checksout the given book object from the books array
+   * Checks out the given book object from the books array
    *
    * @param book book Object
    * @return true if book is able to be checkedout, false otherwise.
@@ -108,7 +110,8 @@ public class Library {
     int indexBook = find(book);
 
     // If the book does not exist or is already checked out.
-    if (indexBook == -1 || books[indexBook].getCheckout() == true) return false;
+    if (indexBook == -1 || books[indexBook].getCheckout() == true)
+      return false;
 
     // Set checked out to true.
     books[indexBook].setCheckout(true);
@@ -125,9 +128,8 @@ public class Library {
     int indexBook = find(book);
 
     // Check if book exists or if the book is not checked out
-    if (
-      indexBook == -1 || books[indexBook].getCheckout() == false
-    ) return false;
+    if (indexBook == -1 || books[indexBook].getCheckout() == false)
+      return false;
 
     // Set checked out to false now that the book is returned
     books[indexBook].setCheckout(false);
@@ -144,14 +146,16 @@ public class Library {
   }
 
   /**
-   * Sorts the books array by Dates in assending order, then prints the books array
+   * Sorts the books array by Dates in ascending order, then prints the books
+   * array
    */
   public void printByDate() {
     Book temp;
     for (int i = 0; i <= this.books.length - 1; i++) {
       for (int j = i + 1; j <= this.books.length - 2; j++) {
-        if (i == this.books.length - 1 || this.books[j] == null) break;
-        // book date at i 
+        if (i == this.books.length - 1 || this.books[j] == null)
+          break;
+        // book date at i
         int bookYearI = this.books[i].getDate().getYear();
         int bookMonthI = this.books[i].getDate().getMonth();
         int bookDayI = this.books[i].getDate().getDay();
@@ -182,13 +186,15 @@ public class Library {
   } // print the list of books by datePublished (ascending)
 
   /**
-   * Sorts the books array by Book number in assending order, then prints the books array.
+   * Sorts the books array by Book number in assending order, then prints the
+   * books array.
    */
   public void printByNumber() {
     Book temp;
     for (int i = 0; i <= this.books.length - 1; i++) {
       for (int j = i + 1; j <= this.books.length - 2; j++) {
-        if (i == this.books.length - 1 || this.books[j] == null) break;
+        if (i == this.books.length - 1 || this.books[j] == null)
+          break;
         int bookI = Integer.parseInt(this.books[i].getNumber());
         int bookJ = Integer.parseInt(this.books[j].getNumber());
         if (bookI > bookJ) {
@@ -202,7 +208,7 @@ public class Library {
   } // print the list of books by number (ascending)
 
   /**
-   * Sorts the books array by Book number in assending order, then prints the books array.
+   * Helper method to get the number of books.
    * 
    * @return the number of books in the books array
    */

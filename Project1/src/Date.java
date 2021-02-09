@@ -136,7 +136,64 @@ public class Date {
   }
 
   public static void main(String[] args) {
-    //test stuff here
+
+    // Test current date. Expected True,True
+    System.out.println("Test case 1: Current date");
+    System.out.println(new Date().toString() + ": " + new Date().isValid());
+    System.out.println(new Date("02/08/2021").toString() + ": " + new Date("02/08/2021").isValid());
+
+    // Test leap year data. Expected True,True,True,False,False,False
+    System.out.println("Test case 2, Leap Year Case 1: True");
+    System.out.println(new Date("02/29/2016").toString() + ": " + new Date("02/29/2016").isValid());
+    System.out.println(new Date("02/29/2012").toString() + ": " + new Date("02/29/2012").isValid());
+    System.out.println(new Date("02/29/2008").toString() + ": " + new Date("02/29/2008").isValid());
+
+    System.out.println("Test case 2, Leap Year Case 2: False");
+    System.out.println(new Date("02/29/2009").toString() + ": " + new Date("02/29/2009").isValid());
+    System.out.println(new Date("02/29/2014").toString() + ": " + new Date("02/29/2014").isValid());
+    System.out.println(new Date("02/29/1804").toString() + ": " + new Date("02/29/1804").isValid());
+
+    // Test Date after today. Expected False
+    System.out.println("Test case 3: After current date");
+    System.out.println(new Date("02/09/2022").toString() + ": " + new Date("02/09/2022").isValid());
+    System.out.println(new Date("02/10/2021").toString() + ": " + new Date("02/10/2021").isValid());
+    System.out.println(new Date("03/09/2021").toString() + ": " + new Date("03/09/2021").isValid());
+    System.out.println(new Date("01/01/2022").toString() + ": " + new Date("01/01/2022").isValid());
+
+    // Test Incorrect formatting
+    // Expected False, True
+    System.out.println("Test case 4, case 1: Dashes instead of /");
+    System.out.println(new Date("01-12-2021").toString() + ": " + new Date("01-12-2021").isValid());
+    System.out.println(new Date("1/1/2021").toString() + ": " + new Date("1/1/2021").isValid());
+
+    // Test if letters are included in date. Expected: False
+    System.out.println("Test case 4, case 2: includes letters");
+    System.out.println(new Date("1/A1/20v2").toString() + ": " + new Date("1/A1/20v2").isValid());
+    System.out.println(new Date("A/01/2021").toString() + ": " + new Date("A/01/2021").isValid());
+    System.out.println(new Date("C /02/2021").toString() + ": " + new Date("C /02/2021").isValid());
+
+    // Test missing data and empty string. Expected: False
+    System.out.println("Test case 4, case 3: Missing data");
+    System.out.println(new Date("1 1/2020").toString() + ": " + new Date("1 1/2020").isValid());
+    System.out.println(new Date(" ").toString() + ": " + new Date(" ").isValid());
+    System.out.println(new Date("").toString() + ": " + new Date("").isValid());
+    System.out.println(new Date("2002/04/02").toString() + ": " + new Date("2002/04/02").isValid());
+    System.out.println(new Date("1 1 2020").toString() + ": " + new Date("1 1 2020").isValid());
+
+    // Test impossible date values such as 0 or negative numbers. Expected: False.
+    System.out.println("Test case 5: impossible values");
+    System.out.println(new Date("00/01/0200").toString() + ": " + new Date("00/01/0200").isValid());
+    System.out.println(new Date("1/0/2020").toString() + ": " + new Date("1/0/2020").isValid());
+    System.out.println(new Date("1/01/0").toString() + ": " + new Date("1/01/0").isValid());
+    System.out.println(new Date("-1/1/2020").toString() + ": " + new Date("-1/1/2020").isValid());
+
+    // Test known valid dates. Expected: True.
+    System.out.println("Test case 6: known true values");
+    System.out.println(new Date("02/08/2021").toString() + ": " + new Date("02/08/2021").isValid());
+    System.out.println(new Date("05/16/1999").toString() + ": " + new Date("05/16/1999").isValid());
+    System.out.println(new Date("01/01/2018").toString() + ": " + new Date("01/01/2018").isValid());
+    System.out.println(new Date("02/29/2020").toString() + ": " + new Date("02/29/2020").isValid());
+
   }
 
 }
