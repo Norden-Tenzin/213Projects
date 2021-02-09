@@ -27,15 +27,30 @@ public class Date {
 
   /**
    * Overloads default constructor. Takes in mm/dd/yyyy formatted string and
-   * processes data.
+   * processes data. Does error checking to see if date is valid
    * 
    * @param date in the format mm/dd/yyyy.
    */
   public Date(String date) {
+
     String dateParts[] = date.split("/");
-    this.month = Integer.parseInt(dateParts[0]);
-    this.day = Integer.parseInt(dateParts[1]);
-    this.year = Integer.parseInt(dateParts[2]);
+    boolean containsLetters = false;
+    // Check to see if the date contains letters
+    for (int i = 0; i < date.length(); i++) {
+      if (Character.isLetter(date.charAt(i)))
+        containsLetters = true;
+    }
+    if (!date.contains("/") || dateParts.length < 3 || containsLetters) {
+      // if the date is invalid, we want to generate the date with invalid values.
+      final int INVALID_DATE_VALUE = -1;
+      this.month = INVALID_DATE_VALUE;
+      this.day = INVALID_DATE_VALUE;
+      this.year = INVALID_DATE_VALUE;
+    } else {
+      this.month = Integer.parseInt(dateParts[0]);
+      this.day = Integer.parseInt(dateParts[1]);
+      this.year = Integer.parseInt(dateParts[2]);
+    }
   }
 
   /**
@@ -72,27 +87,56 @@ public class Date {
    * @return true if the date is valid, otherwise false.
    */
   public boolean isValid() {
-    int CURRENT_YEAR = 2021;
+
+    Calendar dateCal = Calendar.getInstance();
+
+    boolean outsideMonthRange = this.month > 12 || this.month < 1;
+    boolean outsideYearRange = this.year < 1900 || this.year > dateCal.get(Calendar.YEAR);
+    boolean afterToday = this.year >= dateCal.get(Calendar.YEAR) && this.month >= dateCal.get(Calendar.MONTH) + 1
+        && this.day > dateCal.get(Calendar.DATE);
 
     // Year validation
-    if (this.year < 1900 || this.year > CURRENT_YEAR || this.month > 12)
+    if (afterToday || outsideYearRange || outsideMonthRange)
       return false;
 
     // Checks to see if the year is a leap year.
     int FEB = 28;
-    if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0)))
+    if (isLeapYear(year))
       FEB = 29;
 
     // if the current day exceeds the maximum day, return false
     int[] maxDaysPerMonth = { 31, FEB, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    if (this.day >= maxDaysPerMonth[this.month - 1])
+    if (this.day > maxDaysPerMonth[this.month - 1] || this.day < 1)
       return false;
 
     return true;
   }
 
+  /**
+   * Counts the number of days in a year and determines if the year is a leap
+   * year.
+   * 
+   * @param year
+   * @return true if year is a leap year, false if not
+   */
+  public static boolean isLeapYear(int year) {
+    Calendar cal = Calendar.getInstance();
+    cal.set(Calendar.YEAR, year);
+    return cal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365;
+  }
+
+  /**
+   * Returns the date, properly formatted.
+   * 
+   * @return the date in string format
+   */
   @Override
   public String toString() {
     return (this.month + "/" + this.day + "/" + this.year);
   }
+
+  public static void main(String[] args) {
+    //test stuff here
+  }
+
 }
