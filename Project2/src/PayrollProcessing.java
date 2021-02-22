@@ -3,8 +3,6 @@ package Project2.src;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import org.graalvm.compiler.nodes.calc.IntegerDivRemNode;
-
 public class PayrollProcessing {
 
   public void run() {
@@ -22,7 +20,7 @@ public class PayrollProcessing {
       String name = "";
       String department = "";
       String date = "";
-      String pay = "";
+      String payHours = "";
       String role = "";
 
       // Check the input three times and set each command accordingly.
@@ -30,7 +28,7 @@ public class PayrollProcessing {
       if (input.hasMoreTokens()) name = input.nextToken(); // bookKey can be either book number or name
       if (input.hasMoreTokens()) department = input.nextToken(); // Date will be the third token value
       if (input.hasMoreTokens()) date = input.nextToken();
-      if (input.hasMoreTokens()) pay = input.nextToken();
+      if (input.hasMoreTokens()) payHours = input.nextToken();
       if (input.hasMoreTokens()) role = input.nextToken();
 
       // helper boolean to check if there is only one argument
@@ -82,7 +80,7 @@ public class PayrollProcessing {
               // Add the new book to the library
               Parttime employee = new Parttime(
                 new Profile(name, department, new Date(date)),
-                Double.parseDouble(pay)
+                Double.parseDouble(payHours)
               );
               company.add(employee);
               System.out.println("Employee added.");
@@ -96,7 +94,7 @@ public class PayrollProcessing {
               // Add the new book to the library
               Fulltime employee = new Fulltime(
                 new Profile(name, department, new Date(date)),
-                Double.parseDouble(pay)
+                Double.parseDouble(payHours)
               );
               company.add(employee);
               System.out.println("Employee added.");
@@ -110,7 +108,8 @@ public class PayrollProcessing {
               // Add the new book to the library
               Fulltime employee = new Fulltime(
                 new Profile(name, department, new Date(date)),
-                Double.parseDouble(pay), Integer.parseInt(role)
+                Double.parseDouble(payHours),
+                Integer.parseInt(role)
               );
               company.add(employee);
               System.out.println("Employee added.");
@@ -120,37 +119,24 @@ public class PayrollProcessing {
             }
             break;
           case "R":
-            Book removeBook = new Book(bookKey);
-            boolean wasRemoved = library.remove(removeBook);
+            Employee removeEmployee = new Employee(
+              new Profile(name, department, new Date(date))
+            );
+            boolean wasRemoved = company.remove(removeEmployee);
             // check to see if the book was removed
             if (wasRemoved) System.out.println(
-              "Book# " + bookKey + " removed"
+              "Employee removed."
             ); else System.out.println(
-              "Unable to remove, the library does not have this book."
+              "Employee does not exist." // TODO list is empty
             );
             break;
-          case "O":
-            Book checkOutBook = new Book(bookKey);
-            // library.checkOut returns true if the book was able to be checked out.
-            boolean checkOut = library.checkOut(checkOutBook);
-            if (checkOut) System.out.println(
-              "You've checked out Book#" + bookKey + ". Enjoy!"
-            ); else System.out.println(
-              "Book#" + bookKey + " is not available."
-            );
+          case "C":
             break;
-          case "I":
-            Book returnsBook = new Book(bookKey);
-            // library.returns returns true if the book was able to be returned.
-            boolean returns = library.returns(returnsBook);
-            if (returns) System.out.println(
-              "Book#" + bookKey + " return has completed. Thanks!"
-            ); else System.out.println(
-              "Unable to return Book#" + bookKey + "."
-            );
+          case "S":
+            company.setEmployeeHours(new Employee(new Profile(name, department, new Date(date))), Integer.parseInt(payHours));
             break;
           default:
-            System.out.println("Invalid command!");
+            System.out.println("Payroll Processing completed.");
         }
       }
     }
