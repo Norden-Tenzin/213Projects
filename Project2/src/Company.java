@@ -78,6 +78,15 @@ public class Company {
       numEmployee++;
    }
 
+   public boolean setHours(Employee employee) {
+      int indexEmployee = find(employee);
+      if(employees[indexEmployee] instanceof Parttime){
+         if(employee.getHours() >= 0){
+            employees[indexEmployee] = employee;
+         }
+      }
+   }
+
    /**
     * Removes the given book object from the books array
     *
