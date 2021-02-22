@@ -20,7 +20,7 @@ public class Parttime extends Employee {
 	public void calculatePayment() {
 		double payment;
 		double normalHrs;
-		
+
 		double weeklyHrsWorked = hoursWorked / PAYPERIOD;
 		double overtimeHrs = weeklyHrsWorked - MAXHOURS;
 		double overtimeRate = hourlyRate * OVERTIMEMULTI;
@@ -42,6 +42,10 @@ public class Parttime extends Employee {
 
 	public void setHours(int hoursWorked) {
 		this.hoursWorked = hoursWorked;
+	}
+
+	public int getHours(){
+		return this.hoursWorked;
 	}
 
 	@Override
