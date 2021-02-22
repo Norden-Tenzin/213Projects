@@ -3,9 +3,9 @@ import java.text.DecimalFormat;
 
 public class Management extends Fulltime {
 
-	public Management(Profile profile) {
-		super(profile);
-		//TODO Auto-generated constructor stub
+	public Management(Profile profile,double annualSalary) {
+		super(profile, annualSalary);
+
 	}
 
 	
