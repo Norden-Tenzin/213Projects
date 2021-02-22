@@ -1,4 +1,6 @@
+package Project1.src;
 /*
+
     This will be used to run Kiosk.
     @Tenzin Norden, @Vedant Mehta
 */

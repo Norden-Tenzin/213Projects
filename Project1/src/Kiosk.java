@@ -1,4 +1,4 @@
-
+package Project1.src;
 /**
  * Kiosk class will be used to run library.
  * All functions and commands are through the run() method. This will be useful later for multithreading.
