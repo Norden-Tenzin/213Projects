@@ -5,7 +5,6 @@ public class Management extends Fulltime {
 
 	public Management(Profile profile,double annualSalary) {
 		super(profile, annualSalary);
-
 	}
 
 	
