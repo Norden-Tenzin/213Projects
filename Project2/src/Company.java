@@ -1,5 +1,7 @@
 package Project2.src;
 
+import org.graalvm.compiler.virtual.phases.ea.PartialEscapeBlockState;
+
 /**
  * The Library class is a container for Book objects. It holds all the books in
  * the library and handles adding, removing, checkingout and returning. books:
@@ -80,10 +82,11 @@ public class Company {
   public boolean setHours(Employee employee) {
     int indexEmployee = find(employee);
     if (employees[indexEmployee] instanceof Parttime) {
-      if (employee.getHours() >= 0) {
-        employees[indexEmployee] = employee;
+      if (((Parttime) employee).getHours() >= 0) {
+        return true;
       }
     }
+    return false;
   }
 
   /**
@@ -107,6 +110,14 @@ public class Company {
     // since we removed, we need to decrease by 1.
     numEmployee--;
     return true;
+  }
+
+  public void setEmployeeHours(
+    Employee employee, 
+    int hours
+  ) {
+    int indexEmployee = find(employee);
+    ((Parttime) employees[indexEmployee]).setHours(hours);
   }
 
   /**
