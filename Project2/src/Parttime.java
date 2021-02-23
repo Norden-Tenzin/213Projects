@@ -98,5 +98,4 @@ public class Parttime extends Employee {
 			return false;
 		}
 	}
-
 }
