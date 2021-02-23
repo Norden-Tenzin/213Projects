@@ -9,6 +9,7 @@ public class PayrollProcessing {
     Company company = new Company();
     Scanner sc = new Scanner(System.in);
 
+    // TODO: Change this
     System.out.println("Library Kiosk running.");
 
     while (sc.hasNext()) {
@@ -38,7 +39,7 @@ public class PayrollProcessing {
       if (input.hasMoreTokens())
         role = input.nextToken();
 
-      boolean onlyOneArgument = name.equals("");
+      boolean onlyOneArgument = totalInputs == 1;
 
       // create an employee profile if a date exists.
       if (date.length() > 0) {
@@ -47,27 +48,37 @@ public class PayrollProcessing {
           continue;
       }
 
-      if (command.equals("Q")) break;
+      if (command.equals("Q"))
+        break;
 
+      // When we have more than one argument passed, run this block:
       if (!onlyOneArgument) {
-
-        // checks if number of arguments are valid for corrispoinding command.
-        if (!validateArguments(command, totalInputs)) continue;
+        // checks if number of arguments are valid for corresponding command.
+        if (!validateArguments(command, totalInputs))
+          continue;
 
         switch (command) {
           case "AP":
             if (validatePayHours(payHours)) {
               Parttime employee = new Parttime(employeeProfile, Double.parseDouble(payHours));
-              company.add(employee);
-              System.out.println("Employee added.");
+              if (!company.alreadyExists(employee)) {
+                company.add(employee);
+                System.out.println("Employee added.");
+              } else {
+                System.out.println("Employee is already in the list.");
+              }
             } else
               continue;
             break;
           case "AF":
             if (validatePayHours(payHours)) {
               Fulltime employee = new Fulltime(employeeProfile, Double.parseDouble(payHours));
-              company.add(employee);
-              System.out.println("Employee added.");
+              if (!company.alreadyExists(employee)) {
+                company.add(employee);
+                System.out.println("Employee added.");
+              } else {
+                System.out.println("Employee is already in the list.");
+              }
             } else
               continue;
             break;
@@ -75,11 +86,16 @@ public class PayrollProcessing {
             if (validatePayHours(payHours) || !validRole(role)) {
               Management employee = new Management(employeeProfile, Double.parseDouble(payHours),
                   Integer.parseInt(role));
-              company.add(employee);
-              System.out.println("Employee added.");
+              if (!company.alreadyExists(employee)) {
+                company.add(employee);
+                System.out.println("Employee added.");
+              } else {
+                System.out.println("Employee is already in the list.");
+              }
             } else
               continue;
             break;
+          // TODO: IDK WHY, BUT BROKEN
           case "R":
             Employee removeEmployee = new Employee(employeeProfile);
             boolean wasRemoved = company.remove(removeEmployee);
@@ -94,12 +110,53 @@ public class PayrollProcessing {
           default:
             System.out.println("Payroll Processing completed.");
         }
-      } else
-        singleCommands(command, company);
+      }
+
+      // When we only have one argument passed:
+      if (onlyOneArgument) {
+        switch (command) {
+          case "PA":
+            if (company.getNumEmployee() == 0)
+              System.out.println("Employee database is empty.");
+            else {
+              System.out.println("--Printing earning statements for all employees--");
+              company.print();
+            }
+            break;
+          case "PD":
+            if (company.getNumEmployee() == 0)
+              System.out.println("Employee database is empty.");
+            else {
+              System.out.println("--Printing earning statements by department--");
+              company.getNumEmployee();
+            }
+            break;
+          case "PH":
+            if (company.getNumEmployee() == 0)
+              System.out.println("Employee database is empty.");
+            else {
+              System.out.println("--Printing earning statements by date hired--");
+              company.getNumEmployee();
+            }
+            break;
+          case "C":
+            System.out.println("TODO: CALCULATE PAYMENTS");
+            break;
+          default:
+            System.out.println("Invalid command!");
+        }
+      }
     }
     System.out.println("Payroll Processing complete.");
   }
 
+  /**
+   * Validates the profile of an employee by checking date and department
+   * parameters.
+   * 
+   * @param profile of the employee.
+   * @return true if valid, false otherwise
+   */
   public boolean isValidProfile(Profile profile) {
     if (!profile.validateDate()) {
       System.out.println("Invalid Date!");
@@ -112,12 +169,28 @@ public class PayrollProcessing {
     return true;
   }
 
+  /**
+   * Validates the hourly pay of an employee by checking if it is negative
+   * 
+   * @param payHours passed as a String which equal the hourly pay.
+   * @return true if the hourly pay is valid, false otherwise.
+   */
   public boolean validatePayHours(String payHours) {
     if (Double.parseDouble(payHours) < 0)
       return false;
     return true;
   }
 
+  /**
+   * Validates the number of arguments for any given command, excluding single
+   * arguement commands. AP,AF,S all require 5 arguments. R requires 4 arguments.
+   * AM requires 6 arguments.
+   * 
+   * @param command is the command passed in(AP,AF,S,R,AM).
+   * @param count   is the total number of arguments passed.
+   * @return true if the count is equal to the expected argument count. False
+   *         otherwise.
+   */
   public boolean validateArguments(String command, int count) {
     int REMOVE_ARGS = 4; // standard number of args for removal
     int DEFAULT_ARGS = 5; // standard number of args for operations
@@ -128,7 +201,7 @@ public class PayrollProcessing {
         result = count == DEFAULT_ARGS;
         break;
       case "AF":
-        result =  count == DEFAULT_ARGS;
+        result = count == DEFAULT_ARGS;
         break;
       case "AM":
         result = count == MANAGER_ARGS;
@@ -140,52 +213,26 @@ public class PayrollProcessing {
         result = count == DEFAULT_ARGS;
         break;
       default:
-        System.out.println("Invalid arguments.");
         result = false;
     }
-    if(!result) System.out.println("Invalid arguments.");
+    if (!result)
+      System.out.println("Invalid arguments.");
     return result;
   }
 
+  /**
+   * Validates the manager role by checking if the Parsed integer from the String
+   * paramter is between 0 and 3.
+   * 
+   * @param role is the String value passed as an argument.
+   * @return true if the parsed Integer from the String is between 0 and 3. False
+   *         if otherwise.
+   */
   public boolean validRole(String role) {
     if (Integer.parseInt(role) < 0 || Integer.parseInt(role) > 3) {
       return false;
     }
     return true;
-  }
-
-  public static void singleCommands(String command, Company company) {
-    switch (command) {
-      case "PA":
-        if (company.getNumEmployee() == 0)
-          System.out.println("Employee database is empty.");
-        else {
-          System.out.println("--Printing earning statements for all employees--");
-          company.print();
-        }
-        break;
-      case "PD":
-        if (company.getNumEmployee() == 0)
-          System.out.println("Employee database is empty.");
-        else {
-          System.out.println("--Printing earning statements by department--");
-          company.getNumEmployee();
-        }
-        break;
-      case "PH":
-        if (company.getNumEmployee() == 0)
-          System.out.println("Employee database is empty.");
-        else {
-          System.out.println("--Printing earning statements by date hired--");
-          company.getNumEmployee();
-        }
-        break;
-      case "C":
-        System.out.println("TODO: CALCULATE PAYMENTS");
-        break;
-      default:
-        System.out.println("Invalid command!");
-    }
   }
 
 }

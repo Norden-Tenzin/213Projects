@@ -22,7 +22,7 @@ public class Company {
 
   private int find(Employee employee) {
     for (int i = 0; i < numEmployee; i++) {
-      if (employees[i].equals(employee))
+      if (employee.equals(employees[i]))
         return i;
     }
     return -1;
@@ -67,9 +67,9 @@ public class Company {
 
   public boolean remove(Employee employee) {
     int indexEmployee = find(employee);
-
-    if (indexEmployee == -1)
+    if (indexEmployee == -1){
       return false;
+    }
 
     for (int i = indexEmployee + 1; i < employees.length; i++) {
       employees[i - 1] = employees[i];
@@ -95,13 +95,11 @@ public class Company {
   }
 
   public boolean alreadyExists(Employee employee){
-
-    for(int i=0;i<employees.length;i++){
-      if(employees[i].equals(employee)){
-        return false;
-      }
-    }
-    return true;
+    if(find(employee)==-1)
+      return false;
+    else
+      return true;
+    
   }
 
 }
