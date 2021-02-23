@@ -83,7 +83,7 @@ public class PayrollProcessing {
               continue;
             break;
           case "AM":
-            if (validatePayHours(payHours) || !validRole(role)) {
+            if (validatePayHours(payHours) && validRole(role)) {
               Management employee = new Management(employeeProfile, Double.parseDouble(payHours),
                   Integer.parseInt(role));
               if (!company.alreadyExists(employee)) {
