@@ -108,6 +108,62 @@ public class Company {
     }
   }
 
+  public void printByDepartment() { 
+    Employee temp;
+    for (int i = 0; i <= this.employees.length - 1; i++) {
+       for (int j = i + 1; j <= this.employees.length - 2; j++) {
+          if (i == this.employees.length - 1 || this.employees[j] == null) // no employees 
+             break;
+          // I
+          String departmentI = this.employees[i].getProfile().getDepartment();
+          // J
+          String departmentJ = this.employees[j].getProfile().getDepartment();
+          if (departmentI.compareTo(departmentJ) > 0){
+            temp = this.employees[i];
+            this.employees[i] = this.employees[j];
+            this.employees[j] = temp;
+          } 
+       }
+    }
+    this.print();
+  } //print earning statements by department 
+
+  public void printByDate() { 
+    Employee temp;
+    for (int i = 0; i <= this.employees.length - 1; i++) {
+       for (int j = i + 1; j <= this.employees.length - 2; j++) {
+          if (i == this.employees.length - 1 || this.employees[j] == null) // no employees
+             break;
+          // book date at i
+          int EmpHiredYearI = this.employees[i].getProfile().getDateHired().getYear();
+          int EmpHiredMonthI = this.employees[i].getProfile().getDateHired().getMonth();
+          int EmpHiredDayI = this.employees[i].getProfile().getDateHired().getDay();
+          // book date at j
+          int EmpHiredYearJ = this.employees[j].getProfile().getDateHired().getYear();
+          int EmpHiredMonthJ = this.employees[j].getProfile().getDateHired().getMonth();
+          int EmpHiredDayJ = this.employees[j].getProfile().getDateHired().getDay();
+          if (EmpHiredYearI > EmpHiredYearJ) {
+             temp = this.employees[i];
+             this.employees[i] = this.employees[j];
+             this.employees[j] = temp;
+          } else if (EmpHiredYearI == EmpHiredYearJ) {
+             if (EmpHiredMonthI > EmpHiredMonthJ) {
+                temp = this.employees[i];
+                this.employees[i] = this.employees[j];
+                this.employees[j] = temp;
+             } else if (EmpHiredMonthI == EmpHiredMonthJ) {
+                if (EmpHiredDayI > EmpHiredDayJ) {
+                   temp = this.employees[i];
+                   this.employees[i] = this.employees[j];
+                   this.employees[j] = temp;
+                }
+             }
+          }
+       }
+    }
+    this.print();
+  } //print earning statements by date hired
+
   public int getNumEmployee() {
     return numEmployee;
   }
