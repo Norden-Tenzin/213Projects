@@ -11,7 +11,7 @@ public class PayrollProcessing {
     Company company = new Company();
     Scanner sc;
     try {
-      File test = new File("C:/Users/BOO/Desktop/git/213_Project1/Project2/src/test.txt"); // Added TO BE REMOVED
+      File test = new File("/Users/vedantmehta/Documents/Projects/213Projects/Project2/src/test.txt"); // Added TO BE REMOVED
       sc = new Scanner(test); // EDITED TO BE REMOVED
 
       System.out.println("Payroll Processing starts.");
