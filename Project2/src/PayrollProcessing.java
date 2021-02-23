@@ -6,162 +6,163 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class PayrollProcessing {
+  public void run(){
+    Company company = new Company();
+    Scanner sc;
+    try {
+      File test = new File("/Users/vedantmehta/Documents/Projects/213Projects/Project2/src/test.txt"); // Added TO BE REMOVED
+      sc = new Scanner(test); // EDITED TO BE REMOVED
 
-   public void run() {
-      Company company = new Company();
-      Scanner sc;
-      try {
-         File test = new File("/Users/vedantmehta/Documents/Projects/213Projects/Project2/src/test.txt"); // Added TO BE
-                                                                                                          // REMOVED
-         sc = new Scanner(test); // EDITED TO BE REMOVED
+      System.out.println("Payroll Processing starts.");
+      while (sc.hasNext()) {
+        StringTokenizer input = new StringTokenizer(sc.nextLine(), " ");
 
-         System.out.println("Payroll Processing starts.");
-         while (sc.hasNext()) {
-            // TODO:need to make it work for all whitespace
+        String command = "";
+        String name = "";
+        String department = "";
+        String date = "";
+        String payHours = "";
+        String role = "";
+        int totalInputs = input.countTokens();
 
-            // TODO: handle newline
-            StringTokenizer input = new StringTokenizer(sc.nextLine(), " ");
+        Profile employeeProfile = null;
+        if (input.hasMoreTokens()) command = input.nextToken();
+        if (input.hasMoreTokens()) name = input.nextToken();
+        if (input.hasMoreTokens()) department = input.nextToken();
+        if (input.hasMoreTokens()) date = input.nextToken();
+        if (input.hasMoreTokens()) payHours = input.nextToken();
+        if (input.hasMoreTokens()) role = input.nextToken();
 
-            String command = "";
-            String name = "";
-            String department = "";
-            String date = "";
-            String payHours = "";
-            String role = "";
-            int totalInputs = input.countTokens();
+        boolean onlyOneArgument = totalInputs == 1;
 
-            Profile employeeProfile = null;
-            if (input.hasMoreTokens())
-               command = input.nextToken();
-            if (input.hasMoreTokens())
-               name = input.nextToken();
-            if (input.hasMoreTokens())
-               department = input.nextToken();
-            if (input.hasMoreTokens())
-               date = input.nextToken();
-            if (input.hasMoreTokens())
-               payHours = input.nextToken();
-            if (input.hasMoreTokens())
-               role = input.nextToken();
+        // create an employee profile if a date exists.
+        if (date.length() > 0) {
+          employeeProfile = new Profile(name, department, new Date(date));
+          if (!isValidProfile(employeeProfile)) continue;
+        }
 
-            boolean onlyOneArgument = totalInputs == 1;
+        if (command.equals("Q")) break;
 
-            // create an employee profile if a date exists.
-            if (date.length() > 0) {
-               employeeProfile = new Profile(name, department, new Date(date));
-               if (!isValidProfile(employeeProfile))
-                  continue;
-            }
+        // When we have more than one argument passed, run this block:
+        if (!onlyOneArgument) {
+          // checks if number of arguments are valid for corresponding command.
+          if (!validateArguments(command, totalInputs)) continue;
 
-            if (command.equals("Q"))
-               break;
+          switch (command) {
+            case "AP":
+              if (validatePayHours(payHours)) {
+                Parttime employee = new Parttime(
+                  employeeProfile,
+                  Double.parseDouble(payHours)
+                );
+                if (!company.alreadyExists(employee)) {
+                  company.add(employee);
+                  System.out.println("Employee added.");
+                } else {
+                  System.out.println("Employee is already in the list.");
+                }
+              } else continue;
+              break;
+            case "AF":
+              if (validatePayHours(payHours)) {
+                Fulltime employee = new Fulltime(
+                  employeeProfile,
+                  Double.parseDouble(payHours)
+                );
+                if (!company.alreadyExists(employee)) {
+                  company.add(employee);
+                  System.out.println("Employee added.");
+                } else {
+                  System.out.println("Employee is already in the list.");
+                }
+              } else continue;
+              break;
+            case "AM":
+              if (validatePayHours(payHours) && validRole(role)) {
+                Management employee = new Management(
+                  employeeProfile,
+                  Double.parseDouble(payHours),
+                  Integer.parseInt(role)
+                );
+                if (!company.alreadyExists(employee)) {
+                  company.add(employee);
+                  System.out.println("Employee added.");
+                } else {
+                  System.out.println("Employee is already in the list.");
+                }
+              } else continue;
+              break;
+            case "R":
+              Employee removeEmployee = new Employee(employeeProfile);
+              boolean wasRemoved = company.remove(removeEmployee);
+              if (
+                wasRemoved && company.alreadyExists(removeEmployee)
+              ) System.out.println(
+                "Employee removed."
+              ); else System.out.println("Employee does not exist.");
+              break;
+            case "S":
+              if (Integer.parseInt(payHours) < 0) {
+                System.out.println("Working hours cannot be negative.");
+                break;
+              }
+              Parttime emp = new Parttime(employeeProfile, 0);
+              emp.setHours(Integer.parseInt(payHours));
+              if (company.setHours(emp)) {
+                System.out.println("Working hours set.");
+              } else {
+                System.out.println(
+                  "Working hours NOT set.(Check Employee information)"
+                );
+              }
+              break;
+            default:
+              System.out.println("Payroll Processing completed.");
+          }
+        }
 
-            // When we have more than one argument passed, run this block:
-            if (!onlyOneArgument) {
-               // checks if number of arguments are valid for corresponding command.
-               if (!validateArguments(command, totalInputs))
-                  continue;
-
-               switch (command) {
-                  case "AP":
-                     if (validatePayHours(payHours)) {
-                        Parttime employee = new Parttime(employeeProfile, Double.parseDouble(payHours));
-                        if (!company.alreadyExists(employee)) {
-                           company.add(employee);
-                           System.out.println("Employee added.");
-                        } else {
-                           System.out.println("Employee is already in the list.");
-                        }
-                     } else
-                        continue;
-                     break;
-                  case "AF":
-                     if (validatePayHours(payHours)) {
-                        Fulltime employee = new Fulltime(employeeProfile, Double.parseDouble(payHours));
-                        if (!company.alreadyExists(employee)) {
-                           company.add(employee);
-                           System.out.println("Employee added.");
-                        } else {
-                           System.out.println("Employee is already in the list.");
-                        }
-                     } else
-                        continue;
-                     break;
-                  case "AM":
-                     if (validatePayHours(payHours) && validRole(role)) {
-                        Management employee = new Management(employeeProfile, Double.parseDouble(payHours),
-                              Integer.parseInt(role));
-                        if (!company.alreadyExists(employee)) {
-                           company.add(employee);
-                           System.out.println("Employee added.");
-                        } else {
-                           System.out.println("Employee is already in the list.");
-                        }
-                     } else
-                        continue;
-                     break;
-                  // TODO: IDK WHY, BUT BROKEN
-                  case "R":
-                     Employee removeEmployee = new Employee(employeeProfile);
-                     boolean wasRemoved = company.remove(removeEmployee);
-                     if (wasRemoved && company.alreadyExists(removeEmployee))
-                        System.out.println("Employee removed.");
-                     else
-                        System.out.println("Employee does not exist.");
-                     break;
-                  case "S":
-                     if (Integer.parseInt(payHours) < 0) {
-                        System.out.println("Working hours cannot be negative.");
-                        break;
-                     }
-                     if (company.setEmployeeHours(new Employee(employeeProfile), Integer.parseInt(payHours))) {
-                        System.out.println("Working hours set.");
-                     } else {
-                        System.out.println("Working hours NOT set.(Check Employee information)");
-                     }
-                     break;
-                  default:
-                     System.out.println("Payroll Processing completed.");
-               }
-            }
-
-            // When we only have one argument passed:
-            if (onlyOneArgument) {
-               switch (command) {
-                  case "PA":
-                     if (company.getNumEmployee() == 0)
-                        System.out.println("Employee database is empty.");
-                     else {
-                        System.out.println("--Printing earning statements for all employees--");
-                        company.print();
-                     }
-                     break;
-                  case "PD":
-                     if (company.getNumEmployee() == 0)
-                        System.out.println("Employee database is empty.");
-                     else {
-                        System.out.println("--Printing earning statements by department--");
-                        company.printByDepartment();
-                     }
-                     break;
-                  case "PH":
-                     if (company.getNumEmployee() == 0)
-                        System.out.println("Employee database is empty.");
-                     else {
-                        System.out.println("--Printing earning statements by date hired--");
-                        company.printByDate();
-                     }
-                     break;
-                  case "C":
-                     company.processPayments();
-                     System.out.println("Calculation of employee payments is done.");
-                     break;
-                  default:
-                     System.out.println("Invalid command!");
-               }
-            }
-         }
-         System.out.println("Payroll Processing complete.");
+        // When we only have one argument passed:
+        if (onlyOneArgument) {
+          switch (command) {
+            case "PA":
+              if (company.getNumEmployee() == 0) System.out.println(
+                "Employee database is empty."
+              ); else {
+                System.out.println(
+                  "--Printing earning statements for all employees--"
+                );
+                company.print();
+              }
+              break;
+            case "PD":
+              if (company.getNumEmployee() == 0) System.out.println(
+                "Employee database is empty."
+              ); else {
+                System.out.println(
+                  "--Printing earning statements by department--"
+                );
+                company.printByDepartment();
+              }
+              break;
+            case "PH":
+              if (company.getNumEmployee() == 0) System.out.println(
+                "Employee database is empty."
+              ); else {
+                System.out.println(
+                  "--Printing earning statements by date hired--"
+                );
+                company.printByDate();
+              }
+              break;
+            case "C":
+              company.processPayments();
+              System.out.println("Calculation of employee payments is done.");
+              break;
+            default:
+              System.out.println("Invalid command!");
+          }
+        }
+      }System.out.println("Payroll Processing complete.");
       } catch (FileNotFoundException e) {
          System.out.println("File Not Found");
       }
