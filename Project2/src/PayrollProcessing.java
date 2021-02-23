@@ -9,8 +9,7 @@ public class PayrollProcessing {
     Company company = new Company();
     Scanner sc = new Scanner(System.in);
 
-    // TODO: Change this
-    System.out.println("Library Kiosk running.");
+    System.out.println("Payroll Processing starts.");
 
     while (sc.hasNext()) {
 
