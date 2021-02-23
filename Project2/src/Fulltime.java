@@ -26,6 +26,17 @@ public class Fulltime extends Employee {
 		this.annualSalary = salary;
 	}
 
+		/**
+	 * Fulltime employee constructor which takes in an integer rather than a double for salary amount. 
+	 * 
+	 * @param profile is the Profile class needed for Employee.java
+	 * @param salary  is the salary associated with this employee, but as an Integer
+	 */
+	public Fulltime(Profile profile, int salary) {
+		super(profile);
+		this.annualSalary = salary;
+	}
+
 	/**
 	 * Simple helper method to get the Fulltime employee's salary.
 	 * 
