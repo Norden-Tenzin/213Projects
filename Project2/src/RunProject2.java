@@ -7,7 +7,6 @@ package Project2.src;
 import java.io.FileNotFoundException;
 
 public class RunProject2 {
-
    /**
     * Used to run the payroll processing class. Will be useful later for threading
     * 

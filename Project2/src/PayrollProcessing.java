@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class PayrollProcessing {
-
   public void run(){
     Company company = new Company();
     Scanner sc;
@@ -16,9 +15,6 @@ public class PayrollProcessing {
 
       System.out.println("Payroll Processing starts.");
       while (sc.hasNext()) {
-        // TODO:need to make it work for all whitespace
-
-        //TODO: handle newline
         StringTokenizer input = new StringTokenizer(sc.nextLine(), " ");
 
         String command = "";
@@ -96,7 +92,6 @@ public class PayrollProcessing {
                 }
               } else continue;
               break;
-            // TODO: IDK WHY, BUT BROKEN
             case "R":
               Employee removeEmployee = new Employee(employeeProfile);
               boolean wasRemoved = company.remove(removeEmployee);
@@ -111,12 +106,9 @@ public class PayrollProcessing {
                 System.out.println("Working hours cannot be negative.");
                 break;
               }
-              if (
-                company.setEmployeeHours(
-                  new Employee(employeeProfile),
-                  Integer.parseInt(payHours)
-                )
-              ) {
+              Parttime emp = new Parttime(employeeProfile, 0);
+              emp.setHours(Integer.parseInt(payHours));
+              if (company.setHours(emp)) {
                 System.out.println("Working hours set.");
               } else {
                 System.out.println(
