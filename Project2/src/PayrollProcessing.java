@@ -14,6 +14,8 @@ public class PayrollProcessing {
     while (sc.hasNext()) {
 
       // TODO:need to make it work for all whitespace
+
+      //TODO: handle newline
       StringTokenizer input = new StringTokenizer(sc.nextLine(), " ");
 
       String command = "";
