@@ -42,13 +42,6 @@ public class PayrollProcessing {
 
       boolean onlyOneArgument = totalInputs == 1;
 
-      // create an employee profile if a date exists.
-      if (date.length() > 0) {
-        employeeProfile = new Profile(name, department, new Date(date));
-        if (!isValidProfile(employeeProfile))
-          continue;
-      }
-
       if (command.equals("Q"))
         break;
 
@@ -57,6 +50,12 @@ public class PayrollProcessing {
         // checks if number of arguments are valid for corresponding command.
         if (!validateArguments(command, totalInputs))
           continue;
+        // create an employee profile if a date exists.
+        else if (date.length() > 0) {
+          employeeProfile = new Profile(name, department, new Date(date));
+          if (!isValidProfile(employeeProfile))
+            continue;
+        }
 
         switch (command) {
           case "AP":
