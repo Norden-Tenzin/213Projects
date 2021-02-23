@@ -7,9 +7,9 @@ public class CompanyTest {
  @Test
     void add() {
         Company company = new Company();
-        Employee PartTimeEmployee = new Parttime(new Profile("Doe,John", "ECE", new Date("8/20/2010")), 10);
-        Employee FullTimeEmployee = new Fulltime(new Profile("Doe,John", "CS", new Date("7/31/2001")), 10000);
-        Employee ManagerEmployee = new Management(new Profile("Doe,John", "IT", new Date("10/20/1989")), 15000, 1);
+        Employee PartTimeEmployee = new Parttime(new Profile("Doe,John", "ECE", new Date("4/20/2010")), 40.5);
+        Employee FullTimeEmployee = new Fulltime(new Profile("Doe,John", "CS", new Date("6/09/2001")), 34000);
+        Employee ManagerEmployee = new Management(new Profile("Doe,John", "IT", new Date("10/20/1989")), 15000, 3);
 
         assertTrue(company.add(FullTimeEmployee));
         assertTrue(company.add(ManagerEmployee));

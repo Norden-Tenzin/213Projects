@@ -238,7 +238,7 @@ public class PayrollProcessing {
    *         if otherwise.
    */
   public boolean validRole(String role) {
-    if (Integer.parseInt(role) < 0 || Integer.parseInt(role) > 3) {
+    if (Integer.parseInt(role) < 1 || Integer.parseInt(role) > 3) {
       return false;
     }
     return true;
