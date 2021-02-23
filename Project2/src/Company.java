@@ -1,12 +1,13 @@
 package Project2.src;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 /**
  *
  * @Tenzin Norden, @Vedant Mehta
  */
 
 public class Company {
-
   private Employee[] employees;
   private int numEmployee;
   final int STARTING_COMPANY_SIZE = 4;
@@ -32,7 +33,6 @@ public class Company {
    * When called increases the size of the books array by STARTING_COMPANY_SIZE
    */
   private void grow() {
-
     Employee[] newArray = new Employee[employees.length + STARTING_COMPANY_SIZE];
 
     for (int i = 0; i < numEmployee; i++) {
@@ -41,24 +41,14 @@ public class Company {
     employees = newArray;
   }
 
-  public void add(Employee employee) {
+  public boolean add(Employee employee) {
     if (employees[employees.length - 1] != null)
       grow();
     
     for (int i = 0; i < employees.length; i++) {
       if (employees[i] == null) {
         employees[i] = employee;
-        break;
-      }
-    }
-    numEmployee++;
-  }
-
-  // TODO: Might need to re-write
-  public boolean setHours(Employee employee) {
-    int indexEmployee = find(employee);
-    if (employees[indexEmployee] instanceof Parttime) {
-      if (((Parttime) employee).getHours() >= 0) {
+        numEmployee++;
         return true;
       }
     }
@@ -79,9 +69,37 @@ public class Company {
     return true;
   }
 
-  public void setEmployeeHours(Employee employee, int hours) {
+  // TODO: Might need to re-write
+  public boolean setHours(Employee employee) {
     int indexEmployee = find(employee);
-    ((Parttime) employees[indexEmployee]).setHours(hours);
+    
+    if (employees[indexEmployee] instanceof Parttime) {
+      if (((Parttime) employee).getHours() >= 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public void processPayments(){
+    for (int i = 0; i < numEmployee; i++) {
+      if (employees[i] instanceof Parttime){
+        ((Parttime)employees[i]).calculatePayment();
+      } else if  (employees[i] instanceof Fulltime){
+        ((Fulltime)employees[i]).calculatePayment();
+      } else if  (employees[i] instanceof Management){
+        ((Management)employees[i]).calculatePayment();
+      }
+    }
+  }
+
+  public boolean setEmployeeHours(Employee employee, int hours) {
+    int indexEmployee = find(employee);
+    if(indexEmployee != -1){
+      ((Parttime) employees[indexEmployee]).setHours(hours);
+      return true;
+    } 
+    return false;
   }
 
   public void print() {
@@ -99,7 +117,5 @@ public class Company {
       return false;
     else
       return true;
-    
   }
-
 }

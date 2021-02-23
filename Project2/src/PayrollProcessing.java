@@ -106,7 +106,15 @@ public class PayrollProcessing {
               System.out.println("Employee does not exist.");
             break;
           case "S":
-            company.setEmployeeHours(new Employee(employeeProfile), Integer.parseInt(payHours));
+            if(Integer.parseInt(payHours) < 0){
+              System.out.println("Working hours cannot be negative.");
+              break;
+            } 
+            if(company.setEmployeeHours(new Employee(employeeProfile), Integer.parseInt(payHours))){
+              System.out.println("Working hours set.");
+            } else {
+              System.out.println("Working hours NOT set.(Check Employee information)");
+            }
             break;
           default:
             System.out.println("Payroll Processing completed.");
@@ -141,7 +149,8 @@ public class PayrollProcessing {
             }
             break;
           case "C":
-            System.out.println("TODO: CALCULATE PAYMENTS");
+            company.processPayments();
+            System.out.println("Calculation of employee payments is done.");
             break;
           default:
             System.out.println("Invalid command!");

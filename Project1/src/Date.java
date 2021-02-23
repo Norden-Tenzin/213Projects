@@ -10,7 +10,6 @@ package Project1.src;
 import java.util.Calendar;
 
 public class Date {
-
    private int year;
    private int month;
    private int day;
@@ -135,9 +134,6 @@ public class Date {
       return (this.month + "/" + this.day + "/" + this.year);
    }
 
-  
-
-
    public static void main(String[] args) {
 
       // Test current date. Expected True,True
@@ -196,7 +192,5 @@ public class Date {
       System.out.println(new Date("05/16/1999").toString() + ": " + new Date("05/16/1999").isValid());
       System.out.println(new Date("01/01/2018").toString() + ": " + new Date("01/01/2018").isValid());
       System.out.println(new Date("02/29/2020").toString() + ": " + new Date("02/29/2020").isValid());
-
    }
-
 }
