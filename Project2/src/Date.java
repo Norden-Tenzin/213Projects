@@ -1,5 +1,3 @@
-package Project2.src;
-
 /**
  * The Date class allows us to look at a formatted date and determine if the date are valid or not.
  * year: the year of the date.
@@ -7,6 +5,8 @@ package Project2.src;
  * day: numerical day of the date.
  * @Tenzin Norden, @Vedant Mehta
  */
+
+package Project2.src;
 
 import java.util.Calendar;
 
@@ -128,7 +128,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Returns the date, properly formatted.
-     *
+     * 
      * @return the date in string format
      */
     @Override
@@ -136,6 +136,12 @@ public class Date implements Comparable<Date> {
         return (this.month + "/" + this.day + "/" + this.year);
     }
 
+    /**
+     * Overriden method used to compare two Dates
+     * 
+     * @return 0 if they are the same, 1 if the compared date is greater, -1 if
+     *         otherwise.
+     */
     @Override
     public int compareTo(Date date) { // return 1, 0, or -1
         if (this.year == date.year && this.month == date.month && this.day == date.day) {
@@ -150,6 +156,12 @@ public class Date implements Comparable<Date> {
             return -1;
     }
 
+    /**
+     * Tester method to test the validity of the Date class. Tests leap year,
+     * current date, Dates after today, formatting and impossible values.
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
 
         // Test current date. Expected True,True

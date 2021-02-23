@@ -99,7 +99,7 @@ public class PayrollProcessing {
           case "R":
             Employee removeEmployee = new Employee(employeeProfile);
             boolean wasRemoved = company.remove(removeEmployee);
-            if (wasRemoved)
+            if (wasRemoved && company.alreadyExists(removeEmployee))
               System.out.println("Employee removed.");
             else
               System.out.println("Employee does not exist.");
