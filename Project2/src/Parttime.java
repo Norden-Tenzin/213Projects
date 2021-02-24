@@ -6,6 +6,7 @@
  *  @Tenzin Norden, @Vedant Mehta
  */
 package Project2.src;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
@@ -18,9 +19,12 @@ public class Parttime extends Employee {
 	public static final int MAXHOURS = 40;
 
 	/**
-	 * Parttime employee constructor which takes in an hourly rate and a profile class
-	 * @param profile class used as a unique identifier for the employee.
-	 * @param hourlyRate double used to denote the hourly rate of an employee in dollars.
+	 * Parttime employee constructor which takes in an hourly rate and a profile
+	 * class
+	 * 
+	 * @param profile    class used as a unique identifier for the employee.
+	 * @param hourlyRate double used to denote the hourly rate of an employee in
+	 *                   dollars.
 	 */
 	public Parttime(Profile profile, double hourlyRate) {
 		super(profile);
@@ -28,8 +32,9 @@ public class Parttime extends Employee {
 	}
 
 	/**
-	 * Overriden calculatPayment method used to calculate the payment of a part time employee.
-	 * payment = (total normal hours * hourly rate) + (total overtime hours * overtime rate)
+	 * Overriden calculatPayment method used to calculate the payment of a part time
+	 * employee. payment = (total normal hours * hourly rate) + (total overtime
+	 * hours * overtime rate)
 	 */
 	@Override
 	public void calculatePayment() {
@@ -39,7 +44,6 @@ public class Parttime extends Employee {
 		double weeklyHrsWorked = hoursWorked / PAYPERIOD;
 		double overtimeHrs = weeklyHrsWorked - MAXHOURS;
 		double overtimeRate = hourlyRate * OVERTIMEMULTI;
-		
 
 		if (overtimeHrs < 0) {
 			normalHrs = weeklyHrsWorked;
@@ -57,7 +61,9 @@ public class Parttime extends Employee {
 
 	/**
 	 * Simple helper method used to set the hours worked of the employee
-	 * @param hoursWorked integer value denoting the number of hours worked by the employee.
+	 * 
+	 * @param hoursWorked integer value denoting the number of hours worked by the
+	 *                    employee.
 	 */
 	public void setHours(int hoursWorked) {
 		this.hoursWorked = hoursWorked;
@@ -65,16 +71,18 @@ public class Parttime extends Employee {
 
 	/**
 	 * Simple helper method to get the number of hours worked by the employee
+	 * 
 	 * @return an integer value of the hours worked by the employee.
 	 */
-	public int getHours(){
+	public int getHours() {
 		return this.hoursWorked;
 	}
 
-
 	/**
-	 * Overridden toString method which outputs the formatted string of an employee class.
-	 * Format: Doe,Jane::CS::7/1/2020::Payment $0.00::PART TIME::Hourly Rate $xx.xx::Hours worked this period: x
+	 * Overridden toString method which outputs the formatted string of an employee
+	 * class. Format: Doe,Jane::CS::7/1/2020::Payment $0.00::PART TIME::Hourly Rate
+	 * $xx.xx::Hours worked this period: x
+	 * 
 	 * @return A formatted string of the employee
 	 */
 	@Override
@@ -84,10 +92,11 @@ public class Parttime extends Employee {
 		formattedRate.setGroupingSize(3);
 		return super.toString() + "::PART TIME::Hourly Rate $" + formattedRate.format(hourlyRate)
 				+ "::Hours worked this period: " + hoursWorked;
-	}	
+	}
 
 	/**
 	 * Overridden equals method to compare two Parttime employee classes.
+	 * 
 	 * @return true if the object is equal to the compared object
 	 */
 	@Override

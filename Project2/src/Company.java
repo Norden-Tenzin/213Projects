@@ -102,8 +102,8 @@ public class Company {
    */
   public boolean setHours(Employee employee) {
     int indexEmployee = find(employee);
-
-    if (indexEmployee != -1) {
+    
+    if (indexEmployee != -1 && employees[indexEmployee] instanceof Parttime) {
       ((Parttime) employees[indexEmployee]).setHours(
           ((Parttime) employee).getHours()
         );

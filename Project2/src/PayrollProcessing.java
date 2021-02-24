@@ -194,42 +194,42 @@ public class PayrollProcessing {
               continue;
           }
         }
+      }System.out.println("Payroll Processing complete.");
+      } catch (FileNotFoundException e) {
+         System.out.println("File Not Found");
       }
-      System.out.println("Payroll Processing complete.");
-    } catch (FileNotFoundException e) {
-      System.out.println("File Not Found");
-    }
-  }
+   }
 
-  /**
-   * Validates the profile of an employee by checking date and department
-   * parameters.
-   *
-   * @param profile of the employee.
-   * @return true if valid, false otherwise
-   */
-  public boolean isValidProfile(Profile profile) {
-    if (!profile.validateDate()) {
-      System.out.println("Invalid Date!");
-      return false;
-    }
-    if (!profile.validateDepartment()) {
-      System.out.println("Invalid department code.");
-      return false;
-    }
-    return true;
-  }
+   /**
+    * Validates the profile of an employee by checking date and department
+    * parameters.
+    *
+    * @param profile of the employee.
+    * @return true if valid, false otherwise
+    */
+   public boolean isValidProfile(Profile profile) {
+      if (!profile.validateDate()) {
+         System.out.println("Invalid Date!");
+         return false;
+      }
+      if (!profile.validateDepartment()) {
+         System.out.println("Invalid department code.");
+         return false;
+      }
+      return true;
+   }
 
-  /**
-   * Validates the hourly pay of an employee by checking if it is negative
-   *
-   * @param payHours passed as a String which equal the hourly pay.
-   * @return true if the hourly pay is valid, false otherwise.
-   */
-  public boolean validatePayHours(String payHours) {
-    if (Double.parseDouble(payHours) < 0) return false;
-    return true;
-  }
+   /**
+    * Validates the hourly pay of an employee by checking if it is negative
+    *
+    * @param payHours passed as a String which equal the hourly pay.
+    * @return true if the hourly pay is valid, false otherwise.
+    */
+   public boolean validatePayHours(String payHours) {
+      if (Double.parseDouble(payHours) < 0)
+         return false;
+      return true;
+   }
 
   /**
    * Validates the number of arguments for any given command, excluding single
@@ -271,18 +271,18 @@ public class PayrollProcessing {
     return result;
   }
 
-  /**
-   * Validates the manager role by checking if the Parsed integer from the String
-   * paramter is between 0 and 3.
-   *
-   * @param role is the String value passed as an argument.
-   * @return true if the parsed Integer from the String is between 0 and 3. False
-   *         if otherwise.
-   */
-  public boolean validRole(String role) {
-    if (Integer.parseInt(role) < 1 || Integer.parseInt(role) > 3) {
-      return false;
-    }
-    return true;
-  }
+   /**
+    * Validates the manager role by checking if the Parsed integer from the String
+    * paramter is between 0 and 3.
+    *
+    * @param role is the String value passed as an argument.
+    * @return true if the parsed Integer from the String is between 0 and 3. False
+    *         if otherwise.
+    */
+   public boolean validRole(String role) {
+      if (Integer.parseInt(role) < 1 || Integer.parseInt(role) > 3) {
+         return false;
+      }
+      return true;
+   }
 }
