@@ -85,14 +85,14 @@ public class Management extends Fulltime {
     * 
     * @return true if the object is equal to the compared object
     */
-    @Override
-    public boolean equals(Object obj) {
-       if (obj instanceof Management) {
-          return super.equals(obj);
-       } else {
-          return false;
-       }
- 
-    }
+   @Override
+   public boolean equals(Object obj) {
+      if (obj instanceof Management) {
+         return super.equals(obj);
+      } else {
+         return false;
+      }
+
+   }
 
 }
