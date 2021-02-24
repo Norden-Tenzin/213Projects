@@ -1,4 +1,13 @@
 package Project2.src;
+/**
+ * The Profile class is an identifier class for Employee objects. it uniquely identifies each 
+ * Employee with name, department and dateHired. It also holds the valid departments.
+ * name is the name of the person to whom this profile belongs to. 
+ * departmentt is the name of the department where that person works at.
+ * dateHired is the date when the person was hired. 
+ *
+ * @Tenzin Norden, @Vedant Mehta
+ */
 
 public class Profile {
 
