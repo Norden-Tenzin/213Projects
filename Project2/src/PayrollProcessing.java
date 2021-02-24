@@ -6,11 +6,14 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class PayrollProcessing {
-  public void run(){
+
+  public void run() {
     Company company = new Company();
     Scanner sc;
     try {
-      File test = new File("/Users/vedantmehta/Documents/Projects/213Projects/Project2/src/test.txt"); // Added TO BE REMOVED
+      // Project2/src/test.txt
+      // /Users/vedantmehta/Documents/Projects/213Projects/Project2/src/test.txt
+      File test = new File("Project2/src/test.txt"); // Added TO BE REMOVED
       sc = new Scanner(test); // EDITED TO BE REMOVED
 
       System.out.println("Payroll Processing starts.");
@@ -26,12 +29,27 @@ public class PayrollProcessing {
         int totalInputs = input.countTokens();
 
         Profile employeeProfile = null;
-        if (input.hasMoreTokens()) command = input.nextToken();
-        if (input.hasMoreTokens()) name = input.nextToken();
-        if (input.hasMoreTokens()) department = input.nextToken();
-        if (input.hasMoreTokens()) date = input.nextToken();
-        if (input.hasMoreTokens()) payHours = input.nextToken();
-        if (input.hasMoreTokens()) role = input.nextToken();
+        if (input.hasMoreTokens()) {
+          command = input.nextToken();
+          if (!command.equals(command.toUpperCase())) {
+            System.out.println("Command '" + command + "' not supported!");
+          }
+        }
+        if (input.hasMoreTokens()) {
+          name = input.nextToken();
+        }
+        if (input.hasMoreTokens()) {
+          department = input.nextToken();
+        }
+        if (input.hasMoreTokens()) {
+          date = input.nextToken();
+        }
+        if (input.hasMoreTokens()) {
+          payHours = input.nextToken();
+        }
+        if (input.hasMoreTokens()) {
+          role = input.nextToken();
+        }
 
         boolean onlyOneArgument = totalInputs == 1;
 
@@ -78,37 +96,47 @@ public class PayrollProcessing {
               } else continue;
               break;
             case "AM":
+              if (!validRole(role)) {
+                System.out.println("invalid Management code.");
+                break;
+              }
               if (validatePayHours(payHours) && validRole(role)) {
                 Management employee = new Management(
                   employeeProfile,
                   Double.parseDouble(payHours),
                   Integer.parseInt(role)
                 );
+
                 if (!company.alreadyExists(employee)) {
                   company.add(employee);
                   System.out.println("Employee added.");
                 } else {
                   System.out.println("Employee is already in the list.");
                 }
-              } else continue;
+              } else {System.out.print("in else");};
               break;
             case "R":
               Employee removeEmployee = new Employee(employeeProfile);
               boolean wasRemoved = company.remove(removeEmployee);
               if (
                 wasRemoved && company.alreadyExists(removeEmployee)
-              ) System.out.println(
-                "Employee removed."
-              ); else System.out.println("Employee does not exist.");
+              ) System.out.println("Employee removed."); else if (
+                company.getNumEmployee() == 0
+              ) {
+                System.out.println("Employee database is empty.");
+              } else System.out.println("Employee does not exist.");
               break;
             case "S":
-              if (Integer.parseInt(payHours) < 0) {
+              if (company.getNumEmployee() == 0) {
+                System.out.println("Employee database is empty.");
+                break;
+              } else if (!validatePayHours(payHours)) {
                 System.out.println("Working hours cannot be negative.");
                 break;
-              }
-              Parttime emp = new Parttime(employeeProfile, 0);
-              emp.setHours(Integer.parseInt(payHours));
-              if (company.setHours(emp)) {
+              } else if (validatePayHours(payHours)) {
+                Parttime emp = new Parttime(employeeProfile, 0);
+                emp.setHours(Integer.parseInt(payHours));
+                company.setHours(emp);
                 System.out.println("Working hours set.");
               } else {
                 System.out.println(
@@ -155,11 +183,15 @@ public class PayrollProcessing {
               }
               break;
             case "C":
-              company.processPayments();
-              System.out.println("Calculation of employee payments is done.");
+              if (company.getNumEmployee() != 0) {
+                company.processPayments();
+                System.out.println("Calculation of employee payments is done.");
+              } else if (company.getNumEmployee() == 0) {
+                System.out.println("Employee database is empty.");
+              }
               break;
             default:
-              System.out.println("Invalid command!");
+              continue;
           }
         }
       }
@@ -213,7 +245,7 @@ public class PayrollProcessing {
     int REMOVE_ARGS = 4; // standard number of args for removal
     int DEFAULT_ARGS = 5; // standard number of args for operations
     int MANAGER_ARGS = 6; // number of args for adding a mana
-    boolean result;
+    boolean result = false;
     switch (command.trim()) {
       case "AP":
         result = count == DEFAULT_ARGS;
@@ -228,12 +260,14 @@ public class PayrollProcessing {
         result = count == REMOVE_ARGS;
         break;
       case "S":
-        result = count == DEFAULT_ARGS;
+        if(count >= REMOVE_ARGS){
+          result = true;
+        }
         break;
       default:
         result = false;
     }
-    if (!result) System.out.println("Invalid arguments.");
+    // if (!result) System.out.println("Invalid arguments.");
     return result;
   }
 

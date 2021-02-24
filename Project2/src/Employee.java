@@ -8,7 +8,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
 public class Employee {
-
 	private Profile profile;
 	private double payment = 0;
 

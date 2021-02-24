@@ -88,7 +88,9 @@ public class Company {
     for (int i = indexEmployee + 1; i < employees.length; i++) {
       employees[i - 1] = employees[i];
     }
-    numEmployee--;
+    if(numEmployee >= 0){
+      numEmployee--;
+    }
     return true;
   }
 
