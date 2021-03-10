@@ -1,2 +1,2 @@
-Project3/lib/
-.vscode/
+/Project3/lib/**
+.vscode/**
