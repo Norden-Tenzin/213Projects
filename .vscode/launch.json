@@ -8,15 +8,15 @@
             "type": "java",
             "name": "Launch HelloWorld",
             "request": "launch",
-            "vmArgs": "--module-path C:/Users/BOO/Desktop/git/213_Project1/Project3/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path /Users/vedantmehta/Documents/Projects/213Projects/Project3/lib/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "Project3.src.HelloWorld",
-            "projectName": "213_Project1_cc89627f"
+            "projectName": "213Projects_2450d18a"
         },
         {
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
-        },
+        }
     ]
 }
