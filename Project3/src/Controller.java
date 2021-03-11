@@ -1,18 +1,21 @@
 package Project3.src;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ButtonBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class Controller {
+
   private PayrollProcessing pp = new PayrollProcessing();
 
   @FXML
@@ -183,13 +186,13 @@ public class Controller {
   private TextArea exportOutput;
 
   // functions:
-@FXML
+  @FXML
   void disableManagerTypeSelect(ActionEvent event) {
-
   }
+
   @FXML
   void disableDepartmentSelect(ActionEvent event) {
-    if(departmentSelect_CS_add.isSelected()){
+    if (departmentSelect_CS_add.isSelected()) {
       departmentSelect_ECE_add.setDisable(true);
       departmentSelect_IT_add.setDisable(true);
     }
@@ -197,76 +200,94 @@ public class Controller {
 
   @FXML
   void disableEmployeeSelect(ActionEvent event) {
-
   }
 
   @FXML
   void onExportSubmit(ActionEvent event) {
-
   }
 
   @FXML
   void onFileSubmit(ActionEvent event) {
-
   }
 
   @FXML
   void onFileUpload(ActionEvent event) {
-
   }
 
   // process payment
   @FXML
   void onProcessPayment(ActionEvent event) {
-
   }
 
   // add, remove, set hours
   @FXML
   void onSubmit(ActionEvent event) {
+    String[] output;
+    String finalOutput = "";
+
     String input = "";
     String command = "";
     String department = "";
+    String managerType = "";
     String firstName = firstName_Input_add.getText();
     String lastName = lastName_Input_add.getText();
-    String dateHired = dateHired_Input_add.getValue().toString();
+    String dateHired = dateHired_Input_add.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
     String hourlyRate = hourlyRate_Input.getText();
-    if(departmentSelect_CS_add.isSelected()) department = "CS";
-    else if(departmentSelect_ECE_add.isSelected()) department = "ECE";
-    else if(departmentSelect_IT_add.isSelected()) department = "IT";
 
-    if(employeeTypeSelect_MNGR_add.isSelected()) command = "AM";
-    else if(employeeTypeSelect_FT_add.isSelected()) command = "AF";
-    else if(employeeTypeSelect_PT_add.isSelected()) command = "AP";
+    if (departmentSelect_CS_add.isSelected())
+      department = "CS";
+    else if (departmentSelect_ECE_add.isSelected())
+      department = "ECE";
+    else if (departmentSelect_IT_add.isSelected())
+      department = "IT";
+
+    if (employeeTypeSelect_MNGR_add.isSelected())
+      command = "AM";
+    else if (employeeTypeSelect_FT_add.isSelected())
+      command = "AF";
+    else if (employeeTypeSelect_PT_add.isSelected())
+      command = "AP";
+
+    if (managerTypeSelect_MNGR.isSelected())
+      managerType = "1";
+    else if (managerTypeSelect_DH.isSelected())
+      managerType = "2";
+    else if (managerTypeSelect_Dir.isSelected())
+      managerType = "3";
 
     int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
-    switch(tabIndex){
-      case 0: 
-        input = command + " " + lastName + "," + firstName + " " + department + " " + dateHired + " " + hourlyRate;
-        break;
+    switch (tabIndex) {
+    case 0:
+      input = command + " " + lastName + "," + firstName + " " + department + " " + dateHired + " " + hourlyRate + " " + managerType;
+      break;
     }
-    pp.run(input);
+    output = pp.run(input);
+
+    for (String str : output) {
+      System.out.println(str);
+      if (str != null) {
+        finalOutput += str + "\n";
+      }
+    }
+    messageOuput.setText(finalOutput);
   }
 
-  //for printing
+  // for printing
   @FXML
   void onViewAll(ActionEvent event) {
-
   }
 
   @FXML
   void onViewDateHired(ActionEvent event) {
-
   }
 
   @FXML
   void onViewDepartment(ActionEvent event) {
-
   }
 
   @FXML
   public void initialize() {
-      System.out.println("mother fucker");
-      // pp.run();
+    System.out.println("mother fucker");
+    // pp.run();
   }
 }
