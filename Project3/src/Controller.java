@@ -183,7 +183,10 @@ public class Controller {
   private TextArea exportOutput;
 
   // functions:
+@FXML
+  void disableManagerTypeSelect(ActionEvent event) {
 
+  }
   @FXML
   void disableDepartmentSelect(ActionEvent event) {
     if(departmentSelect_CS_add.isSelected()){
