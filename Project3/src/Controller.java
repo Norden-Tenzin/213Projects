@@ -91,7 +91,9 @@ public class Controller {
 
   @FXML
   void onSubmit(ActionEvent event) {
-
-  }
-
+    int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
+    switch(tabIndex){
+      
+    }
+  };
 }
