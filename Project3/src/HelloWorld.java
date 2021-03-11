@@ -16,6 +16,7 @@ public  class HelloWorld extends Application {
 
            primaryStage.setTitle ( "test-Window" );
            primaryStage.setScene (scene);
+           primaryStage.setResizable(false);
            primaryStage.show ();
        } catch (Exception e) {
            e.printStackTrace ();

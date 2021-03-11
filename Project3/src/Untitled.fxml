@@ -47,7 +47,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project3.src.Controller">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -67,82 +67,82 @@
                                                    <children>
                                                       <TabPane layoutY="1.0" prefHeight="280.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
                                                         <tabs>
-                                                          <Tab text="Add">
+                                                          <Tab fx:id="addTab" text="Add">
                                                             <content>
                                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <TextField fx:id="lastName_Add" layoutX="33.0" layoutY="14.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
-                                                                        <TextField fx:id="firstName_Add" layoutX="261.0" layoutY="14.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input" layoutX="33.0" layoutY="14.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
+                                                                        <TextField fx:id="firstName_Input" layoutX="261.0" layoutY="14.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
                                                                         <Label layoutX="33.0" layoutY="73.0" text="Department:" underline="true" />
                                                                         <ButtonBar cache="true" layoutX="128.0" layoutY="73.0">
                                                                            <buttons>
-                                                                              <RadioButton mnemonicParsing="false" text="CS" />
-                                                                              <RadioButton mnemonicParsing="false" text="ECE" />
-                                                                              <RadioButton prefHeight="18.0" prefWidth="99.0" text="IT" />
+                                                                              <RadioButton fx:id="departmentSelect_CS" mnemonicParsing="false" text="CS" />
+                                                                              <RadioButton fx:id="departmentSelect_ECE" mnemonicParsing="false" text="ECE" />
+                                                                              <RadioButton fx:id="departmentSelect_IT" prefHeight="18.0" prefWidth="99.0" text="IT" />
                                                                            </buttons>
                                                                         </ButtonBar>
-                                                                        <DatePicker layoutX="126.0" layoutY="110.0" prefHeight="31.0" prefWidth="243.0" />
+                                                                        <DatePicker fx:id="dateHired_Input" layoutX="126.0" layoutY="110.0" prefHeight="31.0" prefWidth="243.0" />
                                                                         <Label layoutX="35.0" layoutY="117.0" text="Date Hired:" underline="true" />
                                                                         <Label layoutX="35.0" layoutY="162.0" text="Employee Type:" underline="true" />
                                                                         <ButtonBar layoutX="138.0" layoutY="162.0">
                                                                            <buttons>
-                                                                              <RadioButton mnemonicParsing="false" text="Manager" />
-                                                                              <RadioButton mnemonicParsing="false" text="Full Time" />
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="106.0" text="Part Time" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_MNGR" mnemonicParsing="false" text="Manager" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_FT" mnemonicParsing="false" text="Full Time" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_PT" mnemonicParsing="false" prefHeight="18.0" prefWidth="106.0" text="Part Time" />
                                                                            </buttons>
                                                                         </ButtonBar>
                                                                         <Label layoutX="35.0" layoutY="205.0" text="Annual Salary / Hourly Rate:" underline="true" />
-                                                                        <TextField layoutX="200.0" layoutY="198.0" prefHeight="31.0" prefWidth="241.0" promptText="\$0.00" />
+                                                                        <TextField fx:id="hourlyRate_Input" layoutX="200.0" layoutY="198.0" prefHeight="31.0" prefWidth="241.0" promptText="\$0.00" />
                                                                      </children>
                                                                   </AnchorPane>
                                                             </content>
                                                           </Tab>
-                                                            <Tab text="Remove">
+                                                            <Tab fx:id="removeTab" text="Remove">
                                                                <content>
                                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <TextField fx:id="lastName" layoutX="33.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
-                                                                        <TextField layoutX="261.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input" layoutX="33.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
+                                                                        <TextField fx:id="firstName_Input" layoutX="261.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
                                                                         <Label layoutX="34.0" layoutY="83.0" text="Department:" underline="true" />
                                                                         <ButtonBar cache="true" layoutX="128.0" layoutY="83.0">
                                                                            <buttons>
-                                                                              <RadioButton mnemonicParsing="false" text="CS" />
-                                                                              <RadioButton mnemonicParsing="false" text="ECE" />
-                                                                              <RadioButton prefHeight="18.0" prefWidth="99.0" text="IT" />
+                                                                              <RadioButton fx:id="departmentSelect_CS" mnemonicParsing="false" text="CS" />
+                                                                              <RadioButton fx:id="departmentSelect_ECE" mnemonicParsing="false" text="ECE" />
+                                                                              <RadioButton fx:id="departmentSelect_IT" prefHeight="18.0" prefWidth="99.0" text="IT" />
                                                                            </buttons>
                                                                         </ButtonBar>
-                                                                        <DatePicker layoutX="129.0" layoutY="126.0" prefHeight="31.0" prefWidth="243.0" />
+                                                                        <DatePicker fx:id="dateHired_Input" layoutX="129.0" layoutY="126.0" prefHeight="31.0" prefWidth="243.0" />
                                                                         <Label layoutX="37.0" layoutY="133.0" text="Date Hired:" underline="true" />
                                                                         <Label layoutX="35.0" layoutY="180.0" text="Employee Type:" underline="true" />
                                                                         <ButtonBar layoutX="142.0" layoutY="180.0">
                                                                            <buttons>
-                                                                              <RadioButton mnemonicParsing="false" text="Manager" />
-                                                                              <RadioButton mnemonicParsing="false" text="Full Time" />
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="106.0" text="Part Time" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_MNGR" mnemonicParsing="false" text="Manager" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_FT" mnemonicParsing="false" text="Full Time" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_PT" mnemonicParsing="false" prefHeight="18.0" prefWidth="106.0" text="Part Time" />
                                                                            </buttons>
                                                                         </ButtonBar>
                                                                      </children>
                                                                   </AnchorPane>
                                                                </content>
                                                             </Tab>
-                                                            <Tab text="Set Hours">
+                                                            <Tab fx:id="setHoursTab" text="Set Hours">
                                                                <content>
                                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <TextField layoutX="33.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
-                                                                        <TextField layoutX="261.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input" layoutX="33.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
+                                                                        <TextField fx:id="firstName_Input" layoutX="261.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
                                                                         <Label layoutX="34.0" layoutY="83.0" text="Department:" underline="true" />
                                                                         <ButtonBar cache="true" layoutX="128.0" layoutY="83.0">
                                                                            <buttons>
-                                                                              <RadioButton mnemonicParsing="false" text="CS" />
-                                                                              <RadioButton mnemonicParsing="false" text="ECE" />
-                                                                              <RadioButton prefHeight="18.0" prefWidth="99.0" text="IT" />
+                                                                              <RadioButton fx:id="departmentSelect_CS" mnemonicParsing="false" text="CS" />
+                                                                              <RadioButton fx:id="departmentSelect_ECE" mnemonicParsing="false" text="ECE" />
+                                                                              <RadioButton fx:id="departmentSelect_IT" prefHeight="18.0" prefWidth="99.0" text="IT" />
                                                                            </buttons>
                                                                         </ButtonBar>
-                                                                        <DatePicker layoutX="129.0" layoutY="126.0" prefHeight="31.0" prefWidth="243.0" />
+                                                                        <DatePicker fx:id="dateHired_Input" layoutX="129.0" layoutY="126.0" prefHeight="31.0" prefWidth="243.0" />
                                                                         <Label layoutX="37.0" layoutY="133.0" text="Date Hired:" underline="true" />
                                                                         <ButtonBar layoutX="142.0" layoutY="180.0" />
-                                                                        <TextField layoutX="132.0" layoutY="180.0" prefHeight="31.0" prefWidth="239.0" promptText="0.00" />
+                                                                        <TextField fx:id="numHours_Input" layoutX="132.0" layoutY="180.0" prefHeight="31.0" prefWidth="239.0" promptText="0.00" />
                                                                         <Label layoutX="37.0" layoutY="187.0" text="Hours:" underline="true" />
                                                                      </children>
                                                                   </AnchorPane>
@@ -154,12 +154,12 @@
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="281.0" prefWidth="145.0">
                                                    <children>
-                                                      <Button layoutX="7.0" layoutY="238.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="134.0" text="Submit">
+                                                      <Button fx:id="submit" layoutX="7.0" layoutY="238.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="134.0" text="Submit">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <Button layoutX="8.0" layoutY="202.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Process Payment" />
+                                                      <Button fx:id="processPayment" layoutX="8.0" layoutY="202.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="131.0" text="Process Payment" />
                                                       <Label layoutX="4.0" layoutY="10.0" prefHeight="174.0" prefWidth="138.0" text="Welcome to the payment processing program!" textAlignment="CENTER" wrapText="true">
                                                          <font>
                                                             <Font size="17.0" />
@@ -198,9 +198,9 @@
                                     </AnchorPane>
                                 </content>
                               </ScrollPane>
-                              <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="View All" />
-                              <Button layoutX="251.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="139.0" text="View by Date Hired" />
-                              <Button layoutX="491.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="135.0" text="View By Department" />
+                              <Button fx:id="viewAll_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="View All" />
+                              <Button fx:id="viewDateHired_Button" layoutX="251.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="139.0" text="View by Date Hired" />
+                              <Button fx:id="viewDepartment_Button" layoutX="491.0" layoutY="14.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="135.0" text="View By Department" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -214,8 +214,8 @@
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="168.0" text="Upload File" />
-                                                <Button layoutX="458.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="168.0" text="Submit" />
+                                                <Button fx:id="uploadFile_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="168.0" text="Upload File" />
+                                                <Button fx:id="submitImport" layoutX="458.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="168.0" text="Submit" />
                                                 <TextArea editable="false" layoutX="13.0" layoutY="83.0" prefHeight="209.0" prefWidth="615.0">
                                                    <font>
                                                       <Font size="20.0" />
@@ -229,7 +229,7 @@
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Button layoutX="458.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="168.0" text="Export to file" />
+                                                <Button fx:id="export_Button" layoutX="458.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="168.0" text="Export to file" />
                                                 <TextArea editable="false" layoutX="12.0" layoutY="67.0" prefHeight="209.0" prefWidth="615.0">
                                                    <font>
                                                       <Font size="20.0" />
