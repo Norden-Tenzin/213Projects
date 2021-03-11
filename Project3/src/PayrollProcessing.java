@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 public class PayrollProcessing {
    private Company company = new Company();
 
-   /**
+    /**
     * Run method used to run PayrollProcessing.
     */
    public String[] run(String inputCommands) {
