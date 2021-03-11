@@ -178,11 +178,7 @@ public class Controller {
 
   }
 
-  // add, remove, set hours
-  @FXML
-  void onSubmit(ActionEvent event) {
-
-  }
+ 
 
   //for printing
   @FXML
@@ -199,5 +195,17 @@ public class Controller {
   void onViewDepartment(ActionEvent event) {
 
   }
+
+
+
+   // add, remove, set hours
+   @FXML
+   void onSubmit(ActionEvent event) {
+     int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
+     switch(tabIndex){
+ 
+     }
+   }
+
 
 }
