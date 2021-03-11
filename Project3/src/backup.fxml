@@ -65,7 +65,7 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                    <children>
-                                                      <TabPane layoutY="1.0" prefHeight="280.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
+                                                      <TabPane fx:id="mangeEmployees_TabPane" layoutY="1.0" prefHeight="280.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
                                                         <tabs>
                                                           <Tab fx:id="addTab" text="Add">
                                                             <content>
@@ -76,9 +76,9 @@
                                                                         <Label layoutX="33.0" layoutY="73.0" text="Department:" underline="true" />
                                                                         <ButtonBar cache="true" layoutX="128.0" layoutY="73.0">
                                                                            <buttons>
-                                                                              <RadioButton fx:id="departmentSelect_CS" mnemonicParsing="false" text="CS" />
-                                                                              <RadioButton fx:id="departmentSelect_ECE" mnemonicParsing="false" text="ECE" />
-                                                                              <RadioButton fx:id="departmentSelect_IT" prefHeight="18.0" prefWidth="99.0" text="IT" />
+                                                                              <RadioButton fx:id="departmentSelect_CS_add" mnemonicParsing="false" text="CS" />
+                                                                              <RadioButton fx:id="departmentSelect_ECE_add" mnemonicParsing="false" text="ECE" />
+                                                                              <RadioButton fx:id="departmentSelect_IT_add" prefHeight="18.0" prefWidth="99.0" text="IT" />
                                                                            </buttons>
                                                                         </ButtonBar>
                                                                         <DatePicker fx:id="dateHired_Input" layoutX="126.0" layoutY="110.0" prefHeight="31.0" prefWidth="243.0" />
