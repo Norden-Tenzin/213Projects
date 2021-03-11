@@ -9,18 +9,16 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class PayrollProcessing {
+   private Company company = new Company();
 
    /**
     * Run method used to run PayrollProcessing.
     */
-   public void run() {
-      Company company = new Company();
-      Scanner sc = new Scanner(System.in);
-
-      System.out.println("Payroll Processing starts.");
-      while (sc.hasNext()) {
-         StringTokenizer input = new StringTokenizer(sc.nextLine(), " ");
-
+   public String[] run(String inputCommands) {
+      String output[];
+      // Scanner sc = new Scanner(System.in);
+      output("Payroll Processing starts.");
+         StringTokenizer input = new StringTokenizer(inputCommands, " ");
          String command = "";
          String name = "";
          String department = "";
@@ -68,18 +66,18 @@ public class PayrollProcessing {
          // create an employee profile if a date exists.
          if (date.length() > 0) {
             employeeProfile = new Profile(name, department, new Date(date));
-            if (!isValidProfile(employeeProfile))
-               continue;
+            // if (!isValidProfile(employeeProfile))
+            //    continue;
          }
 
-         if (command.equals("Q"))
-            break;
+         // if (command.equals("Q"))
+         //    break;
 
          // When we have more than one argument passed, run this block:
          if (!onlyOneArgument) {
             // checks if number of arguments are valid for corresponding command.
-            if (!validateArguments(command, totalInputs))
-               continue;
+            // if (!validateArguments(command, totalInputs))
+            //    continue;
 
             switch (command) {
                case "AP":
@@ -91,8 +89,7 @@ public class PayrollProcessing {
                      } else {
                         System.out.println("Employee is already in the list.");
                      }
-                  } else
-                     continue;
+                  }
                   break;
                case "AF":
                   if (validatePayHours(payHours)) {
@@ -103,8 +100,7 @@ public class PayrollProcessing {
                      } else {
                         System.out.println("Employee is already in the list.");
                      }
-                  } else
-                     continue;
+                  }
                   break;
                case "AM":
                   if (!validRole(role)) {
@@ -190,11 +186,9 @@ public class PayrollProcessing {
                      System.out.println("Employee database is empty.");
                   }
                   break;
-               default:
-                  continue;
             }
          }
-      }
+
       System.out.println("Payroll Processing complete.");
    }
 

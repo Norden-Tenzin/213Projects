@@ -11,6 +11,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 
 public class Controller {
+  private PayrollProcessing pp = new PayrollProcessing();
 
   @FXML
   private TabPane mangeEmployees_TabPane;
@@ -178,7 +179,32 @@ public class Controller {
 
   }
 
- 
+  // add, remove, set hours
+  @FXML
+  void onSubmit(ActionEvent event) {
+    String input = "";
+    String command = "";
+    String department = "";
+    String firstName = firstName_Input_add.getText();
+    String lastName = lastName_Input_add.getText();
+    String dateHired = dateHired_Input_add.getValue().toString();
+    String hourlyRate = hourlyRate_Input.getText();
+    if(departmentSelect_CS_add.isSelected()) department = "CS";
+    else if(departmentSelect_ECE_add.isSelected()) department = "ECE";
+    else if(departmentSelect_IT_add.isSelected()) department = "IT";
+
+    if(employeeTypeSelect_MNGR_add.isSelected()) command = "AM";
+    else if(employeeTypeSelect_FT_add.isSelected()) command = "AF";
+    else if(employeeTypeSelect_PT_add.isSelected()) command = "AP";
+
+    int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
+    switch(tabIndex){
+      case 0: 
+        input = command + " " + lastName + "," + firstName + " " + department + " " + dateHired + " " + hourlyRate;
+        break;
+    }
+    pp.run(input);
+  }
 
   //for printing
   @FXML
@@ -196,16 +222,9 @@ public class Controller {
 
   }
 
-
-
-   // add, remove, set hours
-   @FXML
-   void onSubmit(ActionEvent event) {
-     int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
-     switch(tabIndex){
- 
-     }
-   }
-
-
+  @FXML
+  public void initialize() {
+      System.out.println("mother fucker");
+      // pp.run();
+  }
 }
