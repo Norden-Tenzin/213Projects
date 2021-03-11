@@ -1,7 +1,10 @@
 package Project3.src;
 
+import javax.swing.JRadioButton;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -142,6 +145,10 @@ public class Controller {
   @FXML
   private Button submit;
 
+  @FXML
+  private Button resetButton;
+
+
   // process payment button
   @FXML
   private Button processPayment;
@@ -183,20 +190,42 @@ public class Controller {
   private TextArea exportOutput;
 
   // functions:
-@FXML
+  @FXML
   void disableManagerTypeSelect(ActionEvent event) {
-
+      managerTypeButtonBar.setDisable(true);
   }
+
   @FXML
   void disableDepartmentSelect(ActionEvent event) {
-    if(departmentSelect_CS_add.isSelected()){
-      departmentSelect_ECE_add.setDisable(true);
-      departmentSelect_IT_add.setDisable(true);
+    
+    int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
+    switch(tabIndex){
+      case 0: 
+        departmentButtonBar_add.setDisable(true);
+        break;
+      case 1: 
+        departmentButtonBar_RMV.setDisable(true);
+        break;
+      case 2: 
+        departmentButtonBar_SH.setDisable(true);
+        break;
     }
   }
 
   @FXML
   void disableEmployeeSelect(ActionEvent event) {
+      if(employeeTypeSelect_MNGR_add.isSelected()){
+        managerTypeButtonBar.setDisable(false);
+      }
+      int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
+      switch(tabIndex){
+        case 0: 
+          employeeButtonBar_add.setDisable(true);
+          break;
+        case 1: 
+          employeeButtonBar_RMV.setDisable(true);
+          break;
+      }
 
   }
 
@@ -224,6 +253,10 @@ public class Controller {
   // add, remove, set hours
   @FXML
   void onSubmit(ActionEvent event) {
+
+    
+   
+
     String input = "";
     String command = "";
     String department = "";
@@ -267,6 +300,58 @@ public class Controller {
   @FXML
   public void initialize() {
       System.out.println("mother fucker");
+      managerTypeButtonBar.setDisable(true);
       // pp.run();
   }
+
+  @FXML
+  void resetData(ActionEvent event) {
+    lastName_Input_add.clear();
+    lastName_Input_rmv.clear();
+    lastName_Input_sh.clear();
+
+    firstName_Input_add.clear();
+    firstName_Input_rmv.clear();
+    firstName_Input_sh.clear();
+ 
+    dateHired_Input_add.getEditor().clear();
+    dateHired_Input_rmv.getEditor().clear();
+    dateHired_Input_sh.getEditor().clear();
+
+    departmentSelect_CS_add.setSelected(false);
+    departmentSelect_CS_rmv.setSelected(false);
+    departmentSelect_CS_sh.setSelected(false);
+
+    departmentSelect_ECE_add.setSelected(false);
+    departmentSelect_ECE_rmv.setSelected(false);
+    departmentSelect_ECE_sh.setSelected(false);
+
+    departmentSelect_IT_add.setSelected(false);
+    departmentSelect_IT_rmv.setSelected(false);
+    departmentSelect_IT_sh.setSelected(false);
+
+    employeeTypeSelect_FT_add.setSelected(false);
+    employeeTypeSelect_FT_rmv.setSelected(false);
+
+    employeeTypeSelect_PT_add.setSelected(false);
+    employeeTypeSelect_PT_rmv.setSelected(false);
+
+    employeeTypeSelect_MNGR_add.setSelected(false);
+    employeeTypeSelect_MNGR_rmv.setSelected(false);
+
+    managerTypeSelect_MNGR.setSelected(false);
+    managerTypeSelect_DH.setSelected(false);
+    managerTypeSelect_Dir.setSelected(false);
+
+    managerTypeButtonBar.setDisable(true);
+    departmentButtonBar_add.setDisable(false);
+    departmentButtonBar_RMV.setDisable(false);
+    departmentButtonBar_SH.setDisable(false);
+    employeeButtonBar_add.setDisable(false);
+    employeeButtonBar_RMV.setDisable(false);
+
+    hourlyRate_Input.setText("");
+    numHours_Input.setText("");
+  }
+
 }

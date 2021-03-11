@@ -44,6 +44,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -162,12 +163,17 @@
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="281.0" prefWidth="145.0">
                                                    <children>
-                                                      <Button fx:id="submit" layoutX="7.0" layoutY="238.0" lineSpacing="1.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="27.0" prefWidth="134.0" text="Submit">
-                                                         <font>
-                                                            <Font size="15.0" />
-                                                         </font>
-                                                      </Button>
-                                                      <Button fx:id="processPayment" layoutX="8.0" layoutY="202.0" mnemonicParsing="false" onAction="#onProcessPayment" prefHeight="27.0" prefWidth="131.0" text="Process Payment" />
+                                                      <VBox layoutX="6.0" layoutY="209.0">
+                                                         <children>
+                                                            <Button fx:id="processPayment" mnemonicParsing="false" onAction="#onProcessPayment" prefHeight="27.0" prefWidth="136.0" text="Process Payment" />
+                                                            <Button fx:id="submit" lineSpacing="1.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="27.0" prefWidth="134.0" text="Submit">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Button>
+                                                            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetData" prefHeight="27.0" prefWidth="134.0" text="RESET" />
+                                                         </children>
+                                                      </VBox>
                                                       <Label layoutX="4.0" layoutY="10.0" prefHeight="174.0" prefWidth="138.0" text="Welcome to the payment processing program!" textAlignment="CENTER" wrapText="true">
                                                          <font>
                                                             <Font size="17.0" />
@@ -206,9 +212,13 @@
                                     </AnchorPane>
                                 </content>
                               </ScrollPane>
-                              <Button fx:id="viewAll_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onViewAll" prefHeight="27.0" prefWidth="140.0" text="View All" />
-                              <Button fx:id="viewDateHired_Button" layoutX="251.0" layoutY="14.0" mnemonicParsing="false" onAction="#onViewDateHired" prefHeight="27.0" prefWidth="139.0" text="View by Date Hired" />
-                              <Button fx:id="viewDepartment_Button" layoutX="491.0" layoutY="14.0" mnemonicParsing="false" onAction="#onViewDepartment" prefHeight="27.0" prefWidth="135.0" text="View By Department" />
+                              <HBox layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="551.0">
+                                 <children>
+                                    <Button fx:id="viewAll_Button" mnemonicParsing="false" onAction="#onViewAll" prefHeight="27.0" prefWidth="140.0" text="View All" />
+                                    <Button fx:id="viewDateHired_Button" mnemonicParsing="false" onAction="#onViewDateHired" prefHeight="27.0" prefWidth="139.0" text="View by Date Hired" />
+                                    <Button fx:id="viewDepartment_Button" mnemonicParsing="false" onAction="#onViewDepartment" prefHeight="27.0" prefWidth="135.0" text="View By Department" />
+                                 </children>
+                              </HBox>
                            </children></AnchorPane>
                   </content>
                 </Tab>
