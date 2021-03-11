@@ -48,19 +48,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project3.src.Controller">
+<VBox prefHeight="517.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project3.src.Controller">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <TabPane prefHeight="400.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="517.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Manage Employees ">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="264.0" prefWidth="640.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="640.0">
                            <children>
-                              <SplitPane dividerPositions="0.8097826086956522" layoutY="-1.0" orientation="VERTICAL" prefHeight="370.0" prefWidth="634.0">
+                              <SplitPane layoutY="-1.0" orientation="VERTICAL" prefHeight="489.0" prefWidth="634.0">
                                 <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="638.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="632.0">
                                        <children>
                                           <SplitPane dividerPositions="0.7648902821316614" layoutX="-3.0" layoutY="-3.0" prefHeight="301.0" prefWidth="640.0">
                                             <items>
@@ -161,7 +161,7 @@
                                                       </TabPane>
                                                    </children>
                                                 </AnchorPane>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="281.0" prefWidth="145.0">
+                                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="145.0">
                                                    <children>
                                                       <VBox layoutX="6.0" layoutY="209.0">
                                                          <children>
@@ -183,16 +183,17 @@
                                                 </AnchorPane>
                                             </items>
                                           </SplitPane>
+                                        <AnchorPane layoutX="2.0" layoutY="298.0" minHeight="0.0" minWidth="0.0" prefHeight="188.0" prefWidth="632.0">
+                                             <children>
+                                                <TextArea fx:id="messageOuput" editable="false" layoutX="-1.0" layoutY="3.0" prefHeight="191.0" prefWidth="640.0">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </TextArea>
+                                             </children>
+                                          </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="79.0" prefWidth="638.0">
-                                       <children>
-                                          <TextArea fx:id="messageOuput" editable="false" layoutX="-1.0" layoutY="8.0" prefHeight="55.0" prefWidth="640.0">
-                                             <font>
-                                                <Font size="22.0" />
-                                             </font>
-                                          </TextArea>
-                                       </children></AnchorPane>
                                 </items>
                               </SplitPane>
                            </children>
