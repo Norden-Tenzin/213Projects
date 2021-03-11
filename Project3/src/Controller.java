@@ -9,16 +9,32 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
   @FXML
   private TabPane mangeEmployees_TabPane;
 
+  @FXML
+  private AnchorPane addPane;
 
-  //Variables for add:
+  // Variables for add:
   @FXML
   private Tab addTab;
+
+  @FXML
+  private ButtonBar managerTypeButtonBar;
+
+  @FXML
+  private RadioButton managerTypeSelect_MNGR;
+
+  @FXML
+  private RadioButton managerTypeSelect_DH;
+
+  @FXML
+  private RadioButton managerTypeSelect_Dir;
 
   @FXML
   private TextField lastName_Input_add;
@@ -36,6 +52,12 @@ public class Controller {
   private RadioButton departmentSelect_IT_add;
 
   @FXML
+  private ButtonBar departmentButtonBar_add;
+
+  @FXML
+  private ButtonBar employeeButtonBar_add;
+
+  @FXML
   private DatePicker dateHired_Input_add;
 
   @FXML
@@ -50,11 +72,15 @@ public class Controller {
   @FXML
   private TextField hourlyRate_Input;
 
-
-
-  //Variables for remove:
+  // Variables for remove:
   @FXML
   private Tab removeTab;
+
+  @FXML
+  private ButtonBar departmentButtonBar_RMV;
+
+  @FXML
+  private ButtonBar employeeButtonBar_RMV;
 
   @FXML
   private TextField lastName_Input_rmv;
@@ -83,10 +109,12 @@ public class Controller {
   @FXML
   private RadioButton employeeTypeSelect_PT_rmv;
 
-
-  //Variables for Set Hours:
+  // Variables for Set Hours:
   @FXML
   private Tab setHoursTab;
+
+  @FXML
+  private ButtonBar departmentButtonBar_SH;
 
   @FXML
   private TextField lastName_Input_sh;
@@ -109,16 +137,15 @@ public class Controller {
   @FXML
   private TextField numHours_Input;
 
-
-  //Submit button
+  // Submit button
   @FXML
   private Button submit;
 
-  //process payment button
+  // process payment button
   @FXML
   private Button processPayment;
 
-  //error message output:
+  // error message output:
   @FXML
   private TextArea messageOuput;
 
@@ -126,7 +153,7 @@ public class Controller {
   @FXML
   private TextArea printOutput;
 
-  //print buttons:
+  // print buttons:
   @FXML
   private Button viewAll_Button;
 
@@ -136,18 +163,18 @@ public class Controller {
   @FXML
   private Button viewDepartment_Button;
 
-  //import/export buttons:
+  // import/export buttons:
   @FXML
   private Button uploadFile_Button;
 
   @FXML
   private Button submitImport;
 
-  //message box for import:
+  // message box for import:
   @FXML
   private TextArea importOutput;
 
-  //export variables:
+  // export variables:
   @FXML
   private Button export_Button;
 
@@ -155,6 +182,19 @@ public class Controller {
   private TextArea exportOutput;
 
   // functions:
+
+  @FXML
+  void disableDepartmentSelect(ActionEvent event) {
+    if(departmentSelect_CS_add.isSelected()){
+      departmentSelect_ECE_add.setDisable(true);
+      departmentSelect_IT_add.setDisable(true);
+    }
+  }
+
+  @FXML
+  void disableEmployeeSelect(ActionEvent event) {
+
+  }
 
   @FXML
   void onExportSubmit(ActionEvent event) {
@@ -171,16 +211,13 @@ public class Controller {
 
   }
 
-
-  //process payment
+  // process payment
   @FXML
   void onProcessPayment(ActionEvent event) {
 
   }
 
- 
-
-  //for printing
+  // for printing
   @FXML
   void onViewAll(ActionEvent event) {
 
@@ -196,10 +233,8 @@ public class Controller {
 
   }
 
-
-
-   // add, remove, set hours
-   @FXML
+  // add, remove, set hours
+  @FXML
    void onSubmit(ActionEvent event) {
      int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
      switch(tabIndex){
@@ -207,5 +242,14 @@ public class Controller {
      }
    }
 
+  @FXML
+  public void initialize() {
+    System.out.println("mother fucker");
+  }
+
+  @FXML
+  void disableManagerTypeSelect(ActionEvent event) {
+
+  }
 
 }

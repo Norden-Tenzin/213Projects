@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class PayrollProcessing {
 
-   /**
+    /**
     * Run method used to run PayrollProcessing.
     */
    public void run() {
