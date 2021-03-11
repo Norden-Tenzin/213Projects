@@ -1,15 +1,9 @@
 package Project3.src;
 
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class TestUI {
 
@@ -17,11 +11,12 @@ public class TestUI {
     private Label bigLabel;
 
     @FXML
-    private Button button;
+    private Button bigButton;
 
     @FXML
     void onClick(ActionEvent event) {
-      System.out.println("yo yo yo");
+      System.out.println("YO");
+      bigLabel.setText("Butt");
     }
 
 }

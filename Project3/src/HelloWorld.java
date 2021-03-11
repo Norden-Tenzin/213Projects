@@ -10,7 +10,7 @@ public  class HelloWorld extends Application {
     @Override 
    public  void start (Stage primaryStage) {
         try {
-           FXMLLoader fxmlLoader = new FXMLLoader (getClass (). getResource ( "TestUI.fxml" ));
+           FXMLLoader fxmlLoader = new FXMLLoader (getClass (). getResource ( "SimpleUI.fxml" ));
            Parent root = (Parent) fxmlLoader.load ();
            Scene scene = new Scene (root);
 
