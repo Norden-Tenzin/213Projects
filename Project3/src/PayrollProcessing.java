@@ -238,6 +238,7 @@ public class PayrollProcessing {
                output += "Calculation of employee payments is done." + "\n";
             } else if (company.getNumEmployee() == 0) {
                output += "Employee database is empty." + "\n";
+               System.out.println("HERE");
             }
             break;
          }
