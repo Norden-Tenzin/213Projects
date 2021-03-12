@@ -318,7 +318,7 @@ public class Controller {
   @FXML
   void onProcessPayment(ActionEvent event) {
     String input = "C";
-    messageOuput.setText(pp.run(input));
+    messageOuput.setText(reverseOutput(pp.run(input)));
   }
 
   /**
@@ -406,7 +406,7 @@ public class Controller {
       input = "S " + lastName + "," + firstName + " " + department + " " + dateHired + " " + numHours;
       break;
     }
-    messageOuput.setText(pp.run(input));
+    messageOuput.setText(reverseOutput(pp.run(input)));
   }
 
   // for printing
@@ -495,4 +495,14 @@ public class Controller {
     importOutput.clear();
   }
 
+  public String reverseOutput(String str){
+    String outputString = "";
+    String [] splittedString = str.split("\n");
+    System.out.println(splittedString.length);
+    
+    for(int i=splittedString.length-1;i>=0;i--){
+      outputString += splittedString[i] + "\n";
+    }
+    return outputString;
+  }
 }
