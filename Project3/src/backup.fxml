@@ -43,6 +43,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -77,9 +78,12 @@
                                                                         <Label layoutX="34.0" layoutY="65.0" text="Department:" underline="true" />
                                                                         <ButtonBar fx:id="departmentButtonBar_add" cache="true" layoutX="129.0" layoutY="65.0">
                                                                            <buttons>
-                                                                              <RadioButton fx:id="departmentSelect_CS_add" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="CS" />
-                                                                              <RadioButton fx:id="departmentSelect_ECE_add" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="ECE" />
-                                                                              <RadioButton fx:id="departmentSelect_IT_add" onAction="#disableDepartmentSelect" prefHeight="18.0" prefWidth="99.0" text="IT" />
+                                                                              <RadioButton fx:id="departmentSelect_CS_add" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="CS">
+                                                                                 <toggleGroup>
+                                                                                    <ToggleGroup fx:id="departmentToggleGroup" />
+                                                                                 </toggleGroup></RadioButton>
+                                                                              <RadioButton fx:id="departmentSelect_ECE_add" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="ECE" toggleGroup="$departmentToggleGroup" />
+                                                                              <RadioButton fx:id="departmentSelect_IT_add" onAction="#disableDepartmentSelect" prefHeight="18.0" prefWidth="99.0" text="IT" toggleGroup="$departmentToggleGroup" />
                                                                            </buttons>
                                                                         </ButtonBar>
                                                                         <DatePicker fx:id="dateHired_Input_add" layoutX="129.0" layoutY="101.0" prefHeight="31.0" prefWidth="243.0" />
@@ -87,9 +91,12 @@
                                                                         <Label layoutX="33.0" layoutY="147.0" text="Employee Type:" underline="true" />
                                                                         <ButtonBar fx:id="employeeButtonBar_add" layoutX="132.0" layoutY="147.0">
                                                                            <buttons>
-                                                                              <RadioButton fx:id="employeeTypeSelect_MNGR_add" mnemonicParsing="false" onAction="#disableEmployeeSelect" text="Manager" />
-                                                                              <RadioButton fx:id="employeeTypeSelect_FT_add" mnemonicParsing="false" onAction="#disableEmployeeSelect" text="Full Time" />
-                                                                              <RadioButton fx:id="employeeTypeSelect_PT_add" mnemonicParsing="false" onAction="#disableEmployeeSelect" prefHeight="18.0" prefWidth="106.0" text="Part Time" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_MNGR_add" mnemonicParsing="false" onAction="#disableEmployeeSelect" text="Manager">
+                                                                                 <toggleGroup>
+                                                                                    <ToggleGroup fx:id="employeeToggleGroup" />
+                                                                                 </toggleGroup></RadioButton>
+                                                                              <RadioButton fx:id="employeeTypeSelect_FT_add" mnemonicParsing="false" onAction="#disableEmployeeSelect" text="Full Time" toggleGroup="$employeeToggleGroup" />
+                                                                              <RadioButton fx:id="employeeTypeSelect_PT_add" mnemonicParsing="false" onAction="#disableEmployeeSelect" prefHeight="18.0" prefWidth="106.0" text="Part Time" toggleGroup="$employeeToggleGroup" />
                                                                            </buttons>
                                                                         </ButtonBar>
                                                                         <Label layoutX="28.0" layoutY="218.0" text="Annual Salary / Hourly Rate:" underline="true" />
@@ -97,9 +104,12 @@
                                                                         <Label layoutX="36.0" layoutY="181.0" text="Manager Type:" underline="true" />
                                                                         <ButtonBar fx:id="managerTypeButtonBar" layoutX="113.0" layoutY="178.0" prefHeight="24.0" prefWidth="407.0">
                                                                            <buttons>
-                                                                              <RadioButton fx:id="managerTypeSelect_MNGR" minWidth="58.0" mnemonicParsing="false" onAction="#disableManagerTypeSelect" prefHeight="0.0" text="Manager" />
-                                                                              <RadioButton fx:id="managerTypeSelect_DH" mnemonicParsing="false" onAction="#disableManagerTypeSelect" prefHeight="18.0" prefWidth="125.0" text="Department Head" />
-                                                                              <RadioButton fx:id="managerTypeSelect_Dir" mnemonicParsing="false" onAction="#disableManagerTypeSelect" prefHeight="18.0" prefWidth="106.0" text="Director" />
+                                                                              <RadioButton fx:id="managerTypeSelect_MNGR" minWidth="58.0" mnemonicParsing="false" onAction="#disableManagerTypeSelect" prefHeight="0.0" text="Manager">
+                                                                                 <toggleGroup>
+                                                                                    <ToggleGroup fx:id="managerToggleGroup" />
+                                                                                 </toggleGroup></RadioButton>
+                                                                              <RadioButton fx:id="managerTypeSelect_DH" mnemonicParsing="false" onAction="#disableManagerTypeSelect" prefHeight="18.0" prefWidth="125.0" text="Department Head" toggleGroup="$managerToggleGroup" />
+                                                                              <RadioButton fx:id="managerTypeSelect_Dir" mnemonicParsing="false" onAction="#disableManagerTypeSelect" prefHeight="18.0" prefWidth="106.0" text="Director" toggleGroup="$managerToggleGroup" />
                                                                            </buttons>
                                                                         </ButtonBar>
                                                                      </children>
