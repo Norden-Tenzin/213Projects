@@ -233,15 +233,14 @@ public class Company {
    }
 
    /**
-    * Exports the company database to a .txt file.
-    * 
+    * Exports the company database to a .txt
     * @param filename
     * @throws FileNotFoundException
     */
-   public void exportDatabase(String filename) throws FileNotFoundException {
+   public void exportDatabase(String filename) throws FileNotFoundException{
       try (PrintWriter out = new PrintWriter(filename)) {
-         String fileOutput = print().replace("--Printing earning statements for all employees--", "");
+         String fileOutput = print().replace("--Printing earning statements for all employees--","");
          out.println(fileOutput);
-      }
+     }
    }
 }
