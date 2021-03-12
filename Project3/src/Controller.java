@@ -151,7 +151,6 @@ public class Controller {
   @FXML
   private Button resetButton;
 
-
   // process payment button
   @FXML
   private Button processPayment;
@@ -195,40 +194,40 @@ public class Controller {
   // functions:
   @FXML
   void disableManagerTypeSelect(ActionEvent event) {
-      managerTypeButtonBar.setDisable(true);
+    managerTypeButtonBar.setDisable(true);
   }
 
   @FXML
   void disableDepartmentSelect(ActionEvent event) {
-    
+
     int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
-    switch(tabIndex){
-      case 0: 
-        departmentButtonBar_add.setDisable(true);
-        break;
-      case 1: 
-        departmentButtonBar_RMV.setDisable(true);
-        break;
-      case 2: 
-        departmentButtonBar_SH.setDisable(true);
-        break;
+    switch (tabIndex) {
+    case 0:
+      departmentButtonBar_add.setDisable(true);
+      break;
+    case 1:
+      departmentButtonBar_RMV.setDisable(true);
+      break;
+    case 2:
+      departmentButtonBar_SH.setDisable(true);
+      break;
     }
   }
 
   @FXML
   void disableEmployeeSelect(ActionEvent event) {
-      if(employeeTypeSelect_MNGR_add.isSelected()){
-        managerTypeButtonBar.setDisable(false);
-      }
-      int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
-      switch(tabIndex){
-        case 0: 
-          employeeButtonBar_add.setDisable(true);
-          break;
-        case 1: 
-          employeeButtonBar_RMV.setDisable(true);
-          break;
-      }
+    if (employeeTypeSelect_MNGR_add.isSelected()) {
+      managerTypeButtonBar.setDisable(false);
+    }
+    int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
+    switch (tabIndex) {
+    case 0:
+      employeeButtonBar_add.setDisable(true);
+      break;
+    case 1:
+      employeeButtonBar_RMV.setDisable(true);
+      break;
+    }
 
   }
 
@@ -252,48 +251,84 @@ public class Controller {
   // add, remove, set hours
   @FXML
   void onSubmit(ActionEvent event) {
-    String[] output;
     String finalOutput = "";
 
     String input = "";
     String command = "";
     String department = "";
     String managerType = "";
-    String firstName = firstName_Input_add.getText();
-    String lastName = lastName_Input_add.getText();
-    String dateHired = dateHired_Input_add.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
-    String hourlyRate = hourlyRate_Input.getText();
-
-    if (departmentSelect_CS_add.isSelected())
-      department = "CS";
-    else if (departmentSelect_ECE_add.isSelected())
-      department = "ECE";
-    else if (departmentSelect_IT_add.isSelected())
-      department = "IT";
-
-    if (employeeTypeSelect_MNGR_add.isSelected())
-      command = "AM";
-    else if (employeeTypeSelect_FT_add.isSelected())
-      command = "AF";
-    else if (employeeTypeSelect_PT_add.isSelected())
-      command = "AP";
-
-    if (managerTypeSelect_MNGR.isSelected())
-      managerType = "1";
-    else if (managerTypeSelect_DH.isSelected())
-      managerType = "2";
-    else if (managerTypeSelect_Dir.isSelected())
-      managerType = "3";
+    String firstName = "";
+    String lastName = "";
+    String dateHired = "";
+    String hourlyRate = "";
+    String numHours = ""; 
 
     int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
     switch (tabIndex) {
     case 0:
-      input = command + " " + lastName + "," + firstName + " " + department + " " + dateHired + " " + hourlyRate + " " + managerType;
+      firstName = firstName_Input_add.getText();
+      lastName = lastName_Input_add.getText();
+      dateHired = dateHired_Input_add.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+      hourlyRate = hourlyRate_Input.getText();
+
+      if (departmentSelect_CS_add.isSelected())
+        department = "CS";
+      else if (departmentSelect_ECE_add.isSelected())
+        department = "ECE";
+      else if (departmentSelect_IT_add.isSelected())
+        department = "IT";
+
+      if (employeeTypeSelect_MNGR_add.isSelected())
+        command = "AM";
+      else if (employeeTypeSelect_FT_add.isSelected())
+        command = "AF";
+      else if (employeeTypeSelect_PT_add.isSelected())
+        command = "AP";
+
+      if (managerTypeSelect_MNGR.isSelected())
+        managerType = "1";
+      else if (managerTypeSelect_DH.isSelected())
+        managerType = "2";
+      else if (managerTypeSelect_Dir.isSelected())
+        managerType = "3";
+
+      input = command + " " + lastName + "," + firstName + " " + department + " " + dateHired + " " + hourlyRate + " "
+          + managerType;
+      break;
+
+    case 1:
+      firstName = firstName_Input_rmv.getText();
+      lastName = lastName_Input_rmv.getText();
+      dateHired = dateHired_Input_rmv.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+
+      if (departmentSelect_CS_rmv.isSelected())
+        department = "CS";
+      else if (departmentSelect_ECE_rmv.isSelected())
+        department = "ECE";
+      else if (departmentSelect_IT_rmv.isSelected())
+        department = "IT";
+
+      input = "R " + lastName + "," + firstName + " " + department + " " + dateHired;
+      break;
+
+    case 2:
+      firstName = firstName_Input_sh.getText();
+      lastName = lastName_Input_sh.getText();
+      dateHired = dateHired_Input_sh.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+
+      if (departmentSelect_CS_sh.isSelected())
+        department = "CS";
+      else if (departmentSelect_ECE_sh.isSelected())
+        department = "ECE";
+      else if (departmentSelect_IT_sh.isSelected())
+        department = "IT";
+
+      numHours = numHours_Input.getText();
+
+      input = "R " + lastName + "," + firstName + " " + department + " " + dateHired + " " + numHours;
       break;
     }
-    output = pp.run(input);
-
-    for (String str : output) {
+    for (String str : pp.run(input)) {
       System.out.println(str);
       if (str != null) {
         finalOutput += str + "\n";
@@ -305,21 +340,51 @@ public class Controller {
   // for printing
   @FXML
   void onViewAll(ActionEvent event) {
+    String input = "PA";
+    String finalOutput = "";
+
+    for (String str : pp.run(input)) {
+      System.out.println(str);
+      if (str != null) {
+        finalOutput += str + "\n";
+      }
+    }
+    printOutput.setText(finalOutput);
   }
 
   @FXML
   void onViewDateHired(ActionEvent event) {
+    String input = "PH";
+    String finalOutput = "";
+
+    for (String str : pp.run(input)) {
+      System.out.println(str);
+      if (str != null) {
+        finalOutput += str + "\n";
+      }
+    }
+    printOutput.setText(finalOutput);
   }
 
   @FXML
   void onViewDepartment(ActionEvent event) {
+    String input = "PD";
+    String finalOutput = "";
+
+    for (String str : pp.run(input)) {
+      System.out.println(str);
+      if (str != null) {
+        finalOutput += str + "\n";
+      }
+    }
+    printOutput.setText(finalOutput);
   }
 
   @FXML
   public void initialize() {
-      System.out.println("mother fucker");
-      managerTypeButtonBar.setDisable(true);
-      // pp.run();
+    System.out.println("mother fucker");
+    managerTypeButtonBar.setDisable(true);
+    // pp.run();
   }
 
   @FXML
@@ -331,7 +396,7 @@ public class Controller {
     firstName_Input_add.clear();
     firstName_Input_rmv.clear();
     firstName_Input_sh.clear();
- 
+
     dateHired_Input_add.getEditor().clear();
     dateHired_Input_rmv.getEditor().clear();
     dateHired_Input_sh.getEditor().clear();

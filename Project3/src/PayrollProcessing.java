@@ -155,31 +155,27 @@ public class PayrollProcessing {
          case "S":
             if (company.getNumEmployee() == 0) {
                add("Employee database is empty.");
-               System.out.println("Employee database is empty.");
                break;
             } else if (!validatePayHours(payHours)) {
                add("Working hours cannot be negative.");
-               System.out.println("Working hours cannot be negative.");
                break;
             } else if (Integer.parseInt(payHours) > Parttime.OVERFLOWHOURS) {
                add("Invalid Hours: over 100.");
-               System.out.println("Invalid Hours: over 100.");
                break;
             } else if (validatePayHours(payHours)) {
                Parttime emp = new Parttime(employeeProfile, 0);
                emp.setHours(Integer.parseInt(payHours));
                company.setHours(emp);
                add("Working hours set.");
-               System.out.println("Working hours set.");
             }
             break;
          default:
             add("Payroll Processing completed.");
-            System.out.println("Payroll Processing completed.");
          }
       }
 
       // When we only have one argument passed:
+      String printArr[];
       if (onlyOneArgument) {
          switch (command) {
          case "PA":
@@ -187,7 +183,10 @@ public class PayrollProcessing {
                add("Employee database is empty.");
             else {
                add("--Printing earning statements for all employees--");
-               company.print();
+               printArr = company.print();
+               for(String str: printArr){
+                  add(str);
+               }
             }
             break;
          case "PD":
@@ -195,7 +194,10 @@ public class PayrollProcessing {
                add("Employee database is empty.");
             else {
                add("--Printing earning statements by department--");
-               company.printByDepartment();
+               printArr = company.printByDepartment();
+               for(String str: printArr){
+                  add(str);
+               }
             }
             break;
          case "PH":
@@ -203,7 +205,10 @@ public class PayrollProcessing {
                add("Employee database is empty.");
             else {
                add("--Printing earning statements by date hired--");
-               company.printByDate();
+               printArr = company.printByDate();
+               for(String str: printArr){
+                  add(str);
+               }
             }
             break;
          case "C":
