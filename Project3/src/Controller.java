@@ -281,11 +281,11 @@ public class Controller {
         department = "IT";
 
       if (employeeTypeSelect_MNGR_add.isSelected())
-        command = "AM";
+        command = "M";
       else if (employeeTypeSelect_FT_add.isSelected())
-        command = "AF";
+        command = "F";
       else if (employeeTypeSelect_PT_add.isSelected())
-        command = "AP";
+        command = "P";
 
       if (managerTypeSelect_MNGR.isSelected())
         managerType = "1";
