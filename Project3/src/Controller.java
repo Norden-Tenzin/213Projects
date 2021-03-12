@@ -191,7 +191,13 @@ public class Controller {
   @FXML
   private TextArea exportOutput;
 
-  // functions:
+  /**
+    * Looks through the employees array to find the employee with the same profile.
+    *
+    * @param employee employee Object
+    * @return index of the employee if employee is found in the employees array.
+    *         otherwise -1.
+    */
   @FXML
   void disableManagerTypeSelect(ActionEvent event) {
     managerTypeButtonBar.setDisable(true);
@@ -248,6 +254,8 @@ public class Controller {
   // process payment
   @FXML
   void onProcessPayment(ActionEvent event) {
+    String input = "C";
+    messageOuput.setText(pp.run(input));
   }
 
   // add, remove, set hours
