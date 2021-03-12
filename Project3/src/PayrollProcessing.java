@@ -180,7 +180,6 @@ public class PayrollProcessing {
       if (onlyOneArgument) {
          switch (command) {
          case "PA":
-            this.output = new String[4];
             if (company.getNumEmployee() == 0)
                output += "Employee database is empty." + "\n";
             else {
@@ -190,7 +189,6 @@ public class PayrollProcessing {
             }
             break;
          case "PD":
-            this.output = new String[4];
             if (company.getNumEmployee() == 0)
                output += "Employee database is empty." + "\n";
             else {
@@ -200,7 +198,6 @@ public class PayrollProcessing {
             }
             break;
          case "PH":
-            this.output = new String[4];
             if (company.getNumEmployee() == 0)
                output += "Employee database is empty." + "\n";
             else {
