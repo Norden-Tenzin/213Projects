@@ -76,8 +76,9 @@ public class PayrollProcessing {
             
             String extracted = command + " " + lastName + "," + firstName + " " + department + " " + date + " " + payHours + " "
                + role;
-            output = output + run(extracted);
-            
+            System.out.println(extracted);
+            output = run(extracted);
+            System.out.println(output);
          }
       } catch (FileNotFoundException e) {
          System.out.println("File Not Found");
