@@ -12,31 +12,32 @@ import java.util.StringTokenizer;
 
 public class PayrollProcessing {
    private Company company = new Company();
-   private String[] output = new String[4];
+   // private String[] output = new String[4];
+   private String output = "";
 
    /**
     * Run method used to run PayrollProcessing.
     */
-   private void grow() {
-      String[] newArray = new String[output.length + 4];
+   // private void grow() {
+   // String[] newArray = new String[output.length + 4];
 
-      for (int i = 0; i < output.length; i++) {
-         newArray[i] = output[i];
-      }
-      output = newArray;
-   }
+   // for (int i = 0; i < output.length; i++) {
+   // newArray[i] = output[i];
+   // }
+   // output = newArray;
+   // }
 
-   public void add(String str) {
-      if (output[output.length - 1] != null)
-         grow();
+   // public void add(String str) {
+   // if (output[output.length - 1] != null)
+   // grow();
 
-      for (int i = 0; i < output.length; i++) {
-         if (output[i] == null) {
-            output[i] = str;
-            break;
-         }
-      }
-   }
+   // for (int i = 0; i < output.length; i++) {
+   // if (output[i] == null) {
+   // output[i] = str;
+   // break;
+   // }
+   // }
+   // }
 
    public String importFile() {
       Scanner sc;
@@ -84,9 +85,9 @@ public class PayrollProcessing {
       return output;
    }
 
-   public String[] run(String inputCommands) {
-      if (output[0] == null) {
-         add("Payroll Processing starts.");
+    public String run(String inputCommands) {
+      if (output == "") {
+         output += "Payroll Processing starts." + "\n";
       }
       StringTokenizer input = new StringTokenizer(inputCommands, " ");
       String command = "";
@@ -110,7 +111,7 @@ public class PayrollProcessing {
             }
          }
          if (!isValidCommand) {
-            add("Command '" + command + "' not supported!");
+            output += "Command '" + command + "' not supported!" + "\n";
          }
       }
 
@@ -155,9 +156,9 @@ public class PayrollProcessing {
                Parttime employee = new Parttime(employeeProfile, Double.parseDouble(payHours));
                if (!company.alreadyExists(employee)) {
                   company.add(employee);
-                  add("Employee added.");
+                  output += "Employee added." + "\n";
                } else {
-                  add("Employee is already in the list.");
+                  output += "Employee is already in the list." + "\n";
                }
             }
             break;
@@ -166,16 +167,15 @@ public class PayrollProcessing {
                Fulltime employee = new Fulltime(employeeProfile, Double.parseDouble(payHours));
                if (!company.alreadyExists(employee)) {
                   company.add(employee);
-                  add("Employee added.");
+                  output += "Employee added." + "\n";
                } else {
-                  add("Employee is already in the list.");
+                  output += "Employee is already in the list." + "\n";
                }
             }
             break;
          case "AM":
             if (!validRole(role)) {
-               add("invalid Management code.");
-
+               output += "invalid Management code." + "\n";
                break;
             }
             if (validatePayHours(payHours) && validRole(role)) {
@@ -184,9 +184,9 @@ public class PayrollProcessing {
 
                if (!company.alreadyExists(employee)) {
                   company.add(employee);
-                  add("Employee added.");
+                  output += "Employee added." + "\n";
                } else {
-                  add("Employee is already in the list.");
+                  output += "Employee is already in the list." + "\n";
                }
             }
             break;
@@ -194,80 +194,72 @@ public class PayrollProcessing {
             Employee removeEmployee = new Employee(employeeProfile);
             boolean wasRemoved = company.remove(removeEmployee);
             if (wasRemoved)
-               add("Employee removed.");
+               output += "Employee removed." + "\n";
             else if (company.getNumEmployee() == 0) {
-               add("Employee database is empty.");
+               output += "Employee database is empty." + "\n";
             } else
-               add("Employee does not exist.");
+               output += "Employee does not exist." + "\n";
             break;
          case "S":
             if (company.getNumEmployee() == 0) {
-               add("Employee database is empty.");
+               output += "Employee database is empty." + "\n";
                break;
             } else if (!validatePayHours(payHours)) {
-               add("Working hours cannot be negative.");
+               output += "Working hours cannot be negative." + "\n";
                break;
             } else if (Integer.parseInt(payHours) > Parttime.OVERFLOWHOURS) {
-               add("Invalid Hours: over 100.");
+               output += "Invalid Hours: over 100." + "\n";
                break;
             } else if (validatePayHours(payHours)) {
                Parttime emp = new Parttime(employeeProfile, 0);
                emp.setHours(Integer.parseInt(payHours));
                company.setHours(emp);
-               add("Working hours set.");
+               output += "Working hours set." + "\n";
             }
             break;
          default:
-            add("Payroll Processing completed.");
+            output += "Payroll Processing completed." + "\n";
          }
       }
 
       // When we only have one argument passed:
-      String printArr[];
+      String printOutout = "";
+      
       if (onlyOneArgument) {
          switch (command) {
          case "PA":
-            this.output = new String[4];
             if (company.getNumEmployee() == 0)
-               add("Employee database is empty.");
+               output += "Employee database is empty." + "\n";
             else {
-               add("--Printing earning statements for all employees--");
-               printArr = company.print();
-               for (String str : printArr) {
-                  add(str);
-               }
+               printOutout += "--Printing earning statements for all employees--" + "\n";
+               printOutout += company.print();
+               return printOutout;
             }
             break;
          case "PD":
-            this.output = new String[4];
             if (company.getNumEmployee() == 0)
-               add("Employee database is empty.");
+               output += "Employee database is empty." + "\n";
             else {
-               add("--Printing earning statements by department--");
-               printArr = company.printByDepartment();
-               for (String str : printArr) {
-                  add(str);
-               }
+               printOutout += "--Printing earning statements for all employees--" + "\n";
+               printOutout += company.printByDepartment();
+               return printOutout;
             }
             break;
          case "PH":
-            this.output = new String[4];
             if (company.getNumEmployee() == 0)
-               add("Employee database is empty.");
+               output += "Employee database is empty." + "\n";
             else {
-               add("--Printing earning statements by date hired--");
-               printArr = company.printByDate();
-               for (String str : printArr) {
-                  add(str);
-               }
+               printOutout += "--Printing earning statements for all employees--" + "\n";
+               printOutout += company.printByDate();
+               return printOutout;
             }
             break;
          case "C":
             if (company.getNumEmployee() != 0) {
                company.processPayments();
-               add("Calculation of employee payments is done.");
+               output += "Calculation of employee payments is done." + "\n";
             } else if (company.getNumEmployee() == 0) {
-               add("Employee database is empty.");
+               output += "Employee database is empty." + "\n";
             }
             break;
          }
@@ -286,12 +278,12 @@ public class PayrollProcessing {
    public boolean isValidProfile(Profile profile) {
       String date = profile.getDateHired().toString();
       if (!profile.validateDate()) {
-         add(date + " is not a valid date!");
+         output += date + " is not a valid date!" + "\n";
          return false;
       }
       String department = profile.getDepartment();
       if (!profile.validateDepartment()) {
-         add(department + " is not a valid department code.");
+         output += department + " is not a valid department code." + "\n";
          return false;
       }
       return true;

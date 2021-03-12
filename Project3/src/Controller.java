@@ -330,13 +330,7 @@ public class Controller {
       input = "R " + lastName + "," + firstName + " " + department + " " + dateHired + " " + numHours;
       break;
     }
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    messageOuput.setText(finalOutput);
+    messageOuput.setText(pp.run(input));
   }
 
   // for printing
@@ -344,16 +338,8 @@ public class Controller {
   void onViewAll(ActionEvent event) { 
     printOutput.clear();
     String input = "PA";
-    String finalOutput = "";
 
-    
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    printOutput.setText(finalOutput);
+    printOutput.setText(pp.run(input));
   }
 
   @FXML
@@ -361,15 +347,8 @@ public class Controller {
     printOutput.clear();
 
     String input = "PH";
-    String finalOutput = "";
-
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    printOutput.setText(finalOutput);
+    
+    printOutput.setText(pp.run(input));
   }
 
   @FXML
@@ -378,22 +357,14 @@ public class Controller {
 
     
     String input = "PD";
-    String finalOutput = "";
 
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    printOutput.setText(finalOutput);
+    printOutput.setText(pp.run(input));
   }
 
   @FXML
   public void initialize() {
     System.out.println("This is running");
     managerTypeButtonBar.setDisable(true);
-    // pp.run();
   }
 
   @FXML
