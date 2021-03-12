@@ -24,6 +24,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+/**
+ * Controller class is used to control all the elements of the fxml. It handles
+ * user interaction logic. Handles Add, Remove, SetHours, Import, Export and All
+ * the print commands in UI.
+ * 
+ * @Tenzin Norden, @Vedant Mehta
+ */
 public class Controller {
 
   private PayrollProcessing pp = new PayrollProcessing();
@@ -208,7 +215,7 @@ public class Controller {
   }
 
   /**
-   * Disables the Manager radio buttons. 
+   * Disables the Manager radio buttons.
    *
    * @param event
    */
@@ -267,22 +274,25 @@ public class Controller {
    * @param event
    */
   @FXML
-  void onExportSubmit(ActionEvent event) {
+  void onExportSubmit(ActionEvent event) throws InvocationTargetException {
 
-    exportOutput.clear();
-    FileChooser chooser = new FileChooser();
-    chooser.setTitle("Open Target File for the Export");
-    chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
-        new ExtensionFilter("All Files", "*.*"));
-    Stage stage = new Stage();
-    File targetFile = chooser.showSaveDialog(stage);
     try {
-      pp.exportToFile(targetFile.getName());
-      exportOutput.setText("Database exported to " + targetFile.getName());
-    } catch (FileNotFoundException e) {
-      exportOutput.setText("Unable to export the file - File not found");
-    } // get the reference of the target file
-      // write code to write to the file.
+      exportOutput.clear();
+      FileChooser chooser = new FileChooser();
+      chooser.setTitle("Open Target File for the Export");
+      chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
+          new ExtensionFilter("All Files", "*.*"));
+      Stage stage = new Stage();
+      File targetFile = chooser.showSaveDialog(stage);
+      try {
+        pp.exportToFile(targetFile.getName());
+        exportOutput.setText("Database exported to " + targetFile.getName());
+      } catch (FileNotFoundException e) {
+        exportOutput.setText("Unable to export the file - File not found");
+      }
+    } catch (Exception e) {
+      exportOutput.setText("Please select a valid output file");
+    }
   }
 
   /**
@@ -303,17 +313,21 @@ public class Controller {
    * @param event
    */
   @FXML
-  void onFileUpload(ActionEvent event) {
-    FileChooser chooser = new FileChooser();
-    chooser.setTitle("Open Source File for the Import");
-    chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
-        new ExtensionFilter("All Files", "*.*"));
-    Stage stage = new Stage();
-    File sourceFile = chooser.showOpenDialog(stage);
-    uploadFile_Button.setText(sourceFile.getName());
-    if (sourceFile.exists()) {
-      submitImport.setDisable(false);
-      uploadedFile = sourceFile;
+  void onFileUpload(ActionEvent event) throws InvocationTargetException {
+    try {
+      FileChooser chooser = new FileChooser();
+      chooser.setTitle("Open Source File for the Import");
+      chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
+          new ExtensionFilter("All Files", "*.*"));
+      Stage stage = new Stage();
+      File sourceFile = chooser.showOpenDialog(stage);
+      uploadFile_Button.setText(sourceFile.getName());
+      if (sourceFile.exists()) {
+        submitImport.setDisable(false);
+        uploadedFile = sourceFile;
+      }
+    } catch (Exception e) {
+      importOutput.setText("Please upload a valid file");
     }
   }
 
