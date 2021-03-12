@@ -237,6 +237,8 @@ public class Controller {
 
   @FXML
   void onFileSubmit(ActionEvent event) {
+    PayrollProcessing pp = new PayrollProcessing();
+    pp.importFile();
   }
 
   @FXML
