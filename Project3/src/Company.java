@@ -135,12 +135,12 @@ public class Company {
     * Prints the employees array as it is currently
     *
     */
-   public String[] print() {
-      String printArr[] = new String[numEmployee];
+   public String print() {
+      String printOutput = "";
       for (int i = 0; i < numEmployee; i++) {
-         printArr[i] = employees[i].toString();
+         printOutput += employees[i].toString() + "\n";
       }
-      return printArr;
+      return printOutput;
    }
 
    /**
@@ -148,7 +148,7 @@ public class Company {
     * employees array
     *
     */
-   public String[] printByDepartment() {
+   public String printByDepartment() {
       Employee temp;
       for (int i = 0; i <= this.employees.length - 1; i++) {
          for (int j = i + 1; j <= this.employees.length - 2; j++) {
@@ -173,7 +173,7 @@ public class Company {
     * employees array
     *
     */
-   public String[] printByDate() {
+   public String printByDate() {
       Employee temp;
       for (int i = 0; i <= this.employees.length - 1; i++) {
          for (int j = i + 1; j <= this.employees.length - 2; j++) {

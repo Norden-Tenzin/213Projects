@@ -328,63 +328,35 @@ public class Controller {
       input = "R " + lastName + "," + firstName + " " + department + " " + dateHired + " " + numHours;
       break;
     }
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    messageOuput.setText(finalOutput);
+    messageOuput.setText(pp.run(input));
   }
 
   // for printing
   @FXML
   void onViewAll(ActionEvent event) {
     String input = "PA";
-    String finalOutput = "";
 
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    printOutput.setText(finalOutput);
+    printOutput.setText(pp.run(input));
   }
 
   @FXML
   void onViewDateHired(ActionEvent event) {
     String input = "PH";
-    String finalOutput = "";
-
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    printOutput.setText(finalOutput);
+    
+    printOutput.setText(pp.run(input));
   }
 
   @FXML
   void onViewDepartment(ActionEvent event) {
     String input = "PD";
-    String finalOutput = "";
 
-    for (String str : pp.run(input)) {
-      System.out.println(str);
-      if (str != null) {
-        finalOutput += str + "\n";
-      }
-    }
-    printOutput.setText(finalOutput);
+    printOutput.setText(pp.run(input));
   }
 
   @FXML
   public void initialize() {
     System.out.println("mother fucker");
     managerTypeButtonBar.setDisable(true);
-    // pp.run();
   }
 
   @FXML
