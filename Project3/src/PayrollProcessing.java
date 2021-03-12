@@ -38,7 +38,7 @@ public class PayrollProcessing {
             String role = "";
 
             if (input.hasMoreTokens())
-               command = "A" + input.nextToken();
+               command = input.nextToken();
             if (input.hasMoreTokens()){
                name = input.nextToken();
                firstName = name.split(" ")[0];
@@ -82,7 +82,7 @@ public class PayrollProcessing {
       // Check for valid command
       if (input.hasMoreTokens()) {
          command = input.nextToken();
-         String[] commands = { "AP", "AF", "AM", "R", "C", "S", "P", "Q", "PA", "PD", "PH", };
+         String[] commands = { "P", "F", "M", "R", "C", "S", "P", "Q", "PA", "PD", "PH", };
          boolean isValidCommand = false;
          for (int i = 0; i < commands.length; i++) {
             if (command.equals(commands[i])) {
@@ -131,7 +131,7 @@ public class PayrollProcessing {
          // continue;
 
          switch (command) {
-         case "AP":
+         case "P":
             if (validatePayHours(payHours)) {
                Parttime employee = new Parttime(employeeProfile, Double.parseDouble(payHours));
                if (!company.alreadyExists(employee)) {
@@ -142,7 +142,7 @@ public class PayrollProcessing {
                }
             }
             break;
-         case "AF":
+         case "F":
             if (validatePayHours(payHours)) {
                Fulltime employee = new Fulltime(employeeProfile, Double.parseDouble(payHours));
                if (!company.alreadyExists(employee)) {
@@ -153,7 +153,7 @@ public class PayrollProcessing {
                }
             }
             break;
-         case "AM":
+         case "M":
             if (!validRole(role)) {
                output += "invalid Management code." + "\n";
                break;
