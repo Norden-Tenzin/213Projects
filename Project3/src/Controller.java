@@ -2,6 +2,9 @@ package Project3.src;
 
 import javax.swing.JRadioButton;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.annotation.Target;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import javafx.event.ActionEvent;
@@ -16,11 +19,14 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Controller {
 
   private PayrollProcessing pp = new PayrollProcessing();
-
+  private File uploadedFile;
   @FXML
   private TabPane mangeEmployees_TabPane;
 
@@ -253,15 +259,51 @@ public class Controller {
   
   @FXML
   void onExportSubmit(ActionEvent event) {
+    
+    exportOutput.clear();
+    FileChooser chooser = new FileChooser();
+		chooser.setTitle("Open Target File for the Export");
+		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
+				new ExtensionFilter("All Files", "*.*"));
+		Stage stage = new Stage();
+		File targetFile = chooser.showSaveDialog(stage); 
+    try {
+      pp.exportToFile(targetFile.getName());
+      exportOutput.setText("Database exported to " + targetFile.getName());
+    } catch (FileNotFoundException e) {
+      exportOutput.setText("Unable to export the file - File not found");
+    }//get the reference of the target file
+		//write code to write to the file.
   }
 
+
+  /**
+   * Function that gets triggered when the "Submit" button is pressed on the import page. This calls the helper class to run an importFile function. 
+   * @param event
+   */
   @FXML
   void onFileSubmit(ActionEvent event) {
-    importOutput.setText(pp.importFile());
+    importOutput.setText(pp.importFile(uploadedFile));
   }
 
+
+/**
+ * Function that gets triggered when the "Upload File" is pressed. This only accepts .txt files.
+ * @param event
+ */
   @FXML
   void onFileUpload(ActionEvent event) {
+    FileChooser chooser = new FileChooser();
+		chooser.setTitle("Open Source File for the Import");
+		chooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"),
+				new ExtensionFilter("All Files", "*.*"));
+		Stage stage = new Stage();
+		File sourceFile = chooser.showOpenDialog(stage);
+    uploadFile_Button.setText(sourceFile.getName());
+    if(sourceFile.exists()){
+      submitImport.setDisable(false);
+      uploadedFile = sourceFile;
+    }
     
   }
 
@@ -387,6 +429,7 @@ public class Controller {
   public void initialize() {
     System.out.println("This is running");
     managerTypeButtonBar.setDisable(true);
+    submitImport.setDisable(true);
   }
 
   @FXML
@@ -432,8 +475,12 @@ public class Controller {
 
     hourlyRate_Input.setText("");
     numHours_Input.setText("");
+    uploadFile_Button.setText("Upload File");
 
     printOutput.clear();
+    messageOuput.clear();
+    exportOutput.clear();
+    importOutput.clear();
   }
 
 }

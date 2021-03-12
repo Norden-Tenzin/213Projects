@@ -1,5 +1,7 @@
 package Project3.src;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 /**
  * The Company class is a container for Employee objects. It holds all the
@@ -228,5 +230,17 @@ public class Company {
          return false;
       else
          return true;
+   }
+
+   /**
+    * Exports the company database to a .txt file.
+    * @param filename
+    * @throws FileNotFoundException
+    */
+   public void exportDatabase(String filename) throws FileNotFoundException{
+      try (PrintWriter out = new PrintWriter(filename)) {
+         String fileOutput = print().replace("--Printing earning statements for all employees--","");
+         out.println(fileOutput);
+     }
    }
 }

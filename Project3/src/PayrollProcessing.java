@@ -1,12 +1,13 @@
 /**
  * Payroll processing method which will be used to take in input and process output.
- * Primarily focuses on AP,AF,AM,R,C,S,P,Q,PA,PD,PH commands.
+ * Primarily focuses on P,F,M,R,C,S,P,Q,PA,PD,PH commands.
  *  @Tenzin Norden, @Vedant Mehta
  */
 package Project3.src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -14,17 +15,16 @@ public class PayrollProcessing {
    private Company company = new Company();
    private String output = "";
 
-   public void exportToFile(){
-      //export to txt
+   public void exportToFile(String filename) throws FileNotFoundException{
+      company.exportDatabase(filename);
    }
-
-   public String importFile() {
+   public String importFile(File importFile) {
       Scanner sc;
       String output = "";
 
       try {
-         File test = new File("Project3/src/database.txt"); // Added TO BE REMOVED
-         sc = new Scanner(test);
+         // File test = new File("Project3/src/database.txt"); // Added TO BE REMOVED
+         sc = new Scanner(importFile);
          while (sc.hasNext()) {
             StringTokenizer input = new StringTokenizer(sc.nextLine(), ",");
 
