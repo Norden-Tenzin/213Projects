@@ -257,6 +257,10 @@ public class Controller {
 
   }
   
+  /**
+    * 
+    * @param event
+    */
   @FXML
   void onExportSubmit(ActionEvent event) {
     
@@ -307,14 +311,21 @@ public class Controller {
     
   }
 
-  // process payment
+  /**
+    * Function for Button ProcessPayment which processes the payment when clicked. 
+    * @param event
+    */
   @FXML
   void onProcessPayment(ActionEvent event) {
     String input = "C";
     messageOuput.setText(reverseOutput(pp.run(input)));
   }
 
-  // add, remove, set hours
+  /**
+    * Function for Button Submit which creates the input command depending on the inputs provided by the user.
+    * This function handles 
+    * @param event
+    */
   @FXML
   void onSubmit(ActionEvent event) {
     String finalOutput = "";
@@ -334,7 +345,8 @@ public class Controller {
     case 0:
       firstName = firstName_Input_add.getText();
       lastName = lastName_Input_add.getText();
-      dateHired = dateHired_Input_add.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY"); 
+      dateHired = formatter.format(dateHired_Input_add.getValue());
       hourlyRate = hourlyRate_Input.getText();
 
       if (departmentSelect_CS_add.isSelected())
