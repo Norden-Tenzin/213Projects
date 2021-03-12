@@ -13,9 +13,6 @@ public  class Main extends Application {
            FXMLLoader fxmlLoader = new FXMLLoader (getClass (). getResource ( "View.fxml" ));
            Parent root = (Parent) fxmlLoader.load ();
            Scene scene = new Scene (root);
-
-
-			  
            primaryStage.setTitle ( "Payroll Processing" );
            primaryStage.setScene (scene);
            primaryStage.setResizable(false);

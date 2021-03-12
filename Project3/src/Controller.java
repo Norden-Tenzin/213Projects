@@ -208,17 +208,9 @@ public class Controller {
   }
 
   /**
-<<<<<<< HEAD
    * Disables the Manager radio buttons. 
    *
    * @param event
-=======
-   * TODO
-   *
-   * @param employee employee Object
-   * @return index of the employee if employee is found in the employees array.
-   *         otherwise -1.
->>>>>>> b43437dedfe0a71ca4b40678cb5edecf374584cd
    */
   @FXML
   void disableManagerTypeSelect(ActionEvent event) {
@@ -226,17 +218,9 @@ public class Controller {
   }
 
   /**
-<<<<<<< HEAD
    * Disables the Department radio buttons.
    * 
    * @param event
-=======
-   * TODO
-   *
-   * @param employee employee Object
-   * @return index of the employee if employee is found in the employees array.
-   *         otherwise -1.
->>>>>>> b43437dedfe0a71ca4b40678cb5edecf374584cd
    */
   @FXML
   void disableDepartmentSelect(ActionEvent event) {
@@ -256,17 +240,9 @@ public class Controller {
   }
 
   /**
-<<<<<<< HEAD
    * Disables the Employee radio buttons.
    * 
    * @param event
-=======
-   * TODO
-   *
-   * @param employee employee Object
-   * @return index of the employee if employee is found in the employees array.
-   *         otherwise -1.
->>>>>>> b43437dedfe0a71ca4b40678cb5edecf374584cd
    */
   @FXML
   void disableEmployeeSelect(ActionEvent event) {
@@ -286,10 +262,7 @@ public class Controller {
   }
 
   /**
-<<<<<<< HEAD
    * Exports the Database into a text file.
-=======
->>>>>>> b43437dedfe0a71ca4b40678cb5edecf374584cd
    * 
    * @param event
    */
@@ -342,10 +315,6 @@ public class Controller {
       submitImport.setDisable(false);
       uploadedFile = sourceFile;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> b43437dedfe0a71ca4b40678cb5edecf374584cd
   }
 
   /**
@@ -361,12 +330,8 @@ public class Controller {
 
   /**
    * Function for Button Submit which creates the input command depending on the
-<<<<<<< HEAD
    * inputs provided by the user. This function handles Add, Remove and Set Hours
    * Tab Functionality.
-=======
-   * inputs provided by the user. This function handles
->>>>>>> b43437dedfe0a71ca4b40678cb5edecf374584cd
    * 
    * @param event
    */
@@ -384,73 +349,6 @@ public class Controller {
     String dateHired = "";
     String hourlyRate = "";
     String numHours = "";
-<<<<<<< HEAD
-
-    int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
-    switch (tabIndex) {
-    case 0:
-      firstName = firstName_Input_add.getText();
-      lastName = lastName_Input_add.getText();
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
-      dateHired = formatter.format(dateHired_Input_add.getValue());
-      hourlyRate = hourlyRate_Input.getText();
-
-      if (departmentSelect_CS_add.isSelected())
-        department = "CS";
-      else if (departmentSelect_ECE_add.isSelected())
-        department = "ECE";
-      else if (departmentSelect_IT_add.isSelected())
-        department = "IT";
-
-      if (employeeTypeSelect_MNGR_add.isSelected())
-        command = "M";
-      else if (employeeTypeSelect_FT_add.isSelected())
-        command = "F";
-      else if (employeeTypeSelect_PT_add.isSelected())
-        command = "P";
-
-      if (managerTypeSelect_MNGR.isSelected())
-        managerType = "1";
-      else if (managerTypeSelect_DH.isSelected())
-        managerType = "2";
-      else if (managerTypeSelect_Dir.isSelected())
-        managerType = "3";
-
-      input = command + " " + lastName + "," + firstName + " " + department + " " + dateHired + " " + hourlyRate + " "
-          + managerType;
-      break;
-
-    case 1:
-      firstName = firstName_Input_rmv.getText();
-      lastName = lastName_Input_rmv.getText();
-      dateHired = dateHired_Input_rmv.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
-
-      if (departmentSelect_CS_rmv.isSelected())
-        department = "CS";
-      else if (departmentSelect_ECE_rmv.isSelected())
-        department = "ECE";
-      else if (departmentSelect_IT_rmv.isSelected())
-        department = "IT";
-
-      input = "R " + lastName + "," + firstName + " " + department + " " + dateHired;
-      break;
-
-    case 2:
-      firstName = firstName_Input_sh.getText();
-      lastName = lastName_Input_sh.getText();
-      dateHired = dateHired_Input_sh.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
-
-      if (departmentSelect_CS_sh.isSelected())
-        department = "CS";
-      else if (departmentSelect_ECE_sh.isSelected())
-        department = "ECE";
-      else if (departmentSelect_IT_sh.isSelected())
-        department = "IT";
-
-      numHours = numHours_Input.getText();
-      input = "S " + lastName + "," + firstName + " " + department + " " + dateHired + " " + numHours;
-      break;
-=======
     try {
       int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
       switch (tabIndex) {
@@ -521,7 +419,6 @@ public class Controller {
       messageOuput.setText(reverseOutput(pp.run(input)));
     } catch (Exception e) {
       messageOuput.setText("Please input all necessary values");
->>>>>>> b43437dedfe0a71ca4b40678cb5edecf374584cd
     }
   }
 
