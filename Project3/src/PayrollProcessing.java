@@ -1,13 +1,12 @@
 /**
  * Payroll processing method which will be used to take in input and process output.
- * Primarily focuses on P,F,M,R,C,S,P,Q,PA,PD,PH commands.
+ * Primarily focuses on P,F,M,R,C,S,Q,PA,PD,PH commands.
  *  @Tenzin Norden, @Vedant Mehta
  */
 package Project3.src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -15,23 +14,36 @@ public class PayrollProcessing {
    private Company company = new Company();
    private String output = "";
 
-   public void exportToFile(String filename) throws FileNotFoundException{
+   /**
+    * exportToFile method is used to export the database from the company class. it
+    * calls the company.exportDatabase() method
+    * 
+    * @param filename String object
+    */
+   public void exportToFile(String filename) throws FileNotFoundException {
       company.exportDatabase(filename);
    }
+
+   /**
+    * importFile method imports the file and extracts the commands from the file.
+    * It then takes the those commands and passes them to the run method.
+    * 
+    * @param importFile File object
+    * @return String made up of outputs
+    */
    public String importFile(File importFile) {
       Scanner sc;
       String output = "";
 
       try {
-         // File test = new File("Project3/src/database.txt"); // Added TO BE REMOVED
          sc = new Scanner(importFile);
          while (sc.hasNext()) {
             StringTokenizer input = new StringTokenizer(sc.nextLine(), ",");
 
             String command = "";
             String name = "";
-            String lastName="";
-            String firstName="";
+            String lastName = "";
+            String firstName = "";
             String department = "";
             String date = "";
             String payHours = "";
@@ -39,7 +51,7 @@ public class PayrollProcessing {
 
             if (input.hasMoreTokens())
                command = input.nextToken();
-            if (input.hasMoreTokens()){
+            if (input.hasMoreTokens()) {
                name = input.nextToken();
                firstName = name.split(" ")[0];
                lastName = name.split(" ")[1];
@@ -52,9 +64,9 @@ public class PayrollProcessing {
                payHours = input.nextToken();
             if (input.hasMoreTokens())
                role = input.nextToken();
-            
-            String extracted = command + " " + lastName + "," + firstName + " " + department + " " + date + " " + payHours + " "
-               + role;
+
+            String extracted = command + " " + lastName + "," + firstName + " " + department + " " + date + " "
+                  + payHours + " " + role;
             output = run(extracted);
          }
       } catch (FileNotFoundException e) {
@@ -63,7 +75,14 @@ public class PayrollProcessing {
       return output;
    }
 
-    public String run(String inputCommands) {
+   /**
+    * Run method used to run PayrollProcessing.It takes in the command line as an
+    * argument.
+    * 
+    * @param inputCommands String object
+    * @return String made up of outputs
+    */
+   public String run(String inputCommands) {
       StringTokenizer input = new StringTokenizer(inputCommands, " ");
       String command = "";
       String name = "";
@@ -123,7 +142,7 @@ public class PayrollProcessing {
       if (!onlyOneArgument) {
          // checks if number of arguments are valid for corresponding command.
          // if (!validateArguments(command, totalInputs))
-         //    continue;
+         // continue;
 
          switch (command) {
          case "P":
@@ -204,7 +223,7 @@ public class PayrollProcessing {
 
       // When we only have one argument passed:
       String printOutout = "";
-      
+
       if (onlyOneArgument) {
          switch (command) {
          case "PA":

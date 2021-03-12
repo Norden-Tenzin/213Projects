@@ -24,6 +24,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+/**
+ * Controller class is used to control all the elements of the fxml. It handles
+ * user interaction logic. Handles Add, Remove, SetHours, Import, Export and All
+ * the print commands in UI.
+ * 
+ * @Tenzin Norden, @Vedant Mehta
+ */
 public class Controller {
 
   private PayrollProcessing pp = new PayrollProcessing();
@@ -208,11 +215,9 @@ public class Controller {
   }
 
   /**
-   * TODO
+   * Disables the Manager radio buttons.
    *
-   * @param employee employee Object
-   * @return index of the employee if employee is found in the employees array.
-   *         otherwise -1.
+   * @param event
    */
   @FXML
   void disableManagerTypeSelect(ActionEvent event) {
@@ -220,11 +225,9 @@ public class Controller {
   }
 
   /**
-   * TODO
-   *
-   * @param employee employee Object
-   * @return index of the employee if employee is found in the employees array.
-   *         otherwise -1.
+   * Disables the Department radio buttons.
+   * 
+   * @param event
    */
   @FXML
   void disableDepartmentSelect(ActionEvent event) {
@@ -244,11 +247,9 @@ public class Controller {
   }
 
   /**
-   * TODO
-   *
-   * @param employee employee Object
-   * @return index of the employee if employee is found in the employees array.
-   *         otherwise -1.
+   * Disables the Employee radio buttons.
+   * 
+   * @param event
    */
   @FXML
   void disableEmployeeSelect(ActionEvent event) {
@@ -268,6 +269,7 @@ public class Controller {
   }
 
   /**
+   * Exports the Database into a text file.
    * 
    * @param event
    */
@@ -342,7 +344,8 @@ public class Controller {
 
   /**
    * Function for Button Submit which creates the input command depending on the
-   * inputs provided by the user. This function handles
+   * inputs provided by the user. This function handles Add, Remove and Set Hours
+   * Tab Functionality.
    * 
    * @param event
    */
