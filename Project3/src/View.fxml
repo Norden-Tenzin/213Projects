@@ -73,8 +73,8 @@
                                                             <content>
                                                               <AnchorPane fx:id="addPane" minHeight="0.0" minWidth="0.0" prefHeight="266.0" prefWidth="500.0">
                                                                      <children>
-                                                                        <TextField fx:id="lastName_Input_add" layoutX="250.0" layoutY="15.0" prefHeight="37.0" prefWidth="183.0" promptText="Last Name" />
                                                                         <TextField fx:id="firstName_Input_add" layoutX="38.0" layoutY="15.0" prefHeight="38.0" prefWidth="182.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input_add" layoutX="250.0" layoutY="15.0" prefHeight="37.0" prefWidth="183.0" promptText="Last Name" />
                                                                         <Label layoutX="34.0" layoutY="65.0" text="Department:" underline="true" />
                                                                         <ButtonBar fx:id="departmentButtonBar_add" cache="true" layoutX="129.0" layoutY="65.0">
                                                                            <buttons>
@@ -120,8 +120,8 @@
                                                                <content>
                                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <TextField fx:id="lastName_Input_rmv" layoutX="252.0" layoutY="56.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
                                                                         <TextField fx:id="firstName_Input_rmv" layoutX="34.0" layoutY="56.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input_rmv" layoutX="252.0" layoutY="56.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
                                                                         <Label layoutX="35.0" layoutY="118.0" text="Department:" underline="true" />
                                                                         <ButtonBar fx:id="departmentButtonBar_RMV" cache="true" layoutX="129.0" layoutY="118.0">
                                                                            <buttons>
@@ -140,8 +140,8 @@
                                                                <content>
                                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <TextField fx:id="lastName_Input_sh" layoutX="263.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
                                                                         <TextField fx:id="firstName_Input_sh" layoutX="37.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input_sh" layoutX="263.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
                                                                         <Label layoutX="34.0" layoutY="83.0" text="Department:" underline="true" />
                                                                         <ButtonBar fx:id="departmentButtonBar_SH" cache="true" layoutX="128.0" layoutY="83.0">
                                                                            <buttons>
@@ -176,11 +176,12 @@
                                                             <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetData" prefHeight="27.0" prefWidth="134.0" text="RESET" />
                                                          </children>
                                                       </VBox>
-                                                      <Label layoutX="4.0" layoutY="10.0" prefHeight="174.0" prefWidth="138.0" text="Welcome to the payment processing program!" textAlignment="CENTER" wrapText="true">
+                                                      <Label layoutX="5.0" layoutY="24.0" prefHeight="174.0" prefWidth="138.0" text="Welcome to the payment processing program!" textAlignment="CENTER" wrapText="true">
                                                          <font>
                                                             <Font size="17.0" />
                                                          </font>
                                                       </Label>
+                                                      <Button fx:id="quitButton" layoutX="27.0" layoutY="10.0" mnemonicParsing="false" onAction="#onQuit" text="Quit Program" />
                                                    </children>
                                                 </AnchorPane>
                                             </items>

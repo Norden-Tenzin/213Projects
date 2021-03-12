@@ -197,6 +197,16 @@ public class Controller {
   @FXML
   private TextArea exportOutput;
 
+  @FXML
+  private Button quitButton;
+
+
+
+  @FXML
+  void onQuit(ActionEvent event) {
+
+  }
+
   /**
     * TODO
     *
