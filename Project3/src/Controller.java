@@ -362,11 +362,11 @@ public class Controller {
     String numHours = "";
     try {
       int tabIndex = mangeEmployees_TabPane.getSelectionModel().getSelectedIndex();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/YYYY");
       switch (tabIndex) {
       case 0:
         firstName = firstName_Input_add.getText();
         lastName = lastName_Input_add.getText();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         dateHired = formatter.format(dateHired_Input_add.getValue());
         hourlyRate = hourlyRate_Input.getText();
 
@@ -398,7 +398,8 @@ public class Controller {
       case 1:
         firstName = firstName_Input_rmv.getText();
         lastName = lastName_Input_rmv.getText();
-        dateHired = dateHired_Input_rmv.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+        
+        dateHired = formatter.format(dateHired_Input_add.getValue());
 
         if (departmentSelect_CS_rmv.isSelected())
           department = "CS";
@@ -413,7 +414,7 @@ public class Controller {
       case 2:
         firstName = firstName_Input_sh.getText();
         lastName = lastName_Input_sh.getText();
-        dateHired = dateHired_Input_sh.getValue().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
+        dateHired = formatter.format(dateHired_Input_add.getValue());
 
         if (departmentSelect_CS_sh.isSelected())
           department = "CS";

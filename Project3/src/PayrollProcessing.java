@@ -64,9 +64,6 @@ public class PayrollProcessing {
    }
 
     public String run(String inputCommands) {
-      // if (output == "") {
-      //    output += "Payroll Processing starts." + "\n";
-      // }
       StringTokenizer input = new StringTokenizer(inputCommands, " ");
       String command = "";
       String name = "";
@@ -191,8 +188,15 @@ public class PayrollProcessing {
             } else if (validatePayHours(payHours)) {
                Parttime emp = new Parttime(employeeProfile, 0);
                emp.setHours(Integer.parseInt(payHours));
-               company.setHours(emp);
-               output += "Working hours set." + "\n";
+               if(company.setHours(emp))
+                  output += "Working hours set." + "\n";
+               else{
+                  if(!company.alreadyExists(new Employee(employeeProfile))){
+                     output += "Employee does not exist" + "\n";
+                  }
+                  else 
+                  output += "Employee is not a part-time employee" + "\n";
+               }
             }
             break;
          }
