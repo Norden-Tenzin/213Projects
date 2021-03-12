@@ -12,32 +12,11 @@ import java.util.StringTokenizer;
 
 public class PayrollProcessing {
    private Company company = new Company();
-   // private String[] output = new String[4];
    private String output = "";
 
-   /**
-    * Run method used to run PayrollProcessing.
-    */
-   // private void grow() {
-   // String[] newArray = new String[output.length + 4];
-
-   // for (int i = 0; i < output.length; i++) {
-   // newArray[i] = output[i];
-   // }
-   // output = newArray;
-   // }
-
-   // public void add(String str) {
-   // if (output[output.length - 1] != null)
-   // grow();
-
-   // for (int i = 0; i < output.length; i++) {
-   // if (output[i] == null) {
-   // output[i] = str;
-   // break;
-   // }
-   // }
-   // }
+   public void exportToFile(){
+      //export to txt
+   }
 
    public String importFile() {
       Scanner sc;

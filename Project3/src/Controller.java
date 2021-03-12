@@ -242,6 +242,7 @@ public class Controller {
 
   @FXML
   void onFileUpload(ActionEvent event) {
+    
   }
 
   // process payment
@@ -326,7 +327,7 @@ public class Controller {
 
       numHours = numHours_Input.getText();
 
-      input = "R " + lastName + "," + firstName + " " + department + " " + dateHired + " " + numHours;
+      input = "S " + lastName + "," + firstName + " " + department + " " + dateHired + " " + numHours;
       break;
     }
     messageOuput.setText(pp.run(input));
