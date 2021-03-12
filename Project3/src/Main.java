@@ -14,7 +14,7 @@ public  class Main extends Application {
            Parent root = (Parent) fxmlLoader.load ();
            Scene scene = new Scene (root);
 
-           primaryStage.setTitle ( "test-Window" );
+           primaryStage.setTitle ( "Payroll Processing" );
            primaryStage.setScene (scene);
            primaryStage.setResizable(false);
            primaryStage.show ();

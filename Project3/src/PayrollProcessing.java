@@ -55,12 +55,10 @@ public class PayrollProcessing {
             
             String extracted = command + " " + lastName + "," + firstName + " " + department + " " + date + " " + payHours + " "
                + role;
-            System.out.println(extracted);
             output = run(extracted);
-            System.out.println(output);
          }
       } catch (FileNotFoundException e) {
-         System.out.println("File Not Found");
+         output += "File Not Found";
       }
       return output;
    }
@@ -238,7 +236,6 @@ public class PayrollProcessing {
                output += "Calculation of employee payments is done." + "\n";
             } else if (company.getNumEmployee() == 0) {
                output += "Employee database is empty." + "\n";
-               System.out.println("HERE");
             }
             break;
          }
