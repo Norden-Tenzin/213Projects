@@ -339,10 +339,12 @@ public class Controller {
 
   // for printing
   @FXML
-  void onViewAll(ActionEvent event) {
+  void onViewAll(ActionEvent event) { 
+    printOutput.clear();
     String input = "PA";
     String finalOutput = "";
 
+    
     for (String str : pp.run(input)) {
       System.out.println(str);
       if (str != null) {
@@ -354,6 +356,8 @@ public class Controller {
 
   @FXML
   void onViewDateHired(ActionEvent event) {
+    printOutput.clear();
+
     String input = "PH";
     String finalOutput = "";
 
@@ -368,6 +372,9 @@ public class Controller {
 
   @FXML
   void onViewDepartment(ActionEvent event) {
+    printOutput.clear();
+
+    
     String input = "PD";
     String finalOutput = "";
 
@@ -382,7 +389,7 @@ public class Controller {
 
   @FXML
   public void initialize() {
-    System.out.println("mother fucker");
+    System.out.println("This is running");
     managerTypeButtonBar.setDisable(true);
     // pp.run();
   }
@@ -414,13 +421,9 @@ public class Controller {
     departmentSelect_IT_sh.setSelected(false);
 
     employeeTypeSelect_FT_add.setSelected(false);
-    employeeTypeSelect_FT_rmv.setSelected(false);
-
     employeeTypeSelect_PT_add.setSelected(false);
-    employeeTypeSelect_PT_rmv.setSelected(false);
-
     employeeTypeSelect_MNGR_add.setSelected(false);
-    employeeTypeSelect_MNGR_rmv.setSelected(false);
+
 
     managerTypeSelect_MNGR.setSelected(false);
     managerTypeSelect_DH.setSelected(false);
@@ -431,10 +434,11 @@ public class Controller {
     departmentButtonBar_RMV.setDisable(false);
     departmentButtonBar_SH.setDisable(false);
     employeeButtonBar_add.setDisable(false);
-    employeeButtonBar_RMV.setDisable(false);
 
     hourlyRate_Input.setText("");
     numHours_Input.setText("");
+
+    printOutput.clear();
   }
 
 }
