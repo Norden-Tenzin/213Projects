@@ -188,6 +188,7 @@ public class PayrollProcessing {
          case "R":
             Employee removeEmployee = new Employee(employeeProfile);
             boolean wasRemoved = company.remove(removeEmployee);
+            System.out.println(wasRemoved);
             if (wasRemoved)
                output += "Employee removed." + "\n";
             else if (company.getNumEmployee() == 0) {

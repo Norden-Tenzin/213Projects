@@ -350,7 +350,7 @@ public class Controller {
    * @param event
    */
   @FXML
-  void onSubmit(ActionEvent event) throws InvocationTargetException {
+  void onSubmit(ActionEvent event) throws InvocationTargetException{
 
     String finalOutput = "";
 
@@ -401,9 +401,7 @@ public class Controller {
       case 1:
         firstName = firstName_Input_rmv.getText();
         lastName = lastName_Input_rmv.getText();
-        
-        dateHired = formatter.format(dateHired_Input_add.getValue());
-
+        dateHired = formatter.format(dateHired_Input_rmv.getValue());
         if (departmentSelect_CS_rmv.isSelected())
           department = "CS";
         else if (departmentSelect_ECE_rmv.isSelected())
@@ -417,7 +415,7 @@ public class Controller {
       case 2:
         firstName = firstName_Input_sh.getText();
         lastName = lastName_Input_sh.getText();
-        dateHired = formatter.format(dateHired_Input_add.getValue());
+        dateHired = formatter.format(dateHired_Input_sh.getValue());
 
         if (departmentSelect_CS_sh.isSelected())
           department = "CS";
