@@ -66,9 +66,9 @@ public class PayrollProcessing {
    }
 
     public String run(String inputCommands) {
-      if (output == "") {
-         output += "Payroll Processing starts." + "\n";
-      }
+      // if (output == "") {
+      //    output += "Payroll Processing starts." + "\n";
+      // }
       StringTokenizer input = new StringTokenizer(inputCommands, " ");
       String command = "";
       String name = "";
@@ -117,8 +117,8 @@ public class PayrollProcessing {
       // create an employee profile if a date exists.
       if (date.length() > 0) {
          employeeProfile = new Profile(name, department, new Date(date));
-         // if (!isValidProfile(employeeProfile))
-         // continue;
+         if (!isValidProfile(employeeProfile))
+            return output;
       }
 
       // if (command.equals("Q"))
@@ -128,7 +128,7 @@ public class PayrollProcessing {
       if (!onlyOneArgument) {
          // checks if number of arguments are valid for corresponding command.
          // if (!validateArguments(command, totalInputs))
-         // continue;
+         //    continue;
 
          switch (command) {
          case "P":
@@ -197,8 +197,6 @@ public class PayrollProcessing {
                output += "Working hours set." + "\n";
             }
             break;
-         default:
-            output += "Payroll Processing completed." + "\n";
          }
       }
 
