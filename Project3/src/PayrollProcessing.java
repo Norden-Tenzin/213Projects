@@ -5,39 +5,67 @@
  */
 package Project3.src;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class PayrollProcessing {
    private Company company = new Company();
-   // private String[] output = new String[4];
    private String output = "";
 
-   /**
-    * Run method used to run PayrollProcessing.
-    */
-   // private void grow() {
-   // String[] newArray = new String[output.length + 4];
+   public void exportToFile(){
+      //export to txt
+   }
 
-   // for (int i = 0; i < output.length; i++) {
-   // newArray[i] = output[i];
-   // }
-   // output = newArray;
-   // }
+   public String importFile() {
+      Scanner sc;
+      String output = "";
 
-   // public void add(String str) {
-   // if (output[output.length - 1] != null)
-   // grow();
+      try {
+         File test = new File("Project3/src/database.txt"); // Added TO BE REMOVED
+         sc = new Scanner(test);
+         while (sc.hasNext()) {
+            StringTokenizer input = new StringTokenizer(sc.nextLine(), ",");
 
-   // for (int i = 0; i < output.length; i++) {
-   // if (output[i] == null) {
-   // output[i] = str;
-   // break;
-   // }
-   // }
-   // }
+            String command = "";
+            String name = "";
+            String lastName="";
+            String firstName="";
+            String department = "";
+            String date = "";
+            String payHours = "";
+            String role = "";
 
-   public String run(String inputCommands) {
+            if (input.hasMoreTokens())
+               command = "A" + input.nextToken();
+            if (input.hasMoreTokens()){
+               name = input.nextToken();
+               firstName = name.split(" ")[0];
+               lastName = name.split(" ")[1];
+            }
+            if (input.hasMoreTokens())
+               department = input.nextToken();
+            if (input.hasMoreTokens())
+               date = input.nextToken();
+            if (input.hasMoreTokens())
+               payHours = input.nextToken();
+            if (input.hasMoreTokens())
+               role = input.nextToken();
+            
+            String extracted = command + " " + lastName + "," + firstName + " " + department + " " + date + " " + payHours + " "
+               + role;
+            System.out.println(extracted);
+            output = run(extracted);
+            System.out.println(output);
+         }
+      } catch (FileNotFoundException e) {
+         System.out.println("File Not Found");
+      }
+      return output;
+   }
+
+    public String run(String inputCommands) {
       if (output == "") {
          output += "Payroll Processing starts." + "\n";
       }

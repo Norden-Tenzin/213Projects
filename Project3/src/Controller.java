@@ -237,10 +237,12 @@ public class Controller {
 
   @FXML
   void onFileSubmit(ActionEvent event) {
+    importOutput.setText(pp.importFile());
   }
 
   @FXML
   void onFileUpload(ActionEvent event) {
+    
   }
 
   // process payment
