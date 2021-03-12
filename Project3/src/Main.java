@@ -14,6 +14,8 @@ public  class Main extends Application {
            Parent root = (Parent) fxmlLoader.load ();
            Scene scene = new Scene (root);
 
+
+			  
            primaryStage.setTitle ( "Payroll Processing" );
            primaryStage.setScene (scene);
            primaryStage.setResizable(false);
@@ -31,13 +33,9 @@ public  class Main extends Application {
 /**
  * TODO:
  * 
- * 1. Add valid error messages DONE
- * 2. Prompt user for file
  * 3. Javadoc - V last
  * 4. Comments
- * 5. Process payment - DONE
- * 6. Export
  * 7. Testing doc
  * 8. RadioButton toggleGroup - T
- * 
+ * 9. last name first name swap in UI
  */
