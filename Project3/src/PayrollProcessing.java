@@ -1,8 +1,3 @@
-/**
- * Payroll processing method which will be used to take in input and process output.
- * Primarily focuses on P,F,M,R,C,S,Q,PA,PD,PH commands.
- *  @Tenzin Norden, @Vedant Mehta
- */
 package Project3.src;
 
 import java.io.File;
@@ -10,6 +5,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+
+/**
+ * Payroll processing method which will be used to take in input and process output.
+ * Primarily focuses on P,F,M,R,C,S,Q,PA,PD,PH commands.
+ *  @Tenzin Norden, @Vedant Mehta
+ */
 public class PayrollProcessing {
    private Company company = new Company();
    private String output = "";

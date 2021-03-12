@@ -1,15 +1,13 @@
+package Project3.src;
+import java.text.DecimalFormat;
+
+
 /**
  * Management class will extend FullTime and will handle management employee data.
  * This class will be in charge of handling manager information and will have its own calculatePayment method since 
  * payment calculation differs from each employee type.
  *  @Tenzin Norden, @Vedant Mehta
  */
-
-package Project3.src;
-
-
-import java.text.DecimalFormat;
-
 public class Management extends Fulltime {
 
    double bonus;

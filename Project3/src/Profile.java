@@ -10,7 +10,6 @@ package Project3.src;
  *
  * @Tenzin Norden, @Vedant Mehta
  */
-
 public class Profile {
 
    private String name;

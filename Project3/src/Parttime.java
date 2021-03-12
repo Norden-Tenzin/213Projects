@@ -1,3 +1,9 @@
+package Project3.src;
+
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 /**
  * PartTime class will extend Employee and will handle Parttime employee data.
  * This class will be in charge of handling some Parttime employee information and will have its own calculatePayment method since 
@@ -5,12 +11,6 @@
  * This class will also be used to set the hours worked and hourly rate of the employee.
  *  @Tenzin Norden, @Vedant Mehta
  */
-package Project3.src;
-
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-
 public class Parttime extends Employee {
 
    private double hourlyRate;

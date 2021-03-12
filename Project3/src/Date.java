@@ -1,3 +1,6 @@
+package Project3.src;
+import java.util.Calendar;
+
 /**
  * The Date class allows us to look at a formatted date and determine if the date are valid or not.
  * year: the year of the date.
@@ -5,12 +8,6 @@
  * day: numerical day of the date.
  * @Tenzin Norden, @Vedant Mehta
  */
-
-package Project3.src;
-
-
-import java.util.Calendar;
-
 public class Date implements Comparable<Date> {
 
    private int year;
