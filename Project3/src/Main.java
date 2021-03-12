@@ -15,7 +15,7 @@ public  class Main extends Application {
            Scene scene = new Scene (root);
 
 
-			  
+
            primaryStage.setTitle ( "Payroll Processing" );
            primaryStage.setScene (scene);
            primaryStage.setResizable(false);
@@ -37,5 +37,4 @@ public  class Main extends Application {
  * 4. Comments
  * 7. Testing doc
  * 8. RadioButton toggleGroup - T
- * 9. last name first name swap in UI
  */
