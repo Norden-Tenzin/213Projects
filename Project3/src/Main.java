@@ -31,11 +31,11 @@ public  class Main extends Application {
 /**
  * TODO:
  * 
- * 1. Add valid error messages
+ * 1. Add valid error messages DONE
  * 2. Prompt user for file
  * 3. Javadoc - V last
  * 4. Comments
- * 5. Process payment - T
+ * 5. Process payment - DONE
  * 6. Export
  * 7. Testing doc
  * 8. RadioButton toggleGroup - T

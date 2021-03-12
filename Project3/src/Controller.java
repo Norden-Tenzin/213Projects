@@ -192,7 +192,7 @@ public class Controller {
   private TextArea exportOutput;
 
   /**
-    * Looks through the employees array to find the employee with the same profile.
+    * TODO
     *
     * @param employee employee Object
     * @return index of the employee if employee is found in the employees array.
@@ -203,6 +203,13 @@ public class Controller {
     managerTypeButtonBar.setDisable(true);
   }
 
+  /**
+    * TODO
+    *
+    * @param employee employee Object
+    * @return index of the employee if employee is found in the employees array.
+    *         otherwise -1.
+    */
   @FXML
   void disableDepartmentSelect(ActionEvent event) {
 
@@ -220,6 +227,13 @@ public class Controller {
     }
   }
 
+  /**
+    * TODO
+    *
+    * @param employee employee Object
+    * @return index of the employee if employee is found in the employees array.
+    *         otherwise -1.
+    */
   @FXML
   void disableEmployeeSelect(ActionEvent event) {
     if (employeeTypeSelect_MNGR_add.isSelected()) {
@@ -236,7 +250,7 @@ public class Controller {
     }
 
   }
-
+  
   @FXML
   void onExportSubmit(ActionEvent event) {
   }
