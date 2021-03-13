@@ -1,18 +1,20 @@
 package Project3.src;
+
 import java.text.DecimalFormat;
 
-
 /**
- * Management class will extend FullTime and will handle management employee data.
- * This class will be in charge of handling manager information and will have its own calculatePayment method since 
- * payment calculation differs from each employee type.
- *  @Tenzin Norden, @Vedant Mehta
+ * Management class will extend FullTime and will handle management employee
+ * data. This class will be in charge of handling manager information and will
+ * have its own calculatePayment method since payment calculation differs from
+ * each employee type.
+ * 
+ * @Tenzin Norden, @Vedant Mehta
  */
 public class Management extends Fulltime {
 
-   double bonus;
-   double salary;
-   String role = "";
+   private double bonus;
+   private double salary;
+   private String role = "";
 
    /**
     * Managment constructor which takes in a profile class, salary and a status.
@@ -28,20 +30,20 @@ public class Management extends Fulltime {
    public Management(Profile profile, double annualSalary, int statusNumber) {
       super(profile, annualSalary);
       switch (statusNumber) {
-         case 1:
-            this.role = "Manager";
-            this.bonus = 5000;
-            break;
-         case 2:
-            this.role = "Director";
-            this.bonus = 9500;
-            break;
-         case 3:
-            this.role = "Department Head";
-            this.bonus = 12000;
-            break;
-         default:
-            bonus = 0;
+      case 1:
+         this.role = "Manager";
+         this.bonus = 5000;
+         break;
+      case 2:
+         this.role = "Director";
+         this.bonus = 9500;
+         break;
+      case 3:
+         this.role = "Department Head";
+         this.bonus = 12000;
+         break;
+      default:
+         bonus = 0;
       }
 
    }

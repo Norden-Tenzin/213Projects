@@ -1,14 +1,15 @@
 package Project3.src;
 
-
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
 /**
  * FullTime class will extend Employee and will handle FullTime employee data.
- * This class will be in charge of handling some manager information and will have its own calculatePayment method since 
- * payment calculation differs from each employee type.
- *  @Tenzin Norden, @Vedant Mehta
+ * This class will be in charge of handling some manager information and will
+ * have its own calculatePayment method since payment calculation differs from
+ * each employee type.
+ * 
+ * @Tenzin Norden, @Vedant Mehta
  */
 
 public class Fulltime extends Employee {

@@ -87,7 +87,7 @@
                                                                            </buttons>
                                                                         </ButtonBar>
                                                                         <DatePicker fx:id="dateHired_Input_add" layoutX="129.0" layoutY="101.0" prefHeight="31.0" prefWidth="243.0" />
-                                                                        <Label layoutX="38.0" layoutY="108.0" text="Date Hired:" underline="true" />
+                                                                        <Label layoutX="34.0" layoutY="108.0" text="Date Hired:" underline="true" />
                                                                         <Label layoutX="33.0" layoutY="147.0" text="Employee Type:" underline="true" />
                                                                         <ButtonBar fx:id="employeeButtonBar_add" layoutX="132.0" layoutY="147.0">
                                                                            <buttons>
@@ -120,18 +120,18 @@
                                                                <content>
                                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <TextField fx:id="firstName_Input_rmv" layoutX="34.0" layoutY="56.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
-                                                                        <TextField fx:id="lastName_Input_rmv" layoutX="252.0" layoutY="56.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
-                                                                        <Label layoutX="35.0" layoutY="118.0" text="Department:" underline="true" />
-                                                                        <ButtonBar fx:id="departmentButtonBar_RMV" cache="true" layoutX="129.0" layoutY="118.0">
+                                                                        <TextField fx:id="firstName_Input_rmv" layoutX="38.0" layoutY="15.0" prefHeight="38.0" prefWidth="182.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input_rmv" layoutX="250.0" layoutY="15.0" prefHeight="37.0" prefWidth="183.0" promptText="Last Name" />
+                                                                        <Label layoutX="34.0" layoutY="65.0" text="Department:" underline="true" />
+                                                                        <ButtonBar fx:id="departmentButtonBar_RMV" cache="true" layoutX="129.0" layoutY="65.0">
                                                                            <buttons>
                                                                               <RadioButton fx:id="departmentSelect_CS_rmv" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="CS" />
                                                                               <RadioButton fx:id="departmentSelect_ECE_rmv" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="ECE" />
                                                                               <RadioButton fx:id="departmentSelect_IT_rmv" onAction="#disableDepartmentSelect" prefHeight="18.0" prefWidth="99.0" text="IT" />
                                                                            </buttons>
                                                                         </ButtonBar>
-                                                                        <DatePicker fx:id="dateHired_Input_rmv" layoutX="130.0" layoutY="161.0" prefHeight="31.0" prefWidth="243.0" />
-                                                                        <Label layoutX="38.0" layoutY="168.0" text="Date Hired:" underline="true" />
+                                                                        <DatePicker fx:id="dateHired_Input_rmv" layoutX="129.0" layoutY="101.0" prefHeight="31.0" prefWidth="243.0" />
+                                                                        <Label layoutX="34.0" layoutY="108.0" text="Date Hired:" underline="true" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                </content>
@@ -140,21 +140,21 @@
                                                                <content>
                                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                      <children>
-                                                                        <TextField fx:id="firstName_Input_sh" layoutX="37.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="First Name" />
-                                                                        <TextField fx:id="lastName_Input_sh" layoutX="263.0" layoutY="21.0" prefHeight="45.0" prefWidth="190.0" promptText="Last Name" />
-                                                                        <Label layoutX="34.0" layoutY="83.0" text="Department:" underline="true" />
-                                                                        <ButtonBar fx:id="departmentButtonBar_SH" cache="true" layoutX="128.0" layoutY="83.0">
+                                                                        <TextField fx:id="firstName_Input_sh" layoutX="38.0" layoutY="15.0" prefHeight="38.0" prefWidth="182.0" promptText="First Name" />
+                                                                        <TextField fx:id="lastName_Input_sh" layoutX="250.0" layoutY="15.0" prefHeight="37.0" prefWidth="183.0" promptText="Last Name" />
+                                                                        <Label layoutX="34.0" layoutY="65.0" text="Department:" underline="true" />
+                                                                        <ButtonBar fx:id="departmentButtonBar_SH" cache="true" layoutX="129.0" layoutY="65.0">
                                                                            <buttons>
                                                                               <RadioButton fx:id="departmentSelect_CS_sh" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="CS" />
                                                                               <RadioButton fx:id="departmentSelect_ECE_sh" mnemonicParsing="false" onAction="#disableDepartmentSelect" text="ECE" />
                                                                               <RadioButton fx:id="departmentSelect_IT_sh" onAction="#disableDepartmentSelect" prefHeight="18.0" prefWidth="99.0" text="IT" />
                                                                            </buttons>
                                                                         </ButtonBar>
-                                                                        <DatePicker fx:id="dateHired_Input_sh" layoutX="129.0" layoutY="126.0" prefHeight="31.0" prefWidth="243.0" />
-                                                                        <Label layoutX="37.0" layoutY="133.0" text="Date Hired:" underline="true" />
+                                                                        <DatePicker fx:id="dateHired_Input_sh" layoutX="129.0" layoutY="101.0" prefHeight="31.0" prefWidth="243.0" />
+                                                                        <Label layoutX="34.0" layoutY="108.0" text="Date Hired:" underline="true" />
                                                                         <ButtonBar layoutX="142.0" layoutY="180.0" />
-                                                                        <TextField fx:id="numHours_Input" layoutX="132.0" layoutY="180.0" prefHeight="31.0" prefWidth="239.0" promptText="0.00" />
-                                                                        <Label layoutX="37.0" layoutY="187.0" text="Hours:" underline="true" />
+                                                                        <TextField fx:id="numHours_Input" layoutX="132.0" layoutY="147.0" prefHeight="31.0" prefWidth="239.0" promptText="0.00" />
+                                                                        <Label layoutX="33.0" layoutY="147.0" text="Hours:" underline="true" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                </content>
@@ -165,15 +165,11 @@
                                                 </AnchorPane>
                                               <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="281.0" prefWidth="145.0">
                                                    <children>
-                                                      <VBox layoutX="6.0" layoutY="209.0">
+                                                      <VBox layoutX="4.0" layoutY="189.0" prefHeight="92.0" prefWidth="136.0">
                                                          <children>
-                                                            <Button fx:id="processPayment" mnemonicParsing="false" onAction="#onProcessPayment" prefHeight="27.0" prefWidth="136.0" text="Process Payment" />
-                                                            <Button fx:id="submit" lineSpacing="1.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="27.0" prefWidth="134.0" text="Submit">
-                                                               <font>
-                                                                  <Font size="15.0" />
-                                                               </font>
-                                                            </Button>
-                                                            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetData" prefHeight="27.0" prefWidth="134.0" text="RESET" />
+                                                            <Button fx:id="processPayment" mnemonicParsing="false" onAction="#onProcessPayment" prefHeight="31.0" prefWidth="134.0" text="Process Payment" />
+                                                            <Button fx:id="submit" lineSpacing="1.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="31.0" prefWidth="134.0" text="Submit" />
+                                                            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetData" prefHeight="31.0" prefWidth="134.0" text="RESET" />
                                                          </children>
                                                       </VBox>
                                                       <Label layoutX="5.0" layoutY="24.0" prefHeight="174.0" prefWidth="138.0" text="Welcome to the payment processing program!" textAlignment="CENTER" wrapText="true">
@@ -181,7 +177,7 @@
                                                             <Font size="17.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button fx:id="quitButton" layoutX="27.0" layoutY="10.0" mnemonicParsing="false" onAction="#onQuit" text="Quit Program" />
+                                                      <Button fx:id="quitButton" layoutX="5.0" layoutY="2.0" mnemonicParsing="false" onAction="#onQuit" prefHeight="31.0" prefWidth="134.0" text="Quit Program" />
                                                    </children>
                                                 </AnchorPane>
                                             </items>
@@ -207,11 +203,14 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="640.0">
                            <children>
-                              <ScrollPane layoutX="3.0" layoutY="48.0" prefHeight="326.0" prefWidth="634.0">
+                              <ScrollPane layoutX="3.0" layoutY="48.0" prefHeight="437.0" prefWidth="634.0">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="319.0" prefWidth="615.0">
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="436.0" prefWidth="615.0">
                                        <children>
-                                          <TextArea fx:id="printOutput" editable="false" layoutX="20.0" layoutY="7.0" prefHeight="299.0" prefWidth="582.0" wrapText="true" />
+                                          <TextArea fx:id="printOutput" editable="false" prefHeight="436.0" prefWidth="632.0" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font></TextArea>
                                        </children>
                                     </AnchorPane>
                                 </content>
@@ -230,17 +229,17 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="640.0">
                            <children>
-                              <TabPane prefHeight="367.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+                              <TabPane prefHeight="489.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
                                 <tabs>
                                   <Tab text="Import">
                                     <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="640.0">
                                              <children>
-                                                <Button fx:id="uploadFile_Button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onFileUpload" prefHeight="43.0" prefWidth="168.0" text="Upload File" />
-                                                <Button fx:id="submitImport" layoutX="458.0" layoutY="14.0" mnemonicParsing="false" onAction="#onFileSubmit" prefHeight="43.0" prefWidth="168.0" text="Submit" />
-                                                <TextArea fx:id="importOutput" editable="false" layoutX="13.0" layoutY="83.0" prefHeight="209.0" prefWidth="615.0">
+                                                <Button fx:id="uploadFile_Button" layoutX="4.0" layoutY="14.0" mnemonicParsing="false" onAction="#onFileUpload" prefHeight="43.0" prefWidth="168.0" text="Upload File" />
+                                                <Button fx:id="submitImport" layoutX="466.0" layoutY="14.0" mnemonicParsing="false" onAction="#onFileSubmit" prefHeight="43.0" prefWidth="168.0" text="Submit" />
+                                                <TextArea fx:id="importOutput" editable="false" layoutX="4.0" layoutY="66.0" prefHeight="388.0" prefWidth="630.0">
                                                    <font>
-                                                      <Font size="20.0" />
+                                                      <Font size="15.0" />
                                                    </font>
                                                 </TextArea>
                                              </children>
@@ -251,10 +250,10 @@
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Button fx:id="export_Button" layoutX="458.0" layoutY="14.0" mnemonicParsing="false" onAction="#onExportSubmit" prefHeight="43.0" prefWidth="168.0" text="Export to file" />
-                                                <TextArea fx:id="exportOutput" editable="false" layoutX="12.0" layoutY="67.0" prefHeight="209.0" prefWidth="615.0">
+                                                <Button fx:id="export_Button" layoutX="466.0" layoutY="14.0" mnemonicParsing="false" onAction="#onExportSubmit" prefHeight="43.0" prefWidth="168.0" text="Export to file" />
+                                                <TextArea fx:id="exportOutput" editable="false" layoutX="5.0" layoutY="65.0" prefHeight="389.0" prefWidth="629.0">
                                                    <font>
-                                                      <Font size="20.0" />
+                                                      <Font size="15.0" />
                                                    </font>
                                                 </TextArea>
                                              </children>

@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-
 /**
- * Payroll processing method which will be used to take in input and process output.
- * Primarily focuses on P,F,M,R,C,S,Q,PA,PD,PH commands.
- *  @Tenzin Norden, @Vedant Mehta
+ * Payroll processing method which will be used to take in input and process
+ * output. Primarily focuses on P,F,M,R,C,S,Q,PA,PD,PH commands.
+ * 
+ * @Tenzin Norden, @Vedant Mehta
  */
 public class PayrollProcessing {
    private Company company = new Company();
@@ -135,16 +135,7 @@ public class PayrollProcessing {
          if (!isValidProfile(employeeProfile))
             return output;
       }
-
-      // if (command.equals("Q"))
-      // break;
-
-      // When we have more than one argument passed, run this block:
       if (!onlyOneArgument) {
-         // checks if number of arguments are valid for corresponding command.
-         // if (!validateArguments(command, totalInputs))
-         // continue;
-
          switch (command) {
          case "P":
             if (validatePayHours(payHours)) {
@@ -188,7 +179,6 @@ public class PayrollProcessing {
          case "R":
             Employee removeEmployee = new Employee(employeeProfile);
             boolean wasRemoved = company.remove(removeEmployee);
-            System.out.println(wasRemoved);
             if (wasRemoved)
                output += "Employee removed." + "\n";
             else if (company.getNumEmployee() == 0) {
@@ -209,14 +199,13 @@ public class PayrollProcessing {
             } else if (validatePayHours(payHours)) {
                Parttime emp = new Parttime(employeeProfile, 0);
                emp.setHours(Integer.parseInt(payHours));
-               if(company.setHours(emp))
+               if (company.setHours(emp))
                   output += "Working hours set." + "\n";
-               else{
-                  if(!company.alreadyExists(new Employee(employeeProfile))){
-                     output += "Employee does not exist" + "\n";
-                  }
-                  else 
-                  output += "Employee is not a part-time employee" + "\n";
+               else {
+                  if (!company.alreadyExists(new Employee(employeeProfile))) {
+                     output += "Employee does not exist." + "\n";
+                  } else
+                     output += "Employee is not a part-time employee." + "\n";
                }
             }
             break;

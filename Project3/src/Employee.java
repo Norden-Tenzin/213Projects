@@ -1,11 +1,14 @@
 package Project3.src;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
 /**
- * Employee class which will be used to create Employees which will be inherited by FullTime and PartTime classes.
- * The class will handle setPayment and will be used to keep track of an employee's profile.
- *  @Tenzin Norden, @Vedant Mehta
+ * Employee class which will be used to create Employees which will be inherited
+ * by FullTime and PartTime classes. The class will handle setPayment and will
+ * be used to keep track of an employee's profile.
+ * 
+ * @Tenzin Norden, @Vedant Mehta
  */
 public class Employee {
    private Profile profile;
